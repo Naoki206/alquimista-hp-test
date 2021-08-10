@@ -14,6 +14,7 @@
     "parser": "@typescript-eslint/parser",
     "settings": {
         "import/resolver": {
+          "typescript": { "project": "./" },
           "node": {
             "extensions": [
               ".js",
@@ -39,8 +40,18 @@
         "no-use-before-define": "off",
         "quotes": [2, "single", { "avoidEscape": true }],
         "react/jsx-filename-extension": [
-        "error",
-        { "extensions": [".jsx", ".tsx"] }
+            "error",
+            { "extensions": [".jsx", ".tsx"] }
+        ],
+        "import/extensions": [
+            "error",
+            "ignorePackages",
+            {
+                "js": "never",
+                "jsx": "never",
+                "ts": "never",
+                "tsx": "never"
+            }
         ],
         "react/prop-types": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
@@ -48,18 +59,7 @@
         "react/no-danger": "off",
         "react/no-unescaped-entities": "off",
         "import/no-extraneous-dependencies": "off",
-        "import/extensions": [
-        "error",
-        "ignorePackages",
-        {
-            "js": "never",
-            "jsx": "never",
-            "ts": "never",
-            "tsx": "never"
-        }
-        ]
-    },
-    "globals": {
-        "__PATH_PREFIX__": true
-    }    
+        "@typescript-eslint/ban-ts-ignore": "off",
+        "@typescript-eslint/ban-ts-comment": "off"
+    }   
 }

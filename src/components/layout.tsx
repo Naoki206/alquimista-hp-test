@@ -1,7 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
+// eslint-disable-next-line import/no-unresolved
+import { WindowLocation } from '@reach/router';
 
-const Layout = ({ location, title, children }) => {
+const Layout: React.FC<
+  { title: string } & { location: WindowLocation<unknown> }
+> = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   let header;

@@ -62,7 +62,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
                 </section>
                 {/* eslint-disable-next-line react/button-has-type */}
                 <button tw="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                  ボタン
+                  テスト
                 </button>
               </article>
             </li>
