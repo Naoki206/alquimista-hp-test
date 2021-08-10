@@ -4,5 +4,5 @@ name: Hello world!
    Hello-world:
      runs-on: ubuntu-latest
      steps:
-       - run: echo "Hello world! 🎉":w
+       - run: echo "Hello world! 🎉"
 
