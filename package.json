@@ -75,7 +75,7 @@
   "scripts": {
     "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "format:eslint": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
-    "format": "yarn format:eslint && yarn format:prettier"
+    "format": "yarn format:prettier && yarn format:eslint"
   },
   "babelMacros": {
     "twin": {
