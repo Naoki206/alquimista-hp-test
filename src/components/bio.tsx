@@ -9,6 +9,8 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
+aiueo;
+
 const Bio = () => {
   const data = useStaticQuery<GatsbyTypes.BioQueryQuery>(
     graphql`
