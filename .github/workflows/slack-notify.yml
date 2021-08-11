@@ -28,7 +28,6 @@ jobs:
           SLACK_CHANNEL: alquimista_hp_pr
           SLACK_TITLE: Test Success
           SLACK_COLOR: good
-          SLACK_MESSAGE: 'Post Content :rocket:'
 
       # テスト失敗時はこちらのステップが実行される
       - name: Slack Notification on Failure
@@ -39,4 +38,3 @@ jobs:
           SLACK_CHANNEL: alquimista_hp_pr
           SLACK_TITLE: Test Failure
           SLACK_COLOR: danger
-          SLACK_MESSAGE: 'Post Content :rocket:'
