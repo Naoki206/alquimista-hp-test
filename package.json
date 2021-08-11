@@ -84,15 +84,5 @@
       "hasSuggestions": true,
       "debug": false
     }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{jsx, ts, tsx}": [
-      "yarn format"
-    ]
   }
 }
