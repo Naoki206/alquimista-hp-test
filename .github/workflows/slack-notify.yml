@@ -22,7 +22,7 @@ jobs:
       # テスト成功時はこちらのステップが実行される
       - name: Slack Notification on Success
         if: success()
-        uses: rtCamp/action-slack-notify@v2
+        uses: rtCamp/action-slack-notify@v2.2.0
         env:
           SLACK_USERNAME: Github Actions
           SLACK_CHANNEL: alquimista_hp_pr
@@ -31,7 +31,7 @@ jobs:
 
       # テスト失敗時はこちらのステップが実行される
       - name: Slack Notification on Failure
-        uses: rtCamp/action-slack-notify@v2
+        uses: rtCamp/action-slack-notify@v2.2.0
         if: failure()
         env:
           SLACK_USERNAME: Github Actions
