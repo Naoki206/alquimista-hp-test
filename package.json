@@ -8,10 +8,12 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@contentful/gatsby-transformer-contentful-richtext": "^13.1.0",
     "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@types/prop-types": "^15.7.4",
+    "dotenv": "^10.0.0",
     "gatsby": "^3.10.2",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-emotion": "^6.10.0",
@@ -29,6 +31,7 @@
     "gatsby-remark-prismjs": "^5.7.0",
     "gatsby-remark-responsive-iframe": "^4.7.0",
     "gatsby-remark-smartypants": "^4.7.0",
+    "gatsby-source-contentful": "^5.11.1",
     "gatsby-source-filesystem": "^3.10.0",
     "gatsby-transformer-remark": "^4.7.0",
     "gatsby-transformer-sharp": "^3.11.0",

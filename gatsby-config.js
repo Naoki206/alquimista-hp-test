@@ -1,3 +1,9 @@
+const dotenv = require('dotenv');
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Starter Blog',
@@ -138,5 +144,14 @@ module.exports = {
     // },
     'gatsby-plugin-typegen',
     'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'jozpq3l4wnc8',
+        // Learn about environment variables: https://gatsby.dev/env-vars
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    '@contentful/gatsby-transformer-contentful-richtext',
   ],
 };
