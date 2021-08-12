@@ -12,7 +12,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
   location,
 }) => {
   const siteTitle = data.site?.siteMetadata?.title || 'Title';
-  const posts = data.allMarkdownRemark.nodes;
+  const posts = data.allContentfulPost.edges;
 
   if (posts.length === 0) {
     return (
@@ -34,10 +34,10 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
       <Bio />
       <ol style={{ listStyle: 'none' }}>
         {posts.map(post => {
-          const title = post.frontmatter?.title || post.fields?.slug;
+          const title = post?.node.title || post.node.slug;
 
           return (
-            <li key={post.fields?.slug}>
+            <li key={post?.node.slug}>
               <article
                 className="post-list-item"
                 itemScope
@@ -45,20 +45,21 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
               >
                 <header>
                   <h2>
-                    <Link to={post.fields?.slug || '/'} itemProp="url">
+                    <Link to={post.node.slug || '/'} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
-                  <small>{post.frontmatter?.date}</small>
+                  <small>{post.node.date}</small>
                 </header>
                 <section>
-                  <p
+                  {/* <p
                     dangerouslySetInnerHTML={{
                       __html:
                         post.frontmatter?.description || post.excerpt || '',
                     }}
                     itemProp="description"
-                  />
+                  /> */}
+                  <div>{post.node.content?.raw}</div>
                 </section>
                 {/* eslint-disable-next-line react/button-has-type */}
                 <button tw="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -82,16 +83,16 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
+    allContentfulPost {
+      edges {
+        node {
           title
-          description
+          author
+          slug
+          date
+          content {
+            raw
+          }
         }
       }
     }
