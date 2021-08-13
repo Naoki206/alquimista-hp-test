@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
+import { renderRichText } from 'gatsby-source-contentful/rich-text';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
@@ -28,7 +29,8 @@ const BlogPostContentfulTemplate: React.FC<
           dangerouslySetInnerHTML={{ __html: post.html }}
           itemProp="articleBody"
         /> */}
-        <div>{post?.content?.raw}</div>
+        {/* <div>{post?.content?.raw}</div> */}
+        <div>{post?.content?.raw && renderRichText(post.content)}</div>
         <hr />
         <footer>
           <Bio />
