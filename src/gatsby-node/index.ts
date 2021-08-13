@@ -26,6 +26,9 @@ export const createPages: GatsbyNode['createPages'] = async ({
             node {
               slug
               title
+              content {
+                raw
+              }
             }
           }
         }

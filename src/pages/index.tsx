@@ -59,12 +59,12 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
                     }}
                     itemProp="description"
                   /> */}
-                  <div>{post.node.content?.raw}</div>
+                  {/* <div>{post.node.content?.raw}</div> */}
                 </section>
                 {/* eslint-disable-next-line react/button-has-type */}
-                <button tw="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                {/* <button tw="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   テスト
-                </button>
+                </button> */}
               </article>
             </li>
           );
