@@ -89,7 +89,7 @@ export const pageQuery = graphql`
           title
           author
           slug
-          date
+          date(formatString: "YYYY/MM/DD")
           content {
             raw
           }
