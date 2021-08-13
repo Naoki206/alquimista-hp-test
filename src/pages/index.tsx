@@ -83,7 +83,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulPost {
+    allContentfulPost(filter: { node_locale: { eq: "ja-JP" } }) {
       edges {
         node {
           title
