@@ -982,8 +982,10 @@ type ContentfulPost_updatedAtArgs = {
 
 type ContentfulPostContent = {
   readonly raw: Maybe<Scalars['String']>;
-  readonly references: Maybe<ReadonlyArray<Maybe<ContentfulAsset>>>;
+  readonly references: Maybe<ReadonlyArray<Maybe<ContentfulAssetContentfulPostUnion>>>;
 };
+
+type ContentfulAssetContentfulPostUnion = ContentfulAsset | ContentfulPost;
 
 type ContentfulPostSys = {
   readonly type: Maybe<Scalars['String']>;
@@ -5831,11 +5833,6 @@ type ContentfulLessonCopySortInput = {
 
 type ContentfulPostContentFilterInput = {
   readonly raw: Maybe<StringQueryOperatorInput>;
-  readonly references: Maybe<ContentfulAssetFilterListInput>;
-};
-
-type ContentfulAssetFilterListInput = {
-  readonly elemMatch: Maybe<ContentfulAssetFilterInput>;
 };
 
 type ContentfulPostSysFilterInput = {
@@ -5907,57 +5904,6 @@ type ContentfulPostFieldsEnum =
   | 'author'
   | 'slug'
   | 'content.raw'
-  | 'content.references'
-  | 'content.references.contentful_id'
-  | 'content.references.id'
-  | 'content.references.spaceId'
-  | 'content.references.createdAt'
-  | 'content.references.updatedAt'
-  | 'content.references.file.url'
-  | 'content.references.file.fileName'
-  | 'content.references.file.contentType'
-  | 'content.references.title'
-  | 'content.references.description'
-  | 'content.references.node_locale'
-  | 'content.references.sys.type'
-  | 'content.references.sys.revision'
-  | 'content.references.fixed.base64'
-  | 'content.references.fixed.tracedSVG'
-  | 'content.references.fixed.aspectRatio'
-  | 'content.references.fixed.width'
-  | 'content.references.fixed.height'
-  | 'content.references.fixed.src'
-  | 'content.references.fixed.srcSet'
-  | 'content.references.fixed.srcWebp'
-  | 'content.references.fixed.srcSetWebp'
-  | 'content.references.fluid.base64'
-  | 'content.references.fluid.tracedSVG'
-  | 'content.references.fluid.aspectRatio'
-  | 'content.references.fluid.src'
-  | 'content.references.fluid.srcSet'
-  | 'content.references.fluid.srcWebp'
-  | 'content.references.fluid.srcSetWebp'
-  | 'content.references.fluid.sizes'
-  | 'content.references.gatsbyImageData'
-  | 'content.references.resize.base64'
-  | 'content.references.resize.tracedSVG'
-  | 'content.references.resize.src'
-  | 'content.references.resize.width'
-  | 'content.references.resize.height'
-  | 'content.references.resize.aspectRatio'
-  | 'content.references.parent.id'
-  | 'content.references.parent.children'
-  | 'content.references.children'
-  | 'content.references.children.id'
-  | 'content.references.children.children'
-  | 'content.references.internal.content'
-  | 'content.references.internal.contentDigest'
-  | 'content.references.internal.description'
-  | 'content.references.internal.fieldOwners'
-  | 'content.references.internal.ignoreType'
-  | 'content.references.internal.mediaType'
-  | 'content.references.internal.owner'
-  | 'content.references.internal.type'
   | 'date'
   | 'category'
   | 'image.contentful_id'
@@ -6736,7 +6682,14 @@ type ContentfulBlogPostBySlugQueryVariables = Exact<{
 
 type ContentfulBlogPostBySlugQuery = { readonly contentfulPost: Maybe<(
     Pick<ContentfulPost, 'title' | 'author' | 'date'>
-    & { readonly content: Maybe<Pick<ContentfulPostContent, 'raw'>> }
+    & { readonly content: Maybe<(
+      Pick<ContentfulPostContent, 'raw'>
+      & { readonly references: Maybe<ReadonlyArray<Maybe<(
+        { readonly __typename: 'ContentfulAsset' }
+        & Pick<ContentfulAsset, 'id' | 'contentful_id' | 'title'>
+        & { readonly fixed: Maybe<Pick<ContentfulFixed, 'width' | 'height' | 'src'>> }
+      )>>> }
+    )> }
   )> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
@@ -6762,6 +6715,11 @@ type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx29075600
 
 type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
 
+type BioQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BioQueryQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter'>> }> }> };
+
 type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -6769,11 +6727,6 @@ type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'description'>
       & { readonly social: Maybe<Pick<Social, 'twitter'>> }
     )> }> };
-
-type BioQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BioQueryQuery = { readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter'>> }> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

@@ -1,10 +1,26 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 
 import Bio from '../components/bio';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
+
+const options = {
+  renderNode: {
+    // eslint-disable-next-line react/display-name
+    [BLOCKS.EMBEDDED_ASSET]: node => {
+      console.log(node);
+      return (
+        <img
+          src={node.data.target.fixed.src}
+          alt={node.data.target.sys.title}
+        />
+      );
+    },
+  },
+};
 
 const BlogPostContentfulTemplate: React.FC<
   PageProps<GatsbyTypes.ContentfulBlogPostBySlugQuery>
@@ -30,7 +46,7 @@ const BlogPostContentfulTemplate: React.FC<
           itemProp="articleBody"
         /> */}
         {/* <div>{post?.content?.raw}</div> */}
-        <div>{post?.content?.raw && renderRichText(post.content)}</div>
+        <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
         <hr />
         <footer>
           <Bio />
@@ -76,6 +92,19 @@ export const pageQuery = graphql`
       date
       content {
         raw
+        references {
+          ... on ContentfulAsset {
+            id
+            contentful_id
+            __typename
+            title
+            fixed(width: 1600) {
+              width
+              height
+              src
+            }
+          }
+        }
       }
     }
   }
