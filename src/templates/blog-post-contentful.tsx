@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 /* eslint-disable react/destructuring-assignment */
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
@@ -72,6 +73,7 @@ export const pageQuery = graphql`
               height
               src
             }
+            title
           }
         }
       }

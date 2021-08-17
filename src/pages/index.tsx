@@ -44,18 +44,17 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
                 itemType="http://schema.org/Article"
               >
                 <header>
-                  <img alt={title} src={post.node.image?.file?.url} />
-                  <small>{post.node.date}</small>
-                  {post.node.category?.map(category => (
-                    <p key={category}>{category}</p>
-                  ))}
-                  <small>{post.node.category}</small>
-                  <h4>
-                    <Link to={post.node.slug || '/'} itemProp="url">
+                  <Link to={post.node.slug || '/'} itemProp="url">
+                    <img alt={title} src={post.node.image?.file?.url} />
+                    <small>{post.node.date}</small>
+                    {post.node.category?.map(category => (
+                      <p key={category}>{category}</p>
+                    ))}
+                    <h4>
                       <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h4>
-                  <small>Wiritten By {post.node.author}</small>
+                    </h4>
+                    <small>Wiritten By {post.node.author}</small>
+                  </Link>
                 </header>
                 {/* <button tw="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   テスト
