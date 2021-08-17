@@ -44,24 +44,19 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({
                 itemType="http://schema.org/Article"
               >
                 <header>
-                  <h2>
+                  <img alt={title} src={post.node.image?.file?.url} />
+                  <small>{post.node.date}</small>
+                  {post.node.category?.map(category => (
+                    <p key={category}>{category}</p>
+                  ))}
+                  <small>{post.node.category}</small>
+                  <h4>
                     <Link to={post.node.slug || '/'} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
-                  </h2>
-                  <small>{post.node.date}</small>
+                  </h4>
+                  <small>Wiritten By {post.node.author}</small>
                 </header>
-                <section>
-                  {/* <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        post.frontmatter?.description || post.excerpt || '',
-                    }}
-                    itemProp="description"
-                  /> */}
-                  {/* <div>{post.node.content?.raw}</div> */}
-                </section>
-                {/* eslint-disable-next-line react/button-has-type */}
                 {/* <button tw="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                   テスト
                 </button> */}
@@ -87,11 +82,14 @@ export const pageQuery = graphql`
       edges {
         node {
           title
+          category
           author
           slug
           date(formatString: "YYYY/MM/DD")
-          content {
-            raw
+          image {
+            file {
+              url
+            }
           }
         }
       }
