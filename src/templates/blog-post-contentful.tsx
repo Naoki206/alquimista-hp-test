@@ -48,7 +48,7 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
           <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
           <hr />
           <footer>
-            <Bio />
+            <Bio location={location} />
           </footer>
         </article>
       </Layout>

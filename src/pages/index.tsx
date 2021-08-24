@@ -8,7 +8,7 @@ import Layout from '../components/blog/layout';
 import Seo from '../components/blog/seo';
 
 // const BlogIndex = ({ data, location }) => {
-const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, location }) => {
+const BlogIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, location }) => {
   const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
   const posts = data.allContentfulPost.edges;
 
@@ -16,7 +16,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
     return (
       <Layout location={location} title={blogTitle}>
         <Seo title="All posts" />
-        <Bio />
+        {/* <Bio location={location} /> */}
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -28,7 +28,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
   return (
     <Layout location={location} title={blogTitle}>
       <Seo title="All posts" />
-      <Bio />
+      {/* <Bio location={location} /> */}
       <div>
         <ol style={{ listStyle: 'none' }}>
           {/* cards from here */}

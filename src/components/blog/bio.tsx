@@ -6,12 +6,15 @@
  */
 
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
+// eslint-disable-next-line import/no-unresolved
+import { WindowLocation } from '@reach/router';
 // import tw, { styled } from 'twin.macro';
 import 'twin.macro';
 
-const Bio = () => {
+const Bio: React.FC<{ location: WindowLocation<unknown> }> = location => {
+  // eslint-disable-next-line no-restricted-globals
   const data = useStaticQuery<GatsbyTypes.BioQueryQuery>(
     graphql`
       query BioQuery {
@@ -50,13 +53,11 @@ const Bio = () => {
   );
 
   const blogMenu = data.site?.siteMetadata?.blog?.menu;
-  // const Ul = styled.ul(({ small }) => [
-  //   (tw = 'text-white bg-black px-8 py-2 rounded'),
-  //   small ? tw`text-sm` : tw`text-lg`,
-  // ]);
   const isWriterOpen = true;
-  const isCategoryOpen = false;
+  // const isCategoryOpen = false;
   const writers = data.allContentfulPost.distinct;
+  // eslint-disable-next-line react/destructuring-assignment
+  const pathName = location.location.pathname;
 
   return (
     <>
@@ -66,15 +67,39 @@ const Bio = () => {
           style={{ listStyle: 'none' }}
           id="menu"
         >
-          <li tw="hover:bg-darkBlue transition duration-500 hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
-            {blogMenu?.all}
-          </li>
-          <li tw="hover:bg-darkBlue transition duration-500 hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
-            {blogMenu?.new}
-          </li>
-          <li tw="hover:bg-darkBlue transition duration-500 hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
-            {blogMenu?.popular}
-          </li>
+          {pathName === '/blog/all' ? (
+            <li tw="bg-darkBlue transition duration-500 text-paleOrange rounded-full px-3.5 border border-darkBlue">
+              {blogMenu?.all}
+            </li>
+          ) : (
+            <Link to="/blog/all">
+              <li tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
+                {blogMenu?.all}
+              </li>
+            </Link>
+          )}
+          {pathName === '/blog/new' ? (
+            <li tw="bg-darkBlue transition duration-500 text-paleOrange rounded-full px-3.5 border border-darkBlue">
+              {blogMenu?.new}
+            </li>
+          ) : (
+            <Link to="/blog/new">
+              <li tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
+                {blogMenu?.new}
+              </li>
+            </Link>
+          )}
+          {pathName === '/blog/popular' ? (
+            <li tw="bg-darkBlue transition duration-500 text-paleOrange rounded-full px-3.5 border border-darkBlue">
+              {blogMenu?.popular}
+            </li>
+          ) : (
+            <Link to="/blog/popular">
+              <li tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
+                {blogMenu?.popular}
+              </li>
+            </Link>
+          )}
           {isWriterOpen ? (
             <li tw=" transition duration-500 rounded-lg pl-3.5 pr-1 border border-darkBlue">
               {blogMenu?.writer}
@@ -123,9 +148,17 @@ const Bio = () => {
               </div>
             </li>
           )}
-          <li tw="hover:bg-darkBlue transition duration-500 hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
-            {blogMenu?.category}
-          </li>
+          {pathName === '/blog/category' ? (
+            <li tw="bg-darkBlue transition duration-500 text-paleOrange rounded-full px-3.5 border border-darkBlue">
+              {blogMenu?.category}
+            </li>
+          ) : (
+            <Link to="/blog/category">
+              <li tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
+                {blogMenu?.category}
+              </li>
+            </Link>
+          )}
         </ul>
         <div tw="overflow-hidden">
           <ul
