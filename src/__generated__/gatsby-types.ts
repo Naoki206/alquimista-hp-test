@@ -345,6 +345,7 @@ type SitePage = Node & {
 
 type SitePageContext = {
   readonly slug: Maybe<Scalars['String']>;
+  readonly category: Maybe<Scalars['String']>;
 };
 
 type MarkdownHeading = {
@@ -3107,6 +3108,7 @@ type SiteFunctionSortInput = {
 
 type SitePageContextFilterInput = {
   readonly slug: Maybe<StringQueryOperatorInput>;
+  readonly category: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginFilterInput = {
@@ -3399,6 +3401,7 @@ type SitePageFieldsEnum =
   | 'internal.type'
   | 'isCreatedByStatefulCreatePages'
   | 'context.slug'
+  | 'context.category'
   | 'pluginCreator.id'
   | 'pluginCreator.parent.id'
   | 'pluginCreator.parent.parent.id'
@@ -6827,10 +6830,10 @@ type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx29075600
 
 type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
 
-type BlogIndexQueryVariables = Exact<{ [key: string]: never; }>;
+type TopIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title'>
       & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
     )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
@@ -6841,13 +6844,59 @@ type BlogIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
         )> }
       ) }> } };
 
-type TopIndexQueryVariables = Exact<{ [key: string]: never; }>;
+type BlogNewQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+type BlogNewQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title'>
       & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
     )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
+        & { readonly image: Maybe<(
+          Pick<ContentfulAsset, 'title'>
+          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
+        )> }
+      ) }> } };
+
+type BlogPopularQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogPopularQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title'>
+      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
+    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
+        & { readonly image: Maybe<(
+          Pick<ContentfulAsset, 'title'>
+          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
+        )> }
+      ) }> } };
+
+type BlogCategoryIndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogCategoryIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
+
+type BlogAllQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogAllQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title'>
+      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
+    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
+        & { readonly image: Maybe<(
+          Pick<ContentfulAsset, 'title'>
+          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
+        )> }
+      ) }> } };
+
+type categorizedBlogPostQueryVariables = Exact<{
+  category: Scalars['String'];
+}>;
+
+
+type categorizedBlogPostQuery = { readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
         & { readonly image: Maybe<(
           Pick<ContentfulAsset, 'title'>
