@@ -3,12 +3,15 @@ import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
-import Bio from '../../components/blog/bio';
-import Layout from '../../components/blog/layout';
-import Seo from '../../components/blog/seo';
+import Bio from '../components/blog/bio';
+import Layout from '../components/blog/layout';
+import Seo from '../components/blog/seo';
 
 // const BlogIndex = ({ data, location }) => {
-const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, location }) => {
+const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.categorizedBlogPost>> = ({
+  data,
+  location,
+}) => {
   const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
   const posts = data.allContentfulPost.edges;
 
@@ -16,7 +19,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
     return (
       <Layout location={location} title={blogTitle}>
         <Seo title="All posts" />
-        <Bio />
+        <Bio location={location} />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -28,7 +31,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
   return (
     <Layout location={location} title={blogTitle}>
       <Seo title="All posts" />
-      <Bio />
+      <Bio location={location} />
       <div>
         <ol style={{ listStyle: 'none' }}>
           {/* cards from here */}
@@ -40,7 +43,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
                 <li key={post?.node.slug} tw="w-full">
                   <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96">
                     <div tw="group-hover:opacity-80 transition duration-300">
-                      <Link to={post.node.slug || '/'} itemProp="url">
+                      <Link to={`/blog/${post.node.slug}` || '/'} itemProp="url">
                         <div tw="overflow-hidden rounded-xl">
                           <img
                             tw="w-full h-48 sm:h-48 lg:h-60 object-cover transform group-hover:scale-110"
@@ -91,20 +94,12 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogIndexQuery>> = ({ data, loca
   );
 };
 
-export default BlogIndex;
+export default BlogPostContentfulTemplate;
 
 export const pageQuery = graphql`
-  query BlogIndex {
-    site {
-      siteMetadata {
-        title
-        blog {
-          title
-        }
-      }
-    }
+  query categorizedBlogPost($category: String!) {
     allContentfulPost(
-      filter: { node_locale: { eq: "ja-JP" } }
+      filter: { category: { eq: $category }, node_locale: { eq: "ja-JP" } }
       sort: { order: DESC, fields: date }
     ) {
       edges {

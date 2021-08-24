@@ -8,12 +8,15 @@ import { GatsbyNode, Actions } from 'gatsby';
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // Define a template for blog post
+  // Define a template
+  // for blog post
   const blogPost = path.resolve('./src/templates/blog-post-contentful.tsx');
+  // for categorized blog post
+  const categorizedBlogPost = path.resolve('./src/templates/categorized-blog-post-contentful.tsx');
 
   // Get all markdown blog posts sorted by date
   const result = await graphql<{
-    allContentfulPost: Pick<GatsbyTypes.Query['allContentfulPost'], 'edges'>;
+    allContentfulPost: Pick<GatsbyTypes.Query['allContentfulPost'], 'edges' | 'distinct'>;
   }>(
     `
       {
@@ -27,6 +30,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
               }
             }
           }
+          distinct(field: category)
         }
       }
     `
@@ -37,20 +41,18 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     return;
   }
 
-  // const posts = result.data!.allMarkdownRemark.nodes;
   const posts = result.data!.allContentfulPost.edges;
+  const categories = result.data!.allContentfulPost.distinct;
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
-
   if (posts && posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].node.id;
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].node.id;
-
       createPage({
-        path: post.node.slug || '/',
+        path: `/blog/${post.node.slug}` || '/',
         component: blogPost,
         context: {
           id: post.node.id,
@@ -61,6 +63,17 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       });
     });
   }
+
+  // Create categorized blog posts pages
+  categories.forEach(category => {
+    createPage({
+      path: `blog/category/${category}/`,
+      component: categorizedBlogPost,
+      context: {
+        category,
+      },
+    });
+  });
 };
 
 // export const onCreateNode: GatsbyNode['onCreateNode'] = ({
