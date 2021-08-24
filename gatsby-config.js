@@ -7,9 +7,29 @@ if (process.env.NODE_ENV !== 'production') {
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Starter Blog',
+    menu: {
+      iconPath: '/alquimista.svg',
+      aboutUs: 'About Us',
+      vision: 'Vision',
+      service: 'Service',
+      blog: 'Blog',
+      news: 'News',
+      member: 'Member',
+      contactUs: 'Contact Us',
+    },
     author: {
       name: 'Kyle Mathews',
       summary: 'who lives and works in San Francisco building useful things.',
+    },
+    blog: {
+      title: 'Blog',
+      menu: {
+        all: 'ALL',
+        new: 'New',
+        popular: 'Popular',
+        writer: 'Writer',
+        category: 'Category',
+      },
     },
     description: 'A starter blog demonstrating what Gatsby can do.',
     siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',

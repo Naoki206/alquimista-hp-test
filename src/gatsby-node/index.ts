@@ -5,11 +5,7 @@ import path from 'path';
 // import { createFilePath } from 'gatsby-source-filesystem';
 import { GatsbyNode, Actions } from 'gatsby';
 
-export const createPages: GatsbyNode['createPages'] = async ({
-  graphql,
-  actions,
-  reporter,
-}) => {
+export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   // Define a template for blog post
@@ -37,10 +33,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   );
 
   if (result.errors) {
-    reporter.panicOnBuild(
-      'There was an error loading your blog posts',
-      result.errors
-    );
+    reporter.panicOnBuild('There was an error loading your blog posts', result.errors);
     return;
   }
 
@@ -54,8 +47,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   if (posts && posts.length > 0) {
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].node.id;
-      const nextPostId =
-        index === posts.length - 1 ? null : posts[index + 1].node.id;
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].node.id;
 
       createPage({
         path: post.node.slug || '/',
@@ -89,17 +81,20 @@ export const createPages: GatsbyNode['createPages'] = async ({
 //   }
 // };
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
-  async ({ actions }: { actions: Actions }) => {
-    const { createTypes } = actions;
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async ({
+  actions,
+}: {
+  actions: Actions;
+}) => {
+  const { createTypes } = actions;
 
-    // Explicitly define the siteMetadata {} object
-    // This way those will always be defined even if removed from gatsby-config.js
+  // Explicitly define the siteMetadata {} object
+  // This way those will always be defined even if removed from gatsby-config.js
 
-    // Also explicitly define the Markdown frontmatter
-    // This way the "MarkdownRemark" queries will return `null` even when no
-    // blog posts are stored inside "content/blog" instead of returning an error
-    createTypes(`
+  // Also explicitly define the Markdown frontmatter
+  // This way the "MarkdownRemark" queries will return `null` even when no
+  // blog posts are stored inside "content/blog" instead of returning an error
+  createTypes(`
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
@@ -130,4 +125,4 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       slug: String
     }
   `);
-  };
+};

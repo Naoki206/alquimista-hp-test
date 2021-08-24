@@ -4,10 +4,12 @@ import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { BLOCKS } from '@contentful/rich-text-types';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import 'twin.macro';
 
-import Bio from '../components/bio';
-import Layout from '../components/layout';
-import Seo from '../components/seo';
+import Bio from '../components/blog/bio';
+import Layout from '../components/blog/layout';
+import Seo from '../components/blog/seo';
 
 const options = {
   renderNode: {
@@ -15,42 +17,43 @@ const options = {
     [BLOCKS.EMBEDDED_ASSET]: (node: {
       data: {
         target: {
-          fixed: { src: string | undefined };
-          sys: { title: string | undefined };
+          // fixed: { src: string | undefined };
+          title: string;
         };
       };
     }) => (
-      <img src={node.data.target.fixed.src} alt={node.data.target.sys.title} />
+      <GatsbyImage
+        // @ts-ignore
+        image={getImage(node.data.target)}
+        alt={node.data.target.title}
+        tw="transform hover:rotate-45"
+      />
+      // <img src={node.data.target.fixed.src} alt={node.data.target.sys.title} />
     ),
   },
 };
 
-const BlogPostContentfulTemplate: React.FC<
-  PageProps<GatsbyTypes.ContentfulBlogPostBySlugQuery>
-> = ({ data, location }) => {
-  const post = data.contentfulPost;
-  return (
-    <Layout location={location} title={post?.title || 'undefined'}>
-      <Seo title={post?.title || 'undefined'} />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
-        <header>
-          <h1 itemProp="headline">{post?.title}</h1>
-          <p>{post?.date}</p>
-        </header>
-        {/* @ts-ignore */}
-        <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
-        <hr />
-        <footer>
-          <Bio />
-        </footer>
-      </article>
-    </Layout>
-  );
-};
+const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogPostBySlugQuery>> =
+  ({ data, location }) => {
+    const post = data.contentfulPost;
+    return (
+      <Layout location={location} title={post?.title || 'undefined'}>
+        <Seo title={post?.title || 'undefined'} />
+        <article className="blog-post" itemScope itemType="http://schema.org/Article">
+          <header>
+            <h1 itemProp="headline">{post?.title}</h1>
+            <p>{post?.date}</p>
+          </header>
+          {/* @ts-ignore */}
+          <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
+          <hr />
+          <footer>
+            <Bio />
+          </footer>
+        </article>
+      </Layout>
+    );
+  };
 
 export default BlogPostContentfulTemplate;
 
@@ -74,6 +77,7 @@ export const pageQuery = graphql`
               src
             }
             title
+            gatsbyImageData(formats: AUTO)
           }
         }
       }
