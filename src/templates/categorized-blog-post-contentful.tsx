@@ -8,10 +8,9 @@ import Layout from '../components/blog/layout';
 import Seo from '../components/blog/seo';
 
 // const BlogIndex = ({ data, location }) => {
-const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.categorizedBlogPost>> = ({
-  data,
-  location,
-}) => {
+const CategorizedBlogPostContentfulTemplate: React.FC<
+  PageProps<GatsbyTypes.categorizedBlogPostQuery>
+> = ({ data, location }) => {
   const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
   const posts = data.allContentfulPost.edges;
 
@@ -94,10 +93,18 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.categorizedBlog
   );
 };
 
-export default BlogPostContentfulTemplate;
+export default CategorizedBlogPostContentfulTemplate;
 
 export const pageQuery = graphql`
   query categorizedBlogPost($category: String!) {
+    site {
+      siteMetadata {
+        title
+        blog {
+          title
+        }
+      }
+    }
     allContentfulPost(
       filter: { category: { eq: $category }, node_locale: { eq: "ja-JP" } }
       sort: { order: DESC, fields: date }
