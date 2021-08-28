@@ -43,7 +43,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogAllQuery>> = ({ data, locati
                       <Link to={`/blog/${post.node.slug}` || '/'} itemProp="url">
                         <div tw="overflow-hidden rounded-xl">
                           <img
-                            tw="w-full h-48 sm:h-48 lg:h-60 object-cover transform group-hover:scale-110"
+                            tw="w-full h-48 sm:h-48 lg:h-60 object-cover transform group-hover:scale-110 transition duration-300"
                             alt={post.node.image?.title}
                             src={post.node.image?.file?.url}
                           />
