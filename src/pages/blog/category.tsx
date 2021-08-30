@@ -3,9 +3,9 @@ import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
-import Bio from '../../../components/blog/bio';
-import Layout from '../../../components/blog/layout';
-import Seo from '../../../components/blog/seo';
+import Bio from '../../components/blog/bio';
+import Layout from '../../components/blog/layout';
+import Seo from '../../components/blog/seo';
 
 // const BlogIndex = ({ data, location }) => {
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ data, location }) => {
