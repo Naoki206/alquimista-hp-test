@@ -40,26 +40,35 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
     return (
       <Layout location={location} title={post?.title || 'undefined'}>
         <Seo title={post?.title || 'undefined'} />
-        <GatsbyImage image={post?.image?.gatsbyImageData} alt="aiueo" placeholder="blurred" />
-        {/* <img src={post?.image.gatsbyImageData.images.fallback.src} alt="aiueo" /> */}
-        <div tw="flex gap-3">
-          <img tw="w-9 rounded-full mr-4" src={`/${post?.author}.png`} alt="{post.node.author}" />
-          <div>
-            <p tw="text-gray-700 m-0 text-xs">Written By {post?.author}</p>
-            <p>{post?.date}</p>
+        <div tw="lg:mx-44">
+          <div tw=" xl:mx-40 ">
+            <GatsbyImage
+              tw="w-full h-96 rounded-xl"
+              image={post?.image?.gatsbyImageData}
+              alt="aiueo"
+              placeholder="blurred"
+            />
           </div>
-        </div>
-        {/* @ts-ignore */}
-        <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
-        <div tw="flex flex-wrap mb-1.5">
-          {post?.category?.map(category => (
-            <p
-              tw="mr-2 mb-0 px-2 text-sm rounded-full border-gray-400 border text-gray-500 font-bold"
-              key={category}
-            >
-              {category}
-            </p>
-          ))}
+
+          <div tw="flex gap-3">
+            <img tw="w-9 rounded-full mr-4" src={`/${post?.author}.png`} alt="{post.node.author}" />
+            <div>
+              <p tw="text-gray-700 m-0 text-xs">Written By {post?.author}</p>
+              <p>{post?.date}</p>
+            </div>
+          </div>
+          {/* @ts-ignore */}
+          <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
+          <div tw="flex flex-wrap mb-1.5">
+            {post?.category?.map(category => (
+              <p
+                tw="mr-2 mb-0 px-2 text-sm rounded-full border-gray-400 border text-gray-500 font-bold"
+                key={category}
+              >
+                {category}
+              </p>
+            ))}
+          </div>
         </div>
         <div>
           <p>おすすめの記事</p>

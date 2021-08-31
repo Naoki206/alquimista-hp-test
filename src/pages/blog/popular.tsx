@@ -30,7 +30,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogPopularQuery>> = ({ data, lo
       <Seo title="All posts" />
       <Bio location={location} />
       <div>
-        <ol style={{ listStyle: 'none' }}>
+        <ol tw="list-none mb-0">
           {/* cards from here */}
           <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 mx-10 mt-3 sm:gap-12 sm:mt-16  sm:mx-36 md:mx-28 lg:mx-32">
             {posts.map(post => {

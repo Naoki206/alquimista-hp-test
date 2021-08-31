@@ -3,6 +3,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 // eslint-disable-next-line import/no-unresolved
 import { WindowLocation } from '@reach/router';
 import 'twin.macro';
+import Footer from '../footer';
 
 const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }> = ({
   location,
@@ -53,7 +54,7 @@ const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }
 
   return (
     <>
-      <div tw="bg-paleOrange" data-is-root-path={isRootPath}>
+      <div tw="bg-paleOrange min-h-screen relative" data-is-root-path={isRootPath}>
         <header tw="bg-darkBlue  sticky top-0 z-10">
           <ul tw="mx-4 sm:mx-8 md:mx-16 justify-end font-bold flex text-xs md:gap-4 md:text-sm lg:gap-12 lg:text-base xl:gap-16 2xl:gap-20 h-16 items-center list-none text-paleOrange">
             <li tw="mr-auto">
@@ -109,13 +110,17 @@ const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }
           </ul>
 
           {open && (
-            <ul tw="text-paleOrange p-5 list-none">
-              <li tw="py-5 border-b">{menu?.aboutUs}</li>
-              <li tw="py-5 border-b">{menu?.vision}</li>
-              <li tw="py-5 border-b">{menu?.service}</li>
-              <li tw="py-5 border-b">{menu?.blog}</li>
-              <li tw="py-5 border-b">{menu?.news}</li>
-              <li tw="py-5 border-b">{menu?.member}</li>
+            <ul tw=" p-5 list-none line-break[inherit]　inherits[]">
+              <li tw="py-5 border-b text-paleOrange">{menu?.aboutUs}</li>
+              <li tw="py-5 border-b text-paleOrange">{menu?.vision}</li>
+              <li tw="py-5 border-b text-paleOrange">{menu?.service}</li>
+              <Link to="/blog/all">
+                <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  {menu?.blog}
+                </li>
+              </Link>
+              <li tw="py-5 border-b text-paleOrange">{menu?.news}</li>
+              <li tw="py-5 border-b text-paleOrange">{menu?.member}</li>
               <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-red-400 text-darkBlue">
                 {menu?.contactUs}
               </li>
@@ -123,10 +128,8 @@ const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }
           )}
         </header>
         <p tw="mb-0">{blogHeader}</p>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        <main tw="pb-80 sm:pb-56">{children}</main>
+        <Footer />
       </div>
     </>
   );

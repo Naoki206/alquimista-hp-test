@@ -27,7 +27,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ da
     <Layout location={location} title={blogTitle}>
       <Seo title="All posts" />
       <Bio location={location} />
-      <div>
+      <div tw="pb-14">
         <div tw="flex flex-wrap gap-3 mx-5 my-3 md:mx-24 md:my-10 lg:gap-4 lg:mx-56 lg:my-14">
           {categories?.map(category => (
             <>

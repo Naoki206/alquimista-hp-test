@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
+import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
 import Bio from '../../components/blog/bio';
 import Layout from '../../components/blog/layout';
 import Seo from '../../components/blog/seo';
@@ -30,7 +31,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogAllQuery>> = ({ data, locati
       <Seo title="All posts" />
       <Bio location={location} />
       <div>
-        <ol style={{ listStyle: 'none' }}>
+        <ol tw="list-none mb-0">
           {/* cards from here */}
           <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 mx-10 mt-3 sm:gap-12 sm:mt-16  sm:mx-36 md:mx-28 lg:mx-32">
             {posts.map(post => {
@@ -75,7 +76,13 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogAllQuery>> = ({ data, locati
                               src={`/${post.node.author}.png`}
                               alt="{post.node.author}"
                             />
-                            <p tw="text-gray-700 m-0 text-xs">Wiritten By {post.node.author}</p>
+                            {/* <GatsbyImage
+                              // src="../../../static/Naoki.png"
+                              src={`../../../static/${post.node.author}.png`}
+                              alt="{post.node.author}"
+                              tw="w-9 rounded-full mr-4"
+                            /> */}
+                            <p tw="text-gray-700 m-0 text-xs">Written By {post.node.author}</p>
                           </div>
                         </div>
                       </Link>

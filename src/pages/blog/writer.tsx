@@ -17,7 +17,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data
       <Seo title="All posts" />
       <Bio location={location} />
       <div>
-        <ol tw="flex flex-wrap justify-center gap-10 m-10 list-none text-center">
+        <ol tw="flex flex-wrap justify-center gap-10 m-10 list-none text-center mb-0">
           {writers?.map(writer => (
             <li tw="w-40" key={writer}>
               <Link to={`/blog/writer/${writer}` || '/'}>
