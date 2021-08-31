@@ -36,9 +36,9 @@ const Footer: React.FC = () => {
         />
         <div tw="text-center sm:text-left text-paleOrange h-full mb-0">
           <div tw="sm:flex mb-5">
-            <p tw="pr-7 mb-0">{footerData?.companyOverview}</p>
-            <p tw="pr-7 mb-0">{footerData?.privacyPolicy}</p>
-            <p tw="pr-7 mb-0">{footerData?.contact}</p>
+            <p tw="sm:pr-7 mb-0">{footerData?.companyOverview}</p>
+            <p tw="sm:pr-7 mb-0">{footerData?.privacyPolicy}</p>
+            <p tw="sm:pr-7 mb-0">{footerData?.contact}</p>
           </div>
           <p tw="mb-0">{footerData?.companyName}</p>
           <p tw="mb-0">{footerData?.address}</p>
