@@ -286,6 +286,7 @@ type SiteSiteMetadata = {
   readonly siteUrl: Maybe<Scalars['String']>;
   readonly social: Maybe<Social>;
   readonly menu: Maybe<SiteSiteMetadataMenu>;
+  readonly footer: Maybe<SiteSiteMetadataFooter>;
   readonly member: Maybe<SiteSiteMetadataMember>;
   readonly blog: Maybe<SiteSiteMetadataBlog>;
 };
@@ -299,6 +300,14 @@ type SiteSiteMetadataMenu = {
   readonly news: Maybe<Scalars['String']>;
   readonly member: Maybe<Scalars['String']>;
   readonly contactUs: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataFooter = {
+  readonly companyOverview: Maybe<Scalars['String']>;
+  readonly privacyPolicy: Maybe<Scalars['String']>;
+  readonly contact: Maybe<Scalars['String']>;
+  readonly companyName: Maybe<Scalars['String']>;
+  readonly address: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataMember = {
@@ -2743,6 +2752,7 @@ type SiteSiteMetadataFilterInput = {
   readonly siteUrl: Maybe<StringQueryOperatorInput>;
   readonly social: Maybe<SocialFilterInput>;
   readonly menu: Maybe<SiteSiteMetadataMenuFilterInput>;
+  readonly footer: Maybe<SiteSiteMetadataFooterFilterInput>;
   readonly member: Maybe<SiteSiteMetadataMemberFilterInput>;
   readonly blog: Maybe<SiteSiteMetadataBlogFilterInput>;
 };
@@ -2765,6 +2775,14 @@ type SiteSiteMetadataMenuFilterInput = {
   readonly news: Maybe<StringQueryOperatorInput>;
   readonly member: Maybe<StringQueryOperatorInput>;
   readonly contactUs: Maybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataFooterFilterInput = {
+  readonly companyOverview: Maybe<StringQueryOperatorInput>;
+  readonly privacyPolicy: Maybe<StringQueryOperatorInput>;
+  readonly contact: Maybe<StringQueryOperatorInput>;
+  readonly companyName: Maybe<StringQueryOperatorInput>;
+  readonly address: Maybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataMemberFilterInput = {
@@ -2865,6 +2883,11 @@ type SiteFieldsEnum =
   | 'siteMetadata.menu.news'
   | 'siteMetadata.menu.member'
   | 'siteMetadata.menu.contactUs'
+  | 'siteMetadata.footer.companyOverview'
+  | 'siteMetadata.footer.privacyPolicy'
+  | 'siteMetadata.footer.contact'
+  | 'siteMetadata.footer.companyName'
+  | 'siteMetadata.footer.address'
   | 'siteMetadata.member.Ken.name'
   | 'siteMetadata.member.Ken.role'
   | 'siteMetadata.member.Ken.description'
@@ -6920,10 +6943,10 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
-type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
+type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 type TopIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6939,10 +6962,10 @@ type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
         )> }
       ) }> } };
 
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
+type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_2_Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
+type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
 
 type BlogAllQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -7001,10 +7024,10 @@ type BioQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type BioQueryQuery = { readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'>, readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter'>>, readonly blog: Maybe<{ readonly menu: Maybe<Pick<SiteSiteMetadataBlogMenu, 'all' | 'new' | 'popular' | 'writer' | 'category'>> }> }> }> };
 
-type LayoutQueryQueryVariables = Exact<{ [key: string]: never; }>;
+type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type LayoutQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly menu: Maybe<Pick<SiteSiteMetadataMenu, 'iconPath' | 'aboutUs' | 'vision' | 'service' | 'blog' | 'news' | 'member' | 'contactUs'>> }> }> };
+type FooterQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly footer: Maybe<Pick<SiteSiteMetadataFooter, 'address' | 'companyName' | 'companyOverview' | 'contact' | 'privacyPolicy'>> }> }> };
 
 type SeoQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -7013,6 +7036,11 @@ type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       Pick<SiteSiteMetadata, 'title' | 'description'>
       & { readonly social: Maybe<Pick<Social, 'twitter'>> }
     )> }> };
+
+type LayoutQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type LayoutQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly menu: Maybe<Pick<SiteSiteMetadataMenu, 'iconPath' | 'aboutUs' | 'vision' | 'service' | 'blog' | 'news' | 'member' | 'contactUs'>> }> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
