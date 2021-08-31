@@ -5,10 +5,9 @@ import * as React from 'react';
 import { graphql, Link, PageProps } from 'gatsby';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { BLOCKS } from '@contentful/rich-text-types';
-import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
-import Bio from '../components/blog/bio';
 import Layout from '../components/blog/layout';
 import Seo from '../components/blog/seo';
 
@@ -38,25 +37,31 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
     const post = data.contentfulPost;
     const posts = data.allContentfulPost.edges;
     return (
-      <Layout location={location} title={post?.title || 'undefined'}>
+      <Layout location={location} title="Blog" blogHeader={false}>
         <Seo title={post?.title || 'undefined'} />
-        <div tw="lg:mx-44">
-          <div tw=" xl:mx-40 ">
+        <div tw="mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
+          <div tw="my-16">
             <GatsbyImage
-              tw="w-full h-96 rounded-xl"
+              tw="w-full md:h-72 lg:h-96"
+              // @ts-ignore
               image={post?.image?.gatsbyImageData}
               alt="aiueo"
               placeholder="blurred"
             />
-          </div>
-
-          <div tw="flex gap-3">
-            <img tw="w-9 rounded-full mr-4" src={`/${post?.author}.png`} alt="{post.node.author}" />
-            <div>
-              <p tw="text-gray-700 m-0 text-xs">Written By {post?.author}</p>
-              <p>{post?.date}</p>
+            <div tw="text-xl sm:text-3xl font-bold pt-8 pb-8">{post?.title}</div>
+            <div tw="flex gap-3 items-center">
+              <img
+                tw="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-4"
+                src={`/${post?.author}.png`}
+                alt="{post.node.author}"
+              />
+              <div>
+                <p tw="text-sm sm:text-base text-gray-700 m-0">Written By {post?.author}</p>
+                <p tw="text-sm sm:text-base text-gray-500 mb-0">{post?.date}</p>
+              </div>
             </div>
           </div>
+
           {/* @ts-ignore */}
           <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
           <div tw="flex flex-wrap mb-1.5">
@@ -70,11 +75,12 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
             ))}
           </div>
         </div>
-        <div>
-          <p>おすすめの記事</p>
+        <div tw="mx-5 mt-3 sm:mt-16 sm:mx-10 md:mx-14 lg:mx-32">
+          <p tw="pt-7 border-t border-gray-400 text-center md:text-2xl font-bold">おすすめの記事</p>
           <ol style={{ listStyle: 'none' }}>
             {/* cards from here */}
-            <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 mx-10 mt-3 sm:gap-12 sm:mt-16  sm:mx-36 md:mx-28 lg:mx-32">
+            <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
+              {/* eslint-disable-next-line no-shadow */}
               {posts.map(post => {
                 const title = post?.node.title || post.node.slug;
                 return (
@@ -135,10 +141,6 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
             </div>
           </ol>
         </div>
-
-        {/* <footer>
-          <Bio location={location} />
-        </footer> */}
       </Layout>
     );
   };
@@ -150,7 +152,7 @@ export const pageQuery = graphql`
     contentfulPost(slug: { eq: $slug }) {
       title
       author
-      date(formatString: "YYYY.MM.DD")
+      date(formatString: "YYYY/MM/DD HH:mm:ss")
       category
       content {
         raw
