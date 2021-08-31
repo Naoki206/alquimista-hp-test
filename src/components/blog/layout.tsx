@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
 // eslint-disable-next-line import/no-unresolved
@@ -5,21 +6,19 @@ import { WindowLocation } from '@reach/router';
 import 'twin.macro';
 import Footer from '../footer';
 
-const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }> = ({
-  location,
-  title,
-  children,
-}) => {
+const Layout: React.FC<
+  { title: string } & { location: WindowLocation<unknown> } & { blogHeader: boolean }
+> = ({ location, title, children, blogHeader }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   const isRootPath = location.pathname === rootPath;
   // let blogHeader;
 
   // if (isRootPath) {
-  const blogHeader = (
-    <h1 tw="text-center py-12 pb-1 mt-0">
-      <Link to="/">{title}</Link>
-    </h1>
-  );
+  // const blogHeader = (
+  // <h1 tw="text-center py-12 pb-1 mt-0">
+  //   <Link to="/blog/all">{title}</Link>
+  // </h1>
+  // );
   // } else {
   //   blogHeader = (
   //     <Link className="header-link-home" to="/">
@@ -115,6 +114,7 @@ const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }
               <li tw="py-5 border-b text-paleOrange">{menu?.vision}</li>
               <li tw="py-5 border-b text-paleOrange">{menu?.service}</li>
               <Link to="/blog/all">
+                {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                 <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
                   {menu?.blog}
                 </li>
@@ -127,7 +127,11 @@ const Layout: React.FC<{ title: string } & { location: WindowLocation<unknown> }
             </ul>
           )}
         </header>
-        <p tw="mb-0">{blogHeader}</p>
+        {blogHeader && (
+          <h1 tw="text-center py-12 pb-1 mt-0">
+            <Link to="/blog/all">{title}</Link>
+          </h1>
+        )}
         <main tw="pb-80 sm:pb-56">{children}</main>
         <Footer />
       </div>
