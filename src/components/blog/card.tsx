@@ -20,13 +20,16 @@ const Card: React.FC<{
     <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96">
       <div tw="group-hover:opacity-80 transition duration-300">
         <Link to={`/blog/${post.post.node.slug}` || '/'} itemProp="url">
-          <div tw="overflow-hidden rounded-xl">
+          <div tw="relative overflow-hidden rounded-xl">
             {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img
               tw="w-full h-48 sm:h-48 lg:h-60 object-cover transform group-hover:scale-110 transition duration-300"
               alt={post.post.node.image?.title}
               src={post.post.node.image?.file?.url}
             />
+            <p tw="hidden group-hover:block bg-lightGreen bg-opacity-75 hover:bg-opacity-100 rounded-full px-5 py-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-blue-50">
+              Noteで読む
+            </p>
           </div>
           <div tw="my-2">
             <p tw="mb-0 text-gray-500">{post.post.node.date}</p>
