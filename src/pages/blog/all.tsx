@@ -15,7 +15,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogAllQuery>> = ({ data, locati
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeader>
+      <Layout location={location} title={blogTitle} blogHeader headerBackGround>
         <Seo title="All posts" />
         <Bio location={location} />
         <p>
@@ -27,7 +27,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogAllQuery>> = ({ data, locati
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeader>
+    <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
       <Bio location={location} />
       <div>

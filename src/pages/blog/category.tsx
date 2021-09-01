@@ -14,7 +14,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ da
 
   if (categories.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeader>
+      <Layout location={location} title={blogTitle} blogHeader headerBackGround>
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -24,7 +24,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ da
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeader>
+    <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
       <Bio location={location} />
       <div tw="pb-14">
