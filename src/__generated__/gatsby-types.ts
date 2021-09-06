@@ -287,7 +287,7 @@ type SiteSiteMetadata = {
   readonly social: Maybe<Social>;
   readonly menu: Maybe<SiteSiteMetadataMenu>;
   readonly footer: Maybe<SiteSiteMetadataFooter>;
-  readonly member: Maybe<SiteSiteMetadataMember>;
+  readonly member: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMember>>>;
   readonly blog: Maybe<SiteSiteMetadataBlog>;
 };
 
@@ -311,24 +311,6 @@ type SiteSiteMetadataFooter = {
 };
 
 type SiteSiteMetadataMember = {
-  readonly Ken: Maybe<SiteSiteMetadataMemberKen>;
-  readonly Naoki: Maybe<SiteSiteMetadataMemberNaoki>;
-  readonly Sakina: Maybe<SiteSiteMetadataMemberSakina>;
-};
-
-type SiteSiteMetadataMemberKen = {
-  readonly name: Maybe<Scalars['String']>;
-  readonly role: Maybe<Scalars['String']>;
-  readonly description: Maybe<Scalars['String']>;
-};
-
-type SiteSiteMetadataMemberNaoki = {
-  readonly name: Maybe<Scalars['String']>;
-  readonly role: Maybe<Scalars['String']>;
-  readonly description: Maybe<Scalars['String']>;
-};
-
-type SiteSiteMetadataMemberSakina = {
   readonly name: Maybe<Scalars['String']>;
   readonly role: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
@@ -2753,7 +2735,7 @@ type SiteSiteMetadataFilterInput = {
   readonly social: Maybe<SocialFilterInput>;
   readonly menu: Maybe<SiteSiteMetadataMenuFilterInput>;
   readonly footer: Maybe<SiteSiteMetadataFooterFilterInput>;
-  readonly member: Maybe<SiteSiteMetadataMemberFilterInput>;
+  readonly member: Maybe<SiteSiteMetadataMemberFilterListInput>;
   readonly blog: Maybe<SiteSiteMetadataBlogFilterInput>;
 };
 
@@ -2785,25 +2767,11 @@ type SiteSiteMetadataFooterFilterInput = {
   readonly address: Maybe<StringQueryOperatorInput>;
 };
 
+type SiteSiteMetadataMemberFilterListInput = {
+  readonly elemMatch: Maybe<SiteSiteMetadataMemberFilterInput>;
+};
+
 type SiteSiteMetadataMemberFilterInput = {
-  readonly Ken: Maybe<SiteSiteMetadataMemberKenFilterInput>;
-  readonly Naoki: Maybe<SiteSiteMetadataMemberNaokiFilterInput>;
-  readonly Sakina: Maybe<SiteSiteMetadataMemberSakinaFilterInput>;
-};
-
-type SiteSiteMetadataMemberKenFilterInput = {
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly role: Maybe<StringQueryOperatorInput>;
-  readonly description: Maybe<StringQueryOperatorInput>;
-};
-
-type SiteSiteMetadataMemberNaokiFilterInput = {
-  readonly name: Maybe<StringQueryOperatorInput>;
-  readonly role: Maybe<StringQueryOperatorInput>;
-  readonly description: Maybe<StringQueryOperatorInput>;
-};
-
-type SiteSiteMetadataMemberSakinaFilterInput = {
   readonly name: Maybe<StringQueryOperatorInput>;
   readonly role: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
@@ -2888,15 +2856,10 @@ type SiteFieldsEnum =
   | 'siteMetadata.footer.contact'
   | 'siteMetadata.footer.companyName'
   | 'siteMetadata.footer.address'
-  | 'siteMetadata.member.Ken.name'
-  | 'siteMetadata.member.Ken.role'
-  | 'siteMetadata.member.Ken.description'
-  | 'siteMetadata.member.Naoki.name'
-  | 'siteMetadata.member.Naoki.role'
-  | 'siteMetadata.member.Naoki.description'
-  | 'siteMetadata.member.Sakina.name'
-  | 'siteMetadata.member.Sakina.role'
-  | 'siteMetadata.member.Sakina.description'
+  | 'siteMetadata.member'
+  | 'siteMetadata.member.name'
+  | 'siteMetadata.member.role'
+  | 'siteMetadata.member.description'
   | 'siteMetadata.blog.title'
   | 'siteMetadata.blog.menu.all'
   | 'siteMetadata.blog.menu.new'
@@ -6951,10 +6914,7 @@ type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216Query = { 
 type TopIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title'>
-      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
-    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly member: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMember, 'description' | 'name' | 'role'>>>> }> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
         & { readonly image: Maybe<(
           Pick<ContentfulAsset, 'title'>

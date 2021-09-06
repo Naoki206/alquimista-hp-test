@@ -6,7 +6,7 @@ import { WindowLocation } from '@reach/router';
 import 'twin.macro';
 
 const Header: React.FC<
-  { title: string } & { location: WindowLocation<unknown> } & { blogHeader: boolean } & {
+  { title?: string } & { location?: WindowLocation<unknown> } & { blogHeader: boolean } & {
     headerBackGround: boolean;
   }
 > = ({ location, title, blogHeader, headerBackGround }) => {
