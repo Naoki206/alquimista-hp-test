@@ -47,7 +47,10 @@ const Card: React.FC<{
               ))}
             </div>
             <h6 tw="m-0">
-              <span tw="text-lg font-extrabold" itemProp="headline">
+              <span
+                tw="group-hover:text-lightGreen transition duration-300 text-lg font-extrabold"
+                itemProp="headline"
+              >
                 {post?.post.node.title}
               </span>
             </h6>
