@@ -1,5 +1,4 @@
 import React from 'react';
-import { graphql, Link, useStaticQuery } from 'gatsby';
 // eslint-disable-next-line import/no-unresolved
 import { WindowLocation } from '@reach/router';
 import 'twin.macro';
@@ -7,16 +6,10 @@ import Header from '../header';
 import Footer from '../footer';
 
 const Layout: React.FC<
-  { title: string } & { location: WindowLocation<unknown> } & { blogHeader: boolean } & {
+  { title?: string } & { location: WindowLocation<unknown> } & { blogHeader: boolean } & {
     headerBackGround: boolean;
   }
 > = ({ location, title, children, blogHeader, headerBackGround }) => (
-  // const blogHeader = (
-  //   <h1 tw="text-center py-12 pb-1 mt-0">
-  //     <Link to="/">{title}</Link>
-  //   </h1>
-  // );
-
   <>
     <div tw="bg-paleOrange relative">
       <Header

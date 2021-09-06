@@ -33,7 +33,7 @@ const WriterBlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.WriterBlo
     <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
       <Menu location={location} />
-      <div>
+      <div tw="h-screen">
         {/* @ts-ignore */}
         <CardGrid posts={posts} />
       </div>
