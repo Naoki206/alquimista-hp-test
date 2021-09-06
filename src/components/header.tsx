@@ -87,7 +87,9 @@ const Header: React.FC<
           <li tw="hidden md:block">{menu?.blog}</li>
           <li tw="hidden md:block">{menu?.news}</li>
           <li tw="hidden md:block">{menu?.member}</li>
-          <li tw="hidden md:block">{menu?.contactUs}</li>
+          <li tw="hidden md:block py-0.5 px-5 rounded-full bg-paleOrange text-darkBlue">
+            {menu?.contactUs}
+          </li>
         </ul>
 
         {open && (
@@ -103,7 +105,7 @@ const Header: React.FC<
             </Link>
             <li tw="py-5 border-b text-paleOrange">{menu?.news}</li>
             <li tw="py-5 border-b text-paleOrange">{menu?.member}</li>
-            <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-red-400 text-darkBlue">
+            <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
               {menu?.contactUs}
             </li>
           </ul>
