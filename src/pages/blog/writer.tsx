@@ -16,7 +16,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data
     <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
       <Bio location={location} />
-      <div>
+      <div tw="pb-1120px sm:pb-1 h-screen">
         <ol tw="flex flex-wrap justify-center gap-10 m-10 list-none text-center mb-0">
           {writers?.map(writer => (
             <li tw="w-40" key={writer}>

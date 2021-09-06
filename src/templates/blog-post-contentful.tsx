@@ -2,14 +2,14 @@
 /* eslint-disable react/display-name */
 /* eslint-disable react/destructuring-assignment */
 import * as React from 'react';
-import { graphql, Link, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import { renderRichText } from 'gatsby-source-contentful/rich-text';
 import { BLOCKS } from '@contentful/rich-text-types';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
 import Layout from '../components/blog/layout';
-import Seo from '../components/blog/seo';
+import Card from '../components/blog/card';
 
 const options = {
   renderNode: {
@@ -38,8 +38,8 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
     const posts = data.allContentfulPost.edges;
     return (
       <Layout location={location} title="Blog" blogHeader={false} headerBackGround={false}>
-        <Seo title={post?.title || 'undefined'} />
-        <div tw="mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
+        {/* <Seo title={post?.title || 'undefined'} /> */}
+        <div tw=" mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
           <div tw="my-16">
             <GatsbyImage
               tw="w-full md:h-72 lg:h-96"
@@ -77,67 +77,14 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
         </div>
         <div tw="mx-5 mt-3 sm:mt-16 sm:mx-10 md:mx-14 lg:mx-32">
           <p tw="pt-7 border-t border-gray-400 text-center md:text-2xl font-bold">おすすめの記事</p>
-          <ol style={{ listStyle: 'none' }}>
+          <ol style={{ listStyle: 'none' }} tw="mb-0 pb-80 md:pb-60 lg:pb-56 ">
             {/* cards from here */}
             <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
               {/* eslint-disable-next-line no-shadow */}
-              {posts.map(post => {
-                const title = post?.node.title || post.node.slug;
-                return (
-                  // card from here
-                  <li key={post?.node.slug} tw="w-full">
-                    <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96">
-                      <div tw="group-hover:opacity-80 transition duration-300">
-                        <Link to={`/blog/${post.node.slug}` || '/'} itemProp="url">
-                          <div tw="overflow-hidden rounded-xl">
-                            <img
-                              tw="w-full h-48 sm:h-48 lg:h-60 object-cover transform group-hover:scale-110 transition duration-300"
-                              alt={post.node.image?.title}
-                              src={post.node.image?.file?.url}
-                            />
-                          </div>
-                          <div tw="my-2">
-                            <p tw="mb-0 text-gray-500">{post.node.date}</p>
-                          </div>
-                          <div tw="px-2">
-                            {/* category from here */}
-                            <div tw="flex flex-wrap mb-1.5">
-                              {post.node.category?.map(category => (
-                                <p
-                                  tw="mr-2 mb-0 px-2 text-sm rounded-full border-gray-400 border text-gray-500 font-bold"
-                                  key={category}
-                                >
-                                  {category}
-                                </p>
-                              ))}
-                            </div>
-                            <h6 tw="m-0">
-                              <span tw="text-lg font-extrabold" itemProp="headline">
-                                {title}
-                              </span>
-                            </h6>
-                            {/* author from here */}
-                            <div tw="flex items-center">
-                              <img
-                                tw="w-9 rounded-full mr-4"
-                                src={`/${post.node.author}.png`}
-                                alt="{post.node.author}"
-                              />
-                              {/* <GatsbyImage
-                              // src="../../../static/Naoki.png"
-                              src={`../../../static/${post.node.author}.png`}
-                              alt="{post.node.author}"
-                              tw="w-9 rounded-full mr-4"
-                            /> */}
-                              <p tw="text-gray-700 m-0 text-xs">Written By {post.node.author}</p>
-                            </div>
-                          </div>
-                        </Link>
-                      </div>
-                    </div>
-                  </li>
-                );
-              })}
+              {posts.map(post => (
+                // @ts-ignore
+                <Card post={post} key={post?.node.slug} />
+              ))}
             </div>
           </ol>
         </div>

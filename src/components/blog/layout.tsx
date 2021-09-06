@@ -4,12 +4,13 @@ import { graphql, Link, useStaticQuery } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import 'twin.macro';
 import Header from '../header';
+import Footer from '../footer';
 
 const Layout: React.FC<
   { title: string } & { location: WindowLocation<unknown> } & { blogHeader: boolean } & {
-    headerBackground: boolean;
+    headerBackGround: boolean;
   }
-> = ({ location, title, children, blogHeader, headerBackground }) => (
+> = ({ location, title, children, blogHeader, headerBackGround }) => (
   // const blogHeader = (
   //   <h1 tw="text-center py-12 pb-1 mt-0">
   //     <Link to="/">{title}</Link>
@@ -17,18 +18,16 @@ const Layout: React.FC<
   // );
 
   <>
-    <div tw="bg-paleOrange">
+    <div tw="bg-paleOrange relative">
       <Header
         title={title}
         location={location}
         blogHeader={blogHeader}
-        headerBackGround={headerBackground}
+        headerBackGround={headerBackGround}
       />
       <p tw="mb-0">{blogHeader}</p>
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+      <Footer />
     </div>
   </>
 );
