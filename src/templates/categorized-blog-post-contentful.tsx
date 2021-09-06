@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
-import Bio from '../components/blog/bio';
+import Menu from '../components/blog/menu';
 import Layout from '../components/blog/layout';
 import Seo from '../components/blog/seo';
 import CardGrid from '../components/blog/cardgrid';
@@ -19,7 +19,7 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
     return (
       <Layout location={location} title={blogTitle} blogHeader headerBackGround>
         <Seo title="All posts" />
-        <Bio location={location} />
+        <Menu location={location} />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -31,7 +31,7 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
   return (
     <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
-      <Bio location={location} />
+      <Menu location={location} />
       <div>
         {/* @ts-ignore */}
         <CardGrid posts={posts} />

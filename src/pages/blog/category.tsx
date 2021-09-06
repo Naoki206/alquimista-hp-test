@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
-import Bio from '../../components/blog/bio';
+import Menu from '../../components/blog/menu';
 import Layout from '../../components/blog/layout';
 import Seo from '../../components/blog/seo';
 
@@ -26,7 +26,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ da
   return (
     <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
-      <Bio location={location} />
+      <Menu location={location} />
       <div tw="pb-14 h-screen">
         <div tw="flex flex-wrap gap-3 mx-5 my-3 md:mx-24 md:my-10 lg:gap-4 lg:mx-56 lg:my-14">
           {categories?.map(category => (

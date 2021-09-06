@@ -1,5 +1,5 @@
 /**
- * Bio component that queries for data
+ * Menu component that queries for data
  * with Gatsby's useStaticQuery component
  *
  * See: https://www.gatsbyjs.com/docs/use-static-query/
@@ -11,11 +11,11 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import 'twin.macro';
 
-const Bio: React.FC<{ location: WindowLocation<unknown> }> = location => {
+const Menu: React.FC<{ location: WindowLocation<unknown> }> = location => {
   // eslint-disable-next-line no-restricted-globals
-  const data = useStaticQuery<GatsbyTypes.BioQueryQuery>(
+  const data = useStaticQuery<GatsbyTypes.MenuQueryQuery>(
     graphql`
-      query BioQuery {
+      query MenuQuery {
         allContentfulPost {
           distinct(field: author)
         }
@@ -206,4 +206,4 @@ const Bio: React.FC<{ location: WindowLocation<unknown> }> = location => {
   );
 };
 
-export default Bio;
+export default Menu;

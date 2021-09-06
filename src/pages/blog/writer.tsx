@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
-import Bio from '../../components/blog/bio';
+import Menu from '../../components/blog/menu';
 import Layout from '../../components/blog/layout';
 import Seo from '../../components/blog/seo';
 
@@ -15,7 +15,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data
   return (
     <Layout location={location} title={blogTitle} blogHeader headerBackGround>
       <Seo title="All posts" />
-      <Bio location={location} />
+      <Menu location={location} />
       <div tw="pb-1120px sm:pb-1 h-screen">
         <ol tw="flex flex-wrap justify-center gap-10 m-10 list-none text-center mb-0">
           {writers?.map(writer => (
