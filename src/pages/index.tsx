@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
@@ -6,11 +8,14 @@ import 'twin.macro';
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/blog/layout';
 import Card from '../components/blog/card';
+import ThreePopularContents from '../components/blog/threePopularContents';
+import ThreeNewContents from '../components/blog/threeNewContents';
 
 const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, location }) => {
   const members = data.site?.siteMetadata?.member;
   const posts = data.allContentfulPost.edges;
   const [open, setOpen] = React.useState(-1);
+  const [toggle, setToggle] = React.useState(true);
 
   return (
     <Layout location={location} blogHeader headerBackGround>
@@ -113,14 +118,31 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         {/* Blog */}
         <div tw="mb-28">
           <h1 tw="pb-7">Blog</h1>
-          <ol tw="list-none mb-0 ">
-            <div tw="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-12">
-              {posts.map(post => (
-                // @ts-ignore
-                <Card post={post} key={post?.node.slug} />
-              ))}
+          <div tw="flex justify-center">
+            <div
+              tw="w-36 h-8 overflow-x-hidden rounded-full bg-darkBlue px-1 py-1 mb-10"
+              onClick={() => setToggle(!toggle)}
+            >
+              {toggle ? (
+                <div tw="flex justify-between items-center mb-0 ">
+                  <p tw="font-bold mb-0 text-xs rounded-full bg-paleOrange text-darkBlue px-3 py-1">
+                    New
+                  </p>
+                  <p tw="font-bold mb-0 text-xs text-paleOrange pr-3">Puplular</p>
+                </div>
+              ) : (
+                <div tw="flex justify-between items-center mb-0 ">
+                  <p tw="font-bold mb-0 text-xs text-paleOrange pl-3">New</p>
+                  <p tw="font-bold mb-0 text-xs rounded-full bg-paleOrange text-darkBlue px-3 py-1">
+                    Puplular
+                  </p>
+                </div>
+              )}
             </div>
-          </ol>
+          </div>
+
+          {toggle ? <ThreeNewContents /> : <ThreePopularContents />}
+
           <Link to="/blog/all">
             <button
               style={{ outline: 'none' }}
@@ -131,6 +153,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </button>
           </Link>
         </div>
+
         {/* News */}
         <div tw="mb-28">
           <h1 tw="pb-14">News</h1>
@@ -234,7 +257,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPost(limit: 3) {
+    allContentfulPost(sort: { order: DESC, fields: date }, limit: 3) {
       edges {
         node {
           title

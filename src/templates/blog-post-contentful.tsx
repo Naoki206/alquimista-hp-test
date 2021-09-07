@@ -9,7 +9,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
 import Layout from '../components/blog/layout';
-import Card from '../components/blog/card';
+import ThreeNewContents from '../components/blog/threeNewContents';
 
 const options = {
   renderNode: {
@@ -35,7 +35,6 @@ const options = {
 const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogPostBySlugQuery>> =
   ({ data, location }) => {
     const post = data.contentfulPost;
-    const posts = data.allContentfulPost.edges;
     return (
       <Layout location={location} title="Blog" blogHeader={false} headerBackGround={false}>
         {/* <Seo title={post?.title || 'undefined'} /> */}
@@ -77,16 +76,9 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
         </div>
         <div tw="mx-5 mt-3 sm:mt-16 sm:mx-10 md:mx-14 lg:mx-32">
           <p tw="pt-7 border-t border-gray-400 text-center md:text-2xl font-bold">おすすめの記事</p>
-          <ol style={{ listStyle: 'none' }} tw="mb-0 pb-80 md:pb-60 lg:pb-56 ">
-            {/* cards from here */}
-            <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
-              {/* eslint-disable-next-line no-shadow */}
-              {posts.map(post => (
-                // @ts-ignore
-                <Card post={post} key={post?.node.slug} />
-              ))}
-            </div>
-          </ol>
+          <div tw="pb-80 md:pb-60 lg:pb-56 ">
+            <ThreeNewContents />
+          </div>
         </div>
       </Layout>
     );
@@ -121,23 +113,6 @@ export const pageQuery = graphql`
       }
       image {
         gatsbyImageData
-      }
-    }
-    allContentfulPost(limit: 3) {
-      edges {
-        node {
-          title
-          category
-          author
-          slug
-          date(formatString: "YYYY.MM.DD")
-          image {
-            title
-            file {
-              url
-            }
-          }
-        }
       }
     }
   }
