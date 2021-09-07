@@ -6856,23 +6856,19 @@ type HeaderQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type HeaderQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly menu: Maybe<Pick<SiteSiteMetadataMenu, 'iconPath' | 'aboutUs' | 'vision' | 'service' | 'blog' | 'news' | 'member' | 'contactUs'>> }> }> };
 
-type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216QueryVariables = Exact<{ [key: string]: never; }>;
+type BlogNewQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
-type SeoQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title' | 'description'>
-      & { readonly social: Maybe<Pick<Social, 'twitter'>> }
-    )> }> };
-
-type BlogCategoryIndexQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BlogCategoryIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
+type BlogNewQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title'>
+      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
+    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
+        & { readonly image: Maybe<(
+          Pick<ContentfulAsset, 'title'>
+          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
+        )> }
+      ) }> } };
 
 type BlogAllQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6888,19 +6884,23 @@ type BlogAllQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
         )> }
       ) }> } };
 
-type BlogNewQueryVariables = Exact<{ [key: string]: never; }>;
+type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type BlogNewQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title'>
-      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
-    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
-        & { readonly image: Maybe<(
-          Pick<ContentfulAsset, 'title'>
-          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
-        )> }
-      ) }> } };
+type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
+type BlogCategoryIndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogCategoryIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
+
+type SeoQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title' | 'description'>
+      & { readonly social: Maybe<Pick<Social, 'twitter'>> }
+    )> }> };
 
 type BlogPopularQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6916,15 +6916,15 @@ type BlogPopularQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
         )> }
       ) }> } };
 
-type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
-
 type BlogWriterIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type BlogWriterIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
+
+type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
 
 type categorizedBlogPostQueryVariables = Exact<{
   category: Scalars['String'];

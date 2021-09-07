@@ -13,138 +13,151 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
   return (
     <Layout location={location} blogHeader headerBackGround>
-      <div>
-        <div tw="text-center text-darkBlue mx-10 sm:mx-40 xl:mx-64">
-          {/* メインビジュアル */}
-          <div>メインビジュアル</div>
-          {/* About us */}
-          <div tw="mb-28">
-            <h1 tw="pb-7">About Us</h1>
-            <p tw="font-bold leading-10">
-              AlquimistaはShopifyを軸にしたDXエキスパートです。
-              <br />
-              レガシーなカートシステムからShopifyへの移行の積極的サポートに特化しています。
-              <br />
-              Shopifyを用いて最適なアーキテクチャを提案することでバックオフィス業務の最適化、データドリブンなシステム構成への変容
-              開発スピードの向上を実現します。
-            </p>
-          </div>
-          {/* Vision */}
-          <div tw="mb-28">
-            <h1 tw="pb-5">Vision</h1>
-            <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
-            <p tw="font-bold leading-10">
-              Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、変化に強いアーキテクチャを提案し、お客様と共に成長することです。
-            </p>
-          </div>
+      <div tw="pb-72 text-center text-darkBlue mx-10 sm:mx-40 xl:mx-64">
+        {/* メインビジュアル */}
+        <div>メインビジュアル</div>
+        {/* About us */}
+        <div tw="mb-28">
+          <h1 tw="pb-7">About Us</h1>
+          <p tw="font-bold leading-10">
+            AlquimistaはShopifyを軸にしたDXエキスパートです。
+            <br />
+            レガシーなカートシステムからShopifyへの移行の積極的サポートに特化しています。
+            <br />
+            Shopifyを用いて最適なアーキテクチャを提案することでバックオフィス業務の最適化、データドリブンなシステム構成への変容
+            開発スピードの向上を実現します。
+          </p>
+        </div>
+        {/* Vision */}
+        <div tw="mb-28">
+          <h1 tw="pb-5">Vision</h1>
+          <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
+          <p tw="font-bold leading-10">
+            Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、変化に強いアーキテクチャを提案し、お客様と共に成長することです。
+          </p>
+        </div>
 
-          {/* Service */}
-          <div tw="mb-28">
-            <h1 tw="pb-14">Service</h1>
+        {/* Service */}
+        <div tw="mb-28">
+          <h1 tw="pb-14">Service</h1>
 
-            <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
-              <StaticImage
-                tw="max-h-500px max-w-3xl"
-                src="../../static/service_logo_1.png"
-                alt="/service_logo_1"
-              />
-              <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
-                <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
-                  Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
-                </p>
-                <p tw="md:text-sm lg:text-base">
-                  お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
-                </p>
-                <div tw="text-center">
+          <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
+            <StaticImage
+              tw="max-h-500px max-w-3xl"
+              src="../../static/service_logo_1.png"
+              alt="/service_logo_1"
+            />
+            <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+              <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
+                Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
+              </p>
+              <p tw="md:text-sm lg:text-base">
+                お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
+              </p>
+              <div tw="text-center">
+                <Link to="/blog/all">
                   <button
-                    tw="mx-auto font-bold text-sm px-5 py-1 text-center border border-paleOrange rounded-full"
+                    style={{ outline: 'none' }}
+                    tw="mx-auto font-bold text-sm px-6 py-2 text-center border-2 border-paleOrange rounded-full text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300 outline-none"
                     type="button"
                   >
                     Read more →
                   </button>
-                </div>
+                </Link>
               </div>
             </div>
+          </div>
 
-            <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
-              <div tw="md:hidden max-h-500px max-w-3xl">
-                <StaticImage
-                  tw="flex-1 h-full max-w-3xl"
-                  src="../../static/service_logo_2.png"
-                  alt="/service_logo_2"
-                />
-              </div>
-              <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
-                <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
-                  GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
-                </p>
-                <p tw="md:text-sm lg:text-base">
-                  ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
-                  <br />
-                  また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
-                </p>
-              </div>
+          <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
+            <div tw="md:hidden max-h-500px max-w-3xl">
               <StaticImage
-                tw="hidden md:block max-w-3xl"
+                tw="flex-1 h-full max-w-3xl"
                 src="../../static/service_logo_2.png"
                 alt="/service_logo_2"
               />
             </div>
+            <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+              <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
+                GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
+              </p>
+              <p tw="md:text-sm lg:text-base">
+                ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
+                <br />
+                また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
+              </p>
+            </div>
+            <StaticImage
+              tw="hidden md:block max-w-3xl"
+              src="../../static/service_logo_2.png"
+              alt="/service_logo_2"
+            />
+          </div>
 
-            <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
-              <StaticImage
-                tw="object-cover max-h-500px max-w-3xl"
-                src="../../static/service_logo_3.png"
-                alt="/service_logo_3"
-              />
-              <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
-                <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
-                  既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング
-                </p>
-                <p tw="md:text-sm lg:text-base">
-                  プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
-                </p>
-              </div>
+          <div tw="grid grid-cols-1 md:grid-cols-2 text-justify">
+            <StaticImage
+              tw="object-cover max-h-500px max-w-3xl"
+              src="../../static/service_logo_3.png"
+              alt="/service_logo_3"
+            />
+            <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+              <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
+                既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング
+              </p>
+              <p tw="md:text-sm lg:text-base">
+                プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
+              </p>
             </div>
           </div>
-          {/* Blog */}
-          <div tw="mb-28">
-            <h1 tw="pb-7">Blog</h1>
-            <ol tw="list-none mb-0 ">
-              <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
-                {posts.map(post => (
-                  // @ts-ignore
-                  <Card post={post} key={post?.node.slug} />
-                ))}
-              </div>
-            </ol>
-            <button tw="border border-darkBlue rounded-xl" type="button">
+        </div>
+        {/* Blog */}
+        <div tw="mb-28">
+          <h1 tw="pb-7">Blog</h1>
+          <ol tw="list-none mb-0 ">
+            <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
+              {posts.map(post => (
+                // @ts-ignore
+                <Card post={post} key={post?.node.slug} />
+              ))}
+            </div>
+          </ol>
+          <Link to="/blog/all">
+            <button
+              style={{ outline: 'none' }}
+              tw="mx-auto font-bold text-sm px-6 py-2 text-center border-2 border-darkBlue rounded-full text-black hover:text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300"
+              type="button"
+            >
               Read more →
             </button>
-          </div>
-          {/* News */}
-          <div tw="mb-28">
-            <h1 tw="pb-7">News</h1>
-            <ol tw="list-none mb-0">
-              <div tw="grid grid-cols-1">
-                {/* @ts-ignore */}
-                {posts.map(post => (
-                  // @ts-ignore
-                  <div key={post.node.slug} tw="border-b border-darkBlue">
-                    <p>{post?.node.date}</p>
-                    <p tw="font-bold">{post?.node.title}</p>
-                  </div>
-                ))}
-              </div>
+          </Link>
+        </div>
+        {/* News */}
+        <div tw="mb-28">
+          <h1 tw="pb-14">News</h1>
+          <div tw="grid grid-cols-1 mb-5">
+            <ol tw="list-none">
+              {/* @ts-ignore */}
+              {posts.map(post => (
+                // @ts-ignore
+                <div key={post.node.slug} tw="text-left border-b border-darkBlue mb-5">
+                  <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.date}</p>
+                  <p tw="font-extrabold text-lg mb-8">{post?.node.title}</p>
+                </div>
+              ))}
             </ol>
-            <button tw="border border-darkBlue rounded-xl" type="button">
+          </div>
+          <Link to="/blog/all">
+            <button
+              style={{ outline: 'none' }}
+              tw="mx-auto font-bold text-sm px-6 py-2 text-center border-2 border-darkBlue rounded-full text-black hover:text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300 outline-none"
+              type="button"
+            >
               Read more →
             </button>
-          </div>
+          </Link>
         </div>
         {/* Members */}
-        <div>
-          <h1 tw="pb-7">Members</h1>
+        <div tw="mb-28">
+          <h1 tw="pb-14">Members</h1>
           <ol tw="list-none mb-0 ">
             <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
               {/* @ts-ignore */}
