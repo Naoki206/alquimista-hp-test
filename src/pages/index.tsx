@@ -113,7 +113,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         <div tw="mb-28">
           <h1 tw="pb-7">Blog</h1>
           <ol tw="list-none mb-0 ">
-            <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
+            <div tw="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-12">
               {posts.map(post => (
                 // @ts-ignore
                 <Card post={post} key={post?.node.slug} />
@@ -159,13 +159,13 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         <div tw="mb-28">
           <h1 tw="pb-14">Members</h1>
           <ol tw="list-none mb-0 ">
-            <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
+            <div tw="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-2 sm:gap-12">
               {/* @ts-ignore */}
               {members.map(member => (
-                <div key={member.name}>
-                  <img tw="w-9 rounded-full mr-4" src={`/${member.name}.png`} alt={member.name} />
-                  <p>{member.role}</p>
-                  <p tw="font-bold">{member.name}</p>
+                <div key={member?.name}>
+                  <img tw="w-9 rounded-full mr-4" src={`/${member?.name}.png`} alt={member?.name} />
+                  <p>{member?.role}</p>
+                  <p tw="font-bold">{member?.name}</p>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a href="#">Follow me</a>
                 </div>
