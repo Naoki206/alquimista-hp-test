@@ -49,7 +49,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPost(filter: { node_locale: { eq: "ja-JP" } }) {
+    allContentfulPost(limit: 3, filter: { node_locale: { eq: "ja-JP" } }) {
       edges {
         node {
           title

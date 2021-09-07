@@ -14,13 +14,13 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   return (
     <Layout location={location} blogHeader headerBackGround>
       <div>
-        <div tw="justify-center text-darkBlue">
+        <div tw="text-center text-darkBlue mx-10 sm:mx-40 xl:mx-64">
           {/* メインビジュアル */}
           <div>メインビジュアル</div>
           {/* About us */}
-          <div>
-            <h1>About Us</h1>
-            <p>
+          <div tw="mb-28">
+            <h1 tw="pb-7">About Us</h1>
+            <p tw="font-bold leading-10">
               AlquimistaはShopifyを軸にしたDXエキスパートです。
               <br />
               レガシーなカートシステムからShopifyへの移行の積極的サポートに特化しています。
@@ -30,57 +30,87 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </p>
           </div>
           {/* Vision */}
-          <div>
-            <h1>Vision</h1>
-            <h3>“お客様が本来集中すべき時間を取り戻す”</h3>
-            <p>
+          <div tw="mb-28">
+            <h1 tw="pb-5">Vision</h1>
+            <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
+            <p tw="font-bold leading-10">
               Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、変化に強いアーキテクチャを提案し、お客様と共に成長することです。
             </p>
           </div>
+
           {/* Service */}
-          <div>
-            <h1>Service</h1>
-            <div tw="grid grid-cols-1 md:grid-cols-2 justify-items-center">
-              <StaticImage src="../../static/service_logo_1.png" alt="/service_logo_1" />
-              <div>
-                <h2>
+          <div tw="mb-28">
+            <h1 tw="pb-14">Service</h1>
+
+            <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
+              <StaticImage
+                tw="max-h-500px max-w-3xl"
+                src="../../static/service_logo_1.png"
+                alt="/service_logo_1"
+              />
+              <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+                <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
                   Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
-                </h2>
-                <p>
+                </p>
+                <p tw="md:text-sm lg:text-base">
                   お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
                 </p>
-                <button tw="border border-paleOrange rounded-xl" type="button">
-                  Read more →
-                </button>
+                <div tw="text-center">
+                  <button
+                    tw="mx-auto font-bold text-sm px-5 py-1 text-center border border-paleOrange rounded-full"
+                    type="button"
+                  >
+                    Read more →
+                  </button>
+                </div>
               </div>
             </div>
-            <div tw="grid grid-cols-1 md:grid-cols-2 justify-items-center">
-              <div>
-                <h2>GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。</h2>
-                <p>
+
+            <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
+              <div tw="md:hidden max-h-500px max-w-3xl">
+                <StaticImage
+                  tw="flex-1 h-full max-w-3xl"
+                  src="../../static/service_logo_2.png"
+                  alt="/service_logo_2"
+                />
+              </div>
+              <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+                <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
+                  GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
+                </p>
+                <p tw="md:text-sm lg:text-base">
                   ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
                   <br />
                   また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
                 </p>
               </div>
-              <StaticImage src="../../static/service_logo_2.png" alt="/service_logo_2" />
+              <StaticImage
+                tw="hidden md:block max-w-3xl"
+                src="../../static/service_logo_2.png"
+                alt="/service_logo_2"
+              />
             </div>
-            <div tw="grid grid-cols-1 md:grid-cols-2 justify-items-center">
-              <StaticImage src="../../static/service_logo_3.png" alt="/service_logo_3" />
-              <div>
-                <h2>
+
+            <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
+              <StaticImage
+                tw="object-cover max-h-500px max-w-3xl"
+                src="../../static/service_logo_3.png"
+                alt="/service_logo_3"
+              />
+              <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+                <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
                   既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング
-                </h2>
-                <p>
+                </p>
+                <p tw="md:text-sm lg:text-base">
                   プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
                 </p>
               </div>
             </div>
           </div>
           {/* Blog */}
-          <div>
-            <h1>Blog</h1>
-            <ol tw="list-none mb-0 pb-80 md:pb-60 lg:pb-56 ">
+          <div tw="mb-28">
+            <h1 tw="pb-7">Blog</h1>
+            <ol tw="list-none mb-0 ">
               <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
                 {posts.map(post => (
                   // @ts-ignore
@@ -93,9 +123,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </button>
           </div>
           {/* News */}
-          <div>
-            <h1>News</h1>
-            <ol tw="list-none mb-0 pb-80 md:pb-60 lg:pb-56 ">
+          <div tw="mb-28">
+            <h1 tw="pb-7">News</h1>
+            <ol tw="list-none mb-0">
               <div tw="grid grid-cols-1">
                 {/* @ts-ignore */}
                 {posts.map(post => (
@@ -114,8 +144,8 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
         {/* Members */}
         <div>
-          <h1>Members</h1>
-          <ol tw="list-none mb-0 pb-80 md:pb-60 lg:pb-56 ">
+          <h1 tw="pb-7">Members</h1>
+          <ol tw="list-none mb-0 ">
             <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5  sm:gap-12">
               {/* @ts-ignore */}
               {members.map(member => (

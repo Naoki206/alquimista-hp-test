@@ -10,18 +10,16 @@ const Layout: React.FC<
     headerBackGround: boolean;
   }
 > = ({ location, title, children, blogHeader, headerBackGround }) => (
-  <>
-    <div tw="bg-paleOrange relative">
-      <Header
-        title={title}
-        location={location}
-        blogHeader={blogHeader}
-        headerBackGround={headerBackGround}
-      />
-      <p tw="mb-0">{blogHeader}</p>
-      <main>{children}</main>
-      <Footer />
-    </div>
-  </>
+  <div tw="bg-paleOrange relative h-full">
+    <Header
+      title={title}
+      location={location}
+      blogHeader={blogHeader}
+      headerBackGround={headerBackGround}
+    />
+    <p tw="mb-0">{blogHeader}</p>
+    <main>{children}</main>
+    <Footer />
+  </div>
 );
 export default Layout;
