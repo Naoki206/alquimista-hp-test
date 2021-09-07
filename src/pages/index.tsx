@@ -10,10 +10,11 @@ import Card from '../components/blog/card';
 const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, location }) => {
   const members = data.site?.siteMetadata?.member;
   const posts = data.allContentfulPost.edges;
+  const [open, setOpen] = React.useState(-1);
 
   return (
     <Layout location={location} blogHeader headerBackGround>
-      <div tw="pb-72 text-center text-darkBlue mx-10 sm:mx-40 xl:mx-64">
+      <div tw="pb-72 text-center text-darkBlue mx-10 sm:mx-40 xl:mx-56">
         {/* メインビジュアル */}
         <div>メインビジュアル</div>
         {/* About us */}
@@ -47,7 +48,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               src="../../static/service_logo_1.png"
               alt="/service_logo_1"
             />
-            <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+            <div tw="max-h-500px max-w-3xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
               <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
                 Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
               </p>
@@ -71,12 +72,12 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
             <div tw="md:hidden max-h-500px max-w-3xl">
               <StaticImage
-                tw="flex-1 h-full max-w-3xl"
+                tw="max-h-500px max-w-3xl"
                 src="../../static/service_logo_2.png"
                 alt="/service_logo_2"
               />
             </div>
-            <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
+            <div tw="max-h-500px max-w-3xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
               <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
                 GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
               </p>
@@ -87,7 +88,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               </p>
             </div>
             <StaticImage
-              tw="hidden md:block max-w-3xl"
+              tw="hidden md:block max-h-500px max-w-3xl"
               src="../../static/service_logo_2.png"
               alt="/service_logo_2"
             />
@@ -159,15 +160,57 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         <div tw="mb-28">
           <h1 tw="pb-14">Members</h1>
           <ol tw="list-none mb-0 ">
-            <div tw="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center gap-2 sm:gap-12">
+            <div tw="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-12">
               {/* @ts-ignore */}
-              {members.map(member => (
-                <div key={member?.name}>
-                  <img tw="w-9 rounded-full mr-4" src={`/${member?.name}.png`} alt={member?.name} />
-                  <p>{member?.role}</p>
-                  <p tw="font-bold">{member?.name}</p>
+              {members.map((member, index) => (
+                <div key={member?.name} tw="">
+                  <div tw="flex justify-center">
+                    {/*  eslint-disable-next-line no-console */}
+                    <img
+                      tw="w-48 rounded-full mb-4 mx-0"
+                      src={`/${member?.name}.png`}
+                      alt={member?.name}
+                    />
+                  </div>
+                  <p tw="mb-2">{member?.role}</p>
+                  <p tw="mb-2 font-bold">{member?.name}</p>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a href="#">Follow me</a>
+                  <div tw="flex justify-center mb-5">
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <a tw="pr-2" href="#">
+                      Follow me
+                    </a>
+                    <img tw="w-5" src="/twitter-icon.svg" alt="/twitter-icon.svg" />
+                  </div>
+
+                  {open === index ? (
+                    <div>
+                      <p tw="font-bold text-sm text-left">{member?.description}</p>
+                      <div tw="flex w-full justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          tw="h-6 w-6 mt-3 mx-0 bg-darkBlue rounded-full text-paleOrange"
+                          onClick={() => setOpen(-1)}
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" />
+                        </svg>
+                      </div>
+                    </div>
+                  ) : (
+                    <div tw="flex w-full justify-center">
+                      <svg
+                        tw="h-6 w-6 mt-3 mx-0 bg-darkBlue rounded-full text-paleOrange"
+                        onClick={() => setOpen(index)}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                      </svg>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
