@@ -36,7 +36,7 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
   ({ data, location }) => {
     const post = data.contentfulPost;
     return (
-      <Layout location={location} title="Blog" blogHeader={false} headerBackGround={false}>
+      <Layout location={location} title="Blog" headerBackGround={false}>
         {/* <Seo title={post?.title || 'undefined'} /> */}
         <div tw=" mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
           <div tw="my-16">

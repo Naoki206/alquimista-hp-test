@@ -1,15 +1,17 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import { graphql, Link, useStaticQuery } from 'gatsby';
+import { Link as ScrollLink } from 'react-scroll';
 // eslint-disable-next-line import/no-unresolved
 import { WindowLocation } from '@reach/router';
 import 'twin.macro';
 
 const Header: React.FC<
-  { title?: string } & { location?: WindowLocation<unknown> } & { blogHeader: boolean } & {
+  { title?: string } & { location?: WindowLocation<unknown> } & { blogHeadingLetter?: boolean } & {
     headerBackGround: boolean;
-  }
-> = ({ location, title, blogHeader, headerBackGround }) => {
+  } & { blogTopPage?: boolean }
+> = ({ location, title, blogHeadingLetter, headerBackGround, blogTopPage }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   // const isRootPath = location.pathname === rootPath;
 
@@ -49,7 +51,7 @@ const Header: React.FC<
               className="hogehoge"
             />
           </li>
-          <li tw="md:hidden　transition duration-300">
+          <li tw="md:hidden transition duration-300">
             {open ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,37 +83,135 @@ const Header: React.FC<
             )}
           </li>
 
-          <li tw="hidden md:block">{menu?.aboutUs}</li>
-          <li tw="hidden md:block">{menu?.vision}</li>
-          <li tw="hidden md:block">{menu?.service}</li>
-          <li tw="hidden md:block">{menu?.blog}</li>
-          <li tw="hidden md:block">{menu?.news}</li>
-          <li tw="hidden md:block">{menu?.member}</li>
+          {/* pc menu */}
+          {blogTopPage ? (
+            <>
+              <Link to="/#aboutus_section">
+                <li tw="hidden md:block text-paleOrange">{menu?.aboutUs}</li>
+              </Link>
+              <Link to="/#vision_section">
+                <li tw="hidden md:block text-paleOrange">{menu?.vision}</li>
+              </Link>
+              <Link to="/#service_section">
+                <li tw="hidden md:block text-paleOrange">{menu?.service}</li>
+              </Link>
+              <Link to="/blog/all">
+                <li tw="hidden md:block text-paleOrange">{menu?.blog}</li>
+              </Link>
+              <Link to="/#news_section">
+                <li tw="hidden md:block text-paleOrange">{menu?.news}</li>
+              </Link>
+              <Link to="/#member_section">
+                <li tw="hidden md:block text-paleOrange">{menu?.member}</li>
+              </Link>
+            </>
+          ) : (
+            <>
+              <ScrollLink smooth to="aboutus_section" duration={1000} offset={-150}>
+                <li tw="hidden md:block text-paleOrange">{menu?.aboutUs}</li>
+              </ScrollLink>
+              <ScrollLink smooth to="vision_section" duration={1000} offset={-150}>
+                <li tw="hidden md:block text-paleOrange">{menu?.vision}</li>
+              </ScrollLink>
+              <ScrollLink smooth to="service_section" duration={1000} offset={-150}>
+                <li tw="hidden md:block text-paleOrange">{menu?.service}</li>
+              </ScrollLink>
+              <Link to="/blog/all">
+                <li tw="hidden md:block text-paleOrange">{menu?.blog}</li>
+              </Link>
+              <ScrollLink smooth to="news_section" duration={1000} offset={-150}>
+                <li tw="hidden md:block text-paleOrange">{menu?.news}</li>
+              </ScrollLink>
+              <ScrollLink smooth to="member_section" duration={1000} offset={-150}>
+                <li tw="hidden md:block text-paleOrange">{menu?.member}</li>
+              </ScrollLink>
+            </>
+          )}
           <li tw="hidden md:block py-0.5 px-5 rounded-full bg-paleOrange text-darkBlue">
             {menu?.contactUs}
           </li>
         </ul>
 
-        {open && (
-          <ul tw="p-5 list-none line-break[inherit]　inherits[]">
-            <li tw="py-5 border-b text-paleOrange">{menu?.aboutUs}</li>
-            <li tw="py-5 border-b text-paleOrange">{menu?.vision}</li>
-            <li tw="py-5 border-b text-paleOrange">{menu?.service}</li>
-            <Link to="/blog/all">
-              {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-              <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
-                {menu?.blog}
-              </li>
-            </Link>
-            <li tw="py-5 border-b text-paleOrange">{menu?.news}</li>
-            <li tw="py-5 border-b text-paleOrange">{menu?.member}</li>
-            <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
-              {menu?.contactUs}
-            </li>
-          </ul>
-        )}
+        {/* mobile menu */}
+        {blogTopPage
+          ? open && (
+              <ul tw="p-5 list-none">
+                <Link to="/#aboutus_section">
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.aboutUs}
+                  </li>
+                </Link>
+                <Link to="/#vision_section">
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.vision}
+                  </li>
+                </Link>
+                <Link to="/#service_section">
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.service}
+                  </li>
+                </Link>
+                <Link to="/blog/all">
+                  {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.blog}
+                  </li>
+                </Link>
+                <Link to="/#news_section">
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.news}
+                  </li>
+                </Link>
+                <Link to="/#member_section">
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.member}
+                  </li>
+                </Link>
+                <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
+                  {menu?.contactUs}
+                </li>
+              </ul>
+            )
+          : open && (
+              <ul tw="p-5 list-none">
+                <ScrollLink smooth to="aboutus_section" duration={1000} offset={-630}>
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.aboutUs}
+                  </li>
+                </ScrollLink>
+                <ScrollLink smooth to="vision_section" duration={1000} offset={-630}>
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.vision}
+                  </li>
+                </ScrollLink>
+                <ScrollLink smooth to="service_section" duration={1000} offset={-630}>
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.service}
+                  </li>
+                </ScrollLink>
+                <Link to="/blog/all">
+                  {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.blog}
+                  </li>
+                </Link>
+                <ScrollLink smooth to="news_section" duration={1000} offset={-630}>
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.news}
+                  </li>
+                </ScrollLink>
+                <ScrollLink smooth to="member_section" duration={1000} offset={-630}>
+                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                    {menu?.member}
+                  </li>
+                </ScrollLink>
+                <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
+                  {menu?.contactUs}
+                </li>
+              </ul>
+            )}
       </header>
-      {blogHeader && (
+      {blogHeadingLetter && (
         <h1 tw="text-center py-12 pb-1 mt-0">
           <Link to="/blog/all">{title}</Link>
         </h1>

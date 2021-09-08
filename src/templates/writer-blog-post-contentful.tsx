@@ -18,7 +18,7 @@ const WriterBlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.WriterBlo
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeader headerBackGround>
+      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage headerBackGround>
         <Seo title="All posts" />
         <Menu location={location} />
         <p>
@@ -30,7 +30,7 @@ const WriterBlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.WriterBlo
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeader headerBackGround>
+    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage headerBackGround>
       <Seo title="All posts" />
       <Menu location={location} />
       <div>
