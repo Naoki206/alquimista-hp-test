@@ -198,13 +198,13 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                   <p tw="mb-2">{member?.role}</p>
                   <p tw="mb-2 font-bold">{member?.name}</p>
                   {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <div tw="flex justify-center mb-5">
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a tw="pr-2" href="#">
-                      Follow me
-                    </a>
-                    <img tw="w-5" src="/twitter-icon.svg" alt="/twitter-icon.svg" />
-                  </div>
+                  {member?.twitter && (
+                    <div tw="flex justify-center items-center mb-5">
+                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                      <p tw="pr-2 mb-0">Follow me</p>
+                      <img tw="w-5" src="/twitter-icon.svg" alt="/twitter-icon.svg" />
+                    </div>
+                  )}
 
                   {open === index ? (
                     <div>
@@ -254,6 +254,7 @@ export const pageQuery = graphql`
           description
           name
           role
+          twitter
         }
       }
     }

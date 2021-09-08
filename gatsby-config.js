@@ -30,6 +30,7 @@ module.exports = {
         role: 'CEO',
         description:
           '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+        twitter: '@twitter',
       },
       {
         name: 'Naoki',
@@ -42,6 +43,7 @@ module.exports = {
         role: 'Technical director',
         description:
           '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+        twitter: '@twitter',
       },
       {
         name: 'Ken',
@@ -66,6 +68,7 @@ module.exports = {
         role: 'CEO',
         description:
           '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+        twitter: '@twitter',
       },
       {
         name: 'Naoki',
