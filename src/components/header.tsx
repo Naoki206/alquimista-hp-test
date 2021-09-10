@@ -41,7 +41,7 @@ const Header: React.FC<
 
   return (
     <>
-      <header tw="bg-darkBlue sticky top-0 z-10 text-paleOrange">
+      <header tw="bg-darkBlue sticky top-0 z-30 text-paleOrange">
         <ul tw="mx-4 sm:mx-8 md:mx-16 justify-end font-bold flex text-xs md:gap-4 md:text-sm lg:gap-12 lg:text-base xl:gap-16 2xl:gap-20 h-16 items-center list-none">
           <li tw="mr-auto">
             <img

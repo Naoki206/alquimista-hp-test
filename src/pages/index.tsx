@@ -20,11 +20,45 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   const posts = data.allContentfulPost.edges;
   const [open, setOpen] = React.useState(-1);
   const [toggle, setToggle] = React.useState(true);
+  const [isButtonActive, setIsButtonActive] = React.useState(false);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', scrollWindow);
+    return () => {
+      window.removeEventListener('scroll', scrollWindow);
+    };
+  }, []);
+
+  const scrollWindow = () => {
+    const top = 1000;
+    let scroll = 0;
+    scroll = window.scrollY;
+    if (top <= scroll) {
+      setIsButtonActive(true);
+    } else {
+      setIsButtonActive(false);
+    }
+  };
+
+  const normalStyle = {
+    opacity: 0,
+    transition: '0.2s',
+    pointerEvents: 'none',
+  };
+  const activeStyle = {
+    opacity: 1,
+    transition: '0.2s',
+  };
+  const style = isButtonActive ? activeStyle : normalStyle;
 
   return (
     <Layout location={location} headerBackGround>
       {/* メインビジュアル */}
-
+      <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
+        <h1 tw="m-0 text-left text-paleOrange text-8xl">
+          STEP <br /> BY, STEP, <br /> WITH YOU.
+        </h1>
+      </div>
       <div tw="pb-72 text-center text-darkBlue mx-10 sm:mx-40 xl:mx-56">
         {/* About us */}
         <div tw="mb-28" id="aboutus_section">
@@ -248,20 +282,29 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             tw="fixed block bg-paleOrange bottom-10 right-16 z-10 rounded-full px-5 py-3 w-16 h-16"
             onClick={() => animateScroll.scrollToTop()}
           >
-            <i>
-              <FontAwesomeIcon icon={faArrowUp} />
-              <p tw="m-0 text-sm">Top</p>
-            </i>
+            <FontAwesomeIcon icon={faArrowUp} />
+            <p tw="m-0 text-sm">Top</p>
           </div>
           <div
             tw="hover:opacity-0 transition duration-500 fixed block bg-paleOrange bottom-10 right-16 z-10 rounded-full px-5 pt-5 w-16 h-16"
             onClick={() => animateScroll.scrollToTop()}
           >
-            <i>
-              <FontAwesomeIcon icon={faChevronUp} />
-            </i>
+            <FontAwesomeIcon icon={faChevronUp} />
           </div>
-          {/* <p tw="fixed block bg-paleOrange bottom-6 right-16 z-10 rounded-full px-5 py-5">top</p> */}
+
+          <Link to="/blog/all">
+            <div
+              style={style}
+              className="group"
+              tw="gap-1.5  flex items-center overflow-hidden bg-darkBlue hover:w-44 hover:bg-lightGreen transition duration-150 fixed bottom-10 left-16 z-10 rounded-full w-14 h-14"
+              onClick={() => animateScroll.scrollToTop()}
+            >
+              <img tw="w-14" src="/note_logo.svg" alt="/note_logo.svg" />
+              <p tw="hidden group-hover:block text-base font-bold mb-0 text-paleOrange">
+                ブログを読む
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     </Layout>
