@@ -3,6 +3,10 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import * as React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
+import { animateScroll } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+
 import 'twin.macro';
 
 import { StaticImage } from 'gatsby-plugin-image';
@@ -19,9 +23,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
   return (
     <Layout location={location} headerBackGround>
+      {/* メインビジュアル */}
+
       <div tw="pb-72 text-center text-darkBlue mx-10 sm:mx-40 xl:mx-56">
-        {/* メインビジュアル */}
-        <div>メインビジュアル</div>
         {/* About us */}
         <div tw="mb-28" id="aboutus_section">
           <h1 tw="pb-7">About Us</h1>
@@ -238,6 +242,26 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               ))}
             </div>
           </ol>
+        </div>
+        <div>
+          <div
+            tw="fixed block bg-paleOrange bottom-10 right-16 z-10 rounded-full px-5 py-3 w-16 h-16"
+            onClick={() => animateScroll.scrollToTop()}
+          >
+            <i>
+              <FontAwesomeIcon icon={faArrowUp} />
+              <p tw="m-0 text-sm">Top</p>
+            </i>
+          </div>
+          <div
+            tw="hover:opacity-0 transition duration-500 fixed block bg-paleOrange bottom-10 right-16 z-10 rounded-full px-5 pt-5 w-16 h-16"
+            onClick={() => animateScroll.scrollToTop()}
+          >
+            <i>
+              <FontAwesomeIcon icon={faChevronUp} />
+            </i>
+          </div>
+          {/* <p tw="fixed block bg-paleOrange bottom-6 right-16 z-10 rounded-full px-5 py-5">top</p> */}
         </div>
       </div>
     </Layout>
