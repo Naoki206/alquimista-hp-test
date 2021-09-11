@@ -13,7 +13,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data
   // const members = data.site?.siteMetadata?.member;
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage headerBackGround>
+    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div tw="pb-1120px sm:pb-1 h-screen">

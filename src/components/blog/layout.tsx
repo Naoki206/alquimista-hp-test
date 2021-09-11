@@ -7,15 +7,15 @@ import Footer from '../footer';
 
 const Layout: React.FC<
   { title?: string } & { location: WindowLocation<unknown> } & { blogHeadingLetter?: boolean } & {
-    headerBackGround: boolean;
+    blogContentsPage: boolean;
   } & { blogTopPage?: boolean }
-> = ({ location, title, children, blogHeadingLetter, headerBackGround, blogTopPage }) => (
+> = ({ location, title, children, blogHeadingLetter, blogContentsPage, blogTopPage }) => (
   <div tw="bg-paleOrange relative h-full">
     <Header
       title={title}
       location={location}
       blogHeadingLetter={blogHeadingLetter}
-      headerBackGround={headerBackGround}
+      blogContentsPage={blogContentsPage}
       blogTopPage={blogTopPage}
     />
     <p tw="mb-0">{blogHeadingLetter}</p>

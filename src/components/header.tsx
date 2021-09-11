@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
@@ -9,9 +10,9 @@ import 'twin.macro';
 
 const Header: React.FC<
   { title?: string } & { location?: WindowLocation<unknown> } & { blogHeadingLetter?: boolean } & {
-    headerBackGround: boolean;
+    blogContentsPage?: boolean;
   } & { blogTopPage?: boolean }
-> = ({ location, title, blogHeadingLetter, headerBackGround, blogTopPage }) => {
+> = ({ location, title, blogHeadingLetter, blogContentsPage, blogTopPage }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   // const isRootPath = location.pathname === rootPath;
 
@@ -36,21 +37,113 @@ const Header: React.FC<
     `
   );
 
+  const [chancgeColorActive, setChancgeColorActive] = React.useState(false);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', scrollWindow);
+    return () => {
+      window.removeEventListener('scroll', scrollWindow);
+    };
+  }, []);
+
+  const scrollWindow = () => {
+    const top = 780;
+    let scroll = 0;
+    scroll = window.scrollY;
+    if (top <= scroll) {
+      setChancgeColorActive(true);
+    } else {
+      setChancgeColorActive(false);
+    }
+  };
+
+  const normal = {
+    transition: '0.2s',
+  };
+  const active = {
+    transition: '0.2s',
+    backgroundColor: 'rgba(242, 242, 242, var(--tw-text-opacity))',
+    color: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+  };
+  const normalPcText = {
+    color: 'rgba(242, 242, 242, var(--tw-text-opacity))',
+  };
+  const activePcText = {
+    color: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+  };
+  const normalContactUsBtn = {
+    backgroundColor: 'rgba(242, 242, 242, var(--tw-text-opacity))',
+    color: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+  };
+  const activeContactUsBtn = {
+    backgroundColor: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+    color: 'rgba(242, 242, 242, var(--tw-text-opacity))',
+  };
+  const normalSpText = {
+    color: 'rgba(242, 242, 242, var(--tw-text-opacity))',
+    borderColor: 'rgba(242, 242, 242, var(--tw-text-opacity))',
+  };
+  const activeSpText = {
+    color: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+    borderColor: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+  };
+  let bgColorChangebleStyle = chancgeColorActive ? active : normal;
+  let pcTextColorChangebleStyle = chancgeColorActive ? activePcText : normalPcText;
+  let spTextColorChangebleStyle = chancgeColorActive ? activeSpText : normalSpText;
+  let contactUsBtnChangebleStyle = chancgeColorActive ? activeContactUsBtn : normalContactUsBtn;
+
+  if (blogTopPage) {
+    bgColorChangebleStyle = normal;
+    pcTextColorChangebleStyle = normalPcText;
+    spTextColorChangebleStyle = normalSpText;
+    contactUsBtnChangebleStyle = normalContactUsBtn;
+  } else if (blogContentsPage) {
+    bgColorChangebleStyle = active;
+    pcTextColorChangebleStyle = activePcText;
+    spTextColorChangebleStyle = activeSpText;
+    contactUsBtnChangebleStyle = activeContactUsBtn;
+  }
+
   const menu = data.site?.siteMetadata?.menu;
   const [open, setOpen] = React.useState(false);
 
   return (
     <>
-      <header tw="bg-darkBlue sticky top-0 z-30 text-paleOrange">
+      <header style={bgColorChangebleStyle} tw="bg-darkBlue sticky top-0 z-30 text-paleOrange">
         <ul tw="mx-4 sm:mx-8 md:mx-16 justify-end font-bold flex text-xs md:gap-4 md:text-sm lg:gap-12 lg:text-base xl:gap-16 2xl:gap-20 h-16 items-center list-none">
           <li tw="mr-auto">
-            <img
-              tw="w-32 sm:w-36"
-              src="/alquimista_logo-02.svg"
-              alt="alquimista_logo-02"
-              className="hogehoge"
-            />
+            {blogTopPage ? (
+              <img
+                tw="w-32 sm:w-36"
+                src="/alquimista_logo_white.svg"
+                alt="alquimista_logo_white"
+                className="hogehoge"
+              />
+            ) : blogContentsPage ? (
+              <img
+                tw="w-32 sm:w-36"
+                src="/alquimista_logo_black.svg"
+                alt="alquimista_logo_black"
+                className="hogehoge"
+              />
+            ) : chancgeColorActive ? (
+              <img
+                tw="w-32 sm:w-36"
+                src="/alquimista_logo_black.svg"
+                alt="alquimista_logo_black"
+                className="hogehoge"
+              />
+            ) : (
+              <img
+                tw="w-32 sm:w-36"
+                src="/alquimista_logo_white.svg"
+                alt="alquimista_logo_white"
+                className="hogehoge"
+              />
+            )}
           </li>
+
+          {/* sp hamburger menu icon */}
           <li tw="md:hidden transition duration-300">
             {open ? (
               <svg
@@ -108,26 +201,38 @@ const Header: React.FC<
           ) : (
             <>
               <ScrollLink smooth to="aboutus_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block text-paleOrange">{menu?.aboutUs}</li>
+                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                  {menu?.aboutUs}
+                </li>
               </ScrollLink>
               <ScrollLink smooth to="vision_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block text-paleOrange">{menu?.vision}</li>
+                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                  {menu?.vision}
+                </li>
               </ScrollLink>
               <ScrollLink smooth to="service_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block text-paleOrange">{menu?.service}</li>
+                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                  {menu?.service}
+                </li>
               </ScrollLink>
               <Link to="/blog/all">
-                <li tw="hidden md:block text-paleOrange">{menu?.blog}</li>
+                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                  {menu?.blog}
+                </li>
               </Link>
               <ScrollLink smooth to="news_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block text-paleOrange">{menu?.news}</li>
+                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                  {menu?.news}
+                </li>
               </ScrollLink>
               <ScrollLink smooth to="member_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block text-paleOrange">{menu?.member}</li>
+                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                  {menu?.member}
+                </li>
               </ScrollLink>
             </>
           )}
-          <li tw="hidden md:block py-0.5 px-5 rounded-full bg-paleOrange text-darkBlue">
+          <li tw="hidden md:block py-0.5 px-5 rounded-full" style={contactUsBtnChangebleStyle}>
             {menu?.contactUs}
           </li>
         </ul>
@@ -175,37 +280,64 @@ const Header: React.FC<
           : open && (
               <ul tw="p-5 list-none">
                 <ScrollLink smooth to="aboutus_section" duration={1000} offset={-630}>
-                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  <li
+                    tw="py-5 border-b"
+                    style={spTextColorChangebleStyle}
+                    onClick={() => setOpen(!open)}
+                  >
                     {menu?.aboutUs}
                   </li>
                 </ScrollLink>
                 <ScrollLink smooth to="vision_section" duration={1000} offset={-630}>
-                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  <li
+                    tw="py-5 border-b"
+                    style={spTextColorChangebleStyle}
+                    onClick={() => setOpen(!open)}
+                  >
                     {menu?.vision}
                   </li>
                 </ScrollLink>
                 <ScrollLink smooth to="service_section" duration={1000} offset={-630}>
-                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  <li
+                    tw="py-5 border-b"
+                    style={spTextColorChangebleStyle}
+                    onClick={() => setOpen(!open)}
+                  >
                     {menu?.service}
                   </li>
                 </ScrollLink>
                 <Link to="/blog/all">
                   {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  <li
+                    tw="py-5 border-b"
+                    style={spTextColorChangebleStyle}
+                    onClick={() => setOpen(!open)}
+                  >
                     {menu?.blog}
                   </li>
                 </Link>
                 <ScrollLink smooth to="news_section" duration={1000} offset={-630}>
-                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  <li
+                    tw="py-5 border-b"
+                    style={spTextColorChangebleStyle}
+                    onClick={() => setOpen(!open)}
+                  >
                     {menu?.news}
                   </li>
                 </ScrollLink>
                 <ScrollLink smooth to="member_section" duration={1000} offset={-630}>
-                  <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
+                  <li
+                    tw="py-5 border-b"
+                    style={spTextColorChangebleStyle}
+                    onClick={() => setOpen(!open)}
+                  >
                     {menu?.member}
                   </li>
                 </ScrollLink>
-                <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
+                <li
+                  tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full"
+                  style={contactUsBtnChangebleStyle}
+                >
                   {menu?.contactUs}
                 </li>
               </ul>

@@ -31,8 +31,8 @@ const Footer: React.FC = () => {
       <div tw="mx-5 md:mx-0 sm:flex justify-between items-center md:gap-5 md:ml-20 lg:ml-28 xl:ml-36 md:mr-24 lg:mr-36 xl:mr-64 my-10">
         <img
           tw="mx-auto sm:mx-0 w-32 mb-5 sm:mb-0 sm:w-48 lg:w-60 lg:h-24"
-          src="/alquimista_logo-02.svg"
-          alt="/alquimista_logo-02"
+          src="/alquimista_logo_white.svg"
+          alt="/alquimista_logo_white"
         />
         <div tw="text-center sm:text-left text-paleOrange h-full mb-0">
           <div tw="sm:flex mb-5">

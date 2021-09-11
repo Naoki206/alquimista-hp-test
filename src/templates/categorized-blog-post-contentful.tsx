@@ -17,7 +17,7 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage headerBackGround>
+      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
         <Seo title="All posts" />
         <Menu location={location} />
         <p>
@@ -29,7 +29,7 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage headerBackGround>
+    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div>

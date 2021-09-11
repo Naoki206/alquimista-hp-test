@@ -52,7 +52,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   const style = isButtonActive ? activeStyle : normalStyle;
 
   return (
-    <Layout location={location} headerBackGround>
+    <Layout location={location}>
       {/* メインビジュアル */}
       <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
         <h1 tw="m-0 text-left text-paleOrange text-8xl">
@@ -260,7 +260,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                       </div>
                     </div>
                   ) : (
-                    <div tw="flex w-full justify-center">
+                    <div tw="flex w-full justify-center transition duration-150">
                       <svg
                         tw="h-6 w-6 mt-3 mx-0 bg-darkBlue rounded-full text-paleOrange"
                         onClick={() => setOpen(index)}
@@ -296,7 +296,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             <div
               style={style}
               className="group"
-              tw="gap-1.5  flex items-center overflow-hidden bg-darkBlue hover:w-44 hover:bg-lightGreen transition duration-150 fixed bottom-10 left-16 z-10 rounded-full w-14 h-14"
+              tw=" flex items-center overflow-hidden bg-darkBlue hover:w-44 hover:bg-lightGreen transition duration-75 fixed bottom-10 left-16 z-10 rounded-full w-14 h-14"
               onClick={() => animateScroll.scrollToTop()}
             >
               <img tw="w-14" src="/note_logo.svg" alt="/note_logo.svg" />
