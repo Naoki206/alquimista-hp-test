@@ -315,7 +315,6 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               style={blogButtonStyle}
               className="group"
               tw=" flex items-center overflow-hidden bg-darkBlue hover:w-44 hover:bg-lightGreen transition duration-75 fixed bottom-10 left-16 z-10 rounded-full w-14 h-14"
-              onClick={() => animateScroll.scrollToTop()}
             >
               <img tw="w-14" src="/note_logo.svg" alt="/note_logo.svg" />
               <p tw="hidden group-hover:block text-base font-bold mb-0 text-paleOrange">
