@@ -81,7 +81,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <p tw="font-bold leading-10">
             AlquimistaはShopifyを軸にしたDXエキスパートです。
             <br />
-            レガシーなカートシステムからShopifyへの移行の積極的サポートに特化しています。
+            レガシーなカートシステムからShopifyへの移行の積極的サポートに特化してます。
             <br />
             Shopifyを用いて最適なアーキテクチャを提案することでバックオフィス業務の最適化、データドリブンなシステム構成への変容
             開発スピードの向上を実現します。
@@ -103,7 +103,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
             <StaticImage
               tw="max-h-500px max-w-3xl"
-              src="../../static/service_logo_1.png"
+              src="../../static/service_logo_1.jpg"
               alt="/service_logo_1"
             />
             <div tw="max-h-500px max-w-3xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
@@ -131,7 +131,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             <div tw="md:hidden max-h-500px max-w-3xl">
               <StaticImage
                 tw="max-h-500px max-w-3xl"
-                src="../../static/service_logo_2.png"
+                src="../../static/service_logo_2.jpg"
                 alt="/service_logo_2"
               />
             </div>
@@ -147,7 +147,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </div>
             <StaticImage
               tw="hidden md:block max-h-500px max-w-3xl"
-              src="../../static/service_logo_2.png"
+              src="../../static/service_logo_2.jpg"
               alt="/service_logo_2"
             />
           </div>
@@ -155,7 +155,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <div tw="grid grid-cols-1 md:grid-cols-2 text-justify">
             <StaticImage
               tw="object-cover max-h-500px max-w-3xl"
-              src="../../static/service_logo_3.png"
+              src="../../static/service_logo_3.jpg"
               alt="/service_logo_3"
             />
             <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
@@ -240,24 +240,27 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               {/* @ts-ignore */}
               {members.map((member, index) => (
                 <div key={member?.name} tw="">
-                  <div tw="flex justify-center">
+                  <div tw="flex justify-center relative">
                     {/*  eslint-disable-next-line no-console */}
                     <img
-                      tw="w-48 rounded-full mb-4 mx-0"
-                      src={`/${member?.name}.png`}
+                      tw="w-48 rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
+                      src={`/${member?.name}.jpg`}
+                      alt={member?.name}
+                    />
+                    <img
+                      tw="absolute w-48 rounded-full bottom-4"
+                      src={`/${member?.name}_smile.jpg`}
                       alt={member?.name}
                     />
                   </div>
                   <p tw="mb-2">{member?.role}</p>
-                  <p tw="mb-2 font-bold">{member?.name}</p>
-                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  {member?.twitter && (
-                    <div tw="flex justify-center items-center mb-5">
-                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                      <p tw="pr-2 mb-0">Follow me</p>
+                  <div tw="flex justify-center items-center mb-5">
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <p tw="font-bold pr-2 mb-0">{member?.name}</p>
+                    {member?.twitter && (
                       <img tw="w-5" src="/twitter-icon.svg" alt="/twitter-icon.svg" />
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   {open === index ? (
                     <div>
