@@ -16,11 +16,12 @@ import ThreePopularContents from '../components/blog/threePopularContents';
 import ThreeNewContents from '../components/blog/threeNewContents';
 
 const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, location }) => {
-  const members = data.site?.siteMetadata?.member;
-  const posts = data.allContentfulPost.edges;
   const [open, setOpen] = React.useState(-1);
   const [toggle, setToggle] = React.useState(true);
-  const [isButtonActive, setIsButtonActive] = React.useState(false);
+  const [blogButtonActive, setBlogButtonActive] = React.useState(false);
+  const [topLetterFadeInFlg, setopLetterFadeInFlg] = React.useState(false);
+  const members = data.site?.siteMetadata?.member;
+  const posts = data.allContentfulPost.edges;
 
   React.useEffect(() => {
     window.addEventListener('scroll', scrollWindow);
@@ -29,33 +30,47 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
     };
   }, []);
 
+  React.useEffect(() => {
+    setopLetterFadeInFlg(true);
+  }, []);
+
   const scrollWindow = () => {
     const top = 1000;
     let scroll = 0;
     scroll = window.scrollY;
     if (top <= scroll) {
-      setIsButtonActive(true);
+      setBlogButtonActive(true);
     } else {
-      setIsButtonActive(false);
+      setBlogButtonActive(false);
     }
   };
 
-  const normalStyle = {
+  const none = {
     opacity: 0,
     transition: '0.2s',
     pointerEvents: 'none',
   };
-  const activeStyle = {
+  const active = {
     opacity: 1,
     transition: '0.2s',
   };
-  const style = isButtonActive ? activeStyle : normalStyle;
+
+  const blogButtonStyle = blogButtonActive ? active : none;
+
+  const hidden = {
+    opacity: 0,
+  };
+  const display = {
+    transition: '5s',
+    opacity: 1,
+  };
+  const topLetterStyle = topLetterFadeInFlg ? display : hidden;
 
   return (
     <Layout location={location}>
       {/* メインビジュアル */}
       <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
-        <h1 tw="m-0 text-left text-paleOrange text-8xl">
+        <h1 style={topLetterStyle} tw="m-0 text-left text-paleOrange text-8xl">
           STEP <br /> BY, STEP, <br /> WITH YOU.
         </h1>
       </div>
@@ -294,7 +309,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
           <Link to="/blog/all">
             <div
-              style={style}
+              style={blogButtonStyle}
               className="group"
               tw=" flex items-center overflow-hidden bg-darkBlue hover:w-44 hover:bg-lightGreen transition duration-75 fixed bottom-10 left-16 z-10 rounded-full w-14 h-14"
               onClick={() => animateScroll.scrollToTop()}
