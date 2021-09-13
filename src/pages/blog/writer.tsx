@@ -6,27 +6,18 @@ import 'twin.macro';
 import Menu from '../../components/blog/menu';
 import Layout from '../../components/blog/layout';
 import Seo from '../../components/blog/seo';
+import MemberGrid from '../../components/common/memberGrid';
 
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data, location }) => {
-  const writers = data.allContentfulPost.distinct;
-  const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
-  // const members = data.site?.siteMetadata?.member;
+  const writers = data.site?.siteMetadata?.member?.engineer;
+  const blogTitle = data.site?.siteMetadata?.blog?.title;
 
   return (
     <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
-      <div tw="pb-1120px sm:pb-1 h-screen">
-        <ol tw="flex flex-wrap justify-center gap-10 m-10 list-none text-center mb-0">
-          {writers?.map(writer => (
-            <li tw="w-40" key={writer}>
-              <Link to={`/blog/writer/${writer}` || '/'}>
-                <img tw="rounded-full" src={`/${writer}.png`} alt={writer} />
-                <p tw="text-black">{writer}</p>
-              </Link>
-            </li>
-          ))}
-        </ol>
+      <div tw="text-center pb-1120px sm:pb-1 h-screen mx-8 sm:mx-40 xl:mx-56">
+        <MemberGrid members={writers} isBlogWriters />
       </div>
     </Layout>
   );
@@ -38,13 +29,18 @@ export const pageQuery = graphql`
   query BlogWriterIndex {
     site {
       siteMetadata {
+        member {
+          engineer {
+            description
+            name
+            role
+            twitter
+          }
+        }
         blog {
           title
         }
       }
-    }
-    allContentfulPost {
-      distinct(field: author)
     }
   }
 `;

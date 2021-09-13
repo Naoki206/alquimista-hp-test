@@ -287,7 +287,7 @@ type SiteSiteMetadata = {
   readonly social: Maybe<Social>;
   readonly menu: Maybe<SiteSiteMetadataMenu>;
   readonly footer: Maybe<SiteSiteMetadataFooter>;
-  readonly member: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMember>>>;
+  readonly member: Maybe<SiteSiteMetadataMember>;
   readonly blog: Maybe<SiteSiteMetadataBlog>;
 };
 
@@ -311,10 +311,28 @@ type SiteSiteMetadataFooter = {
 };
 
 type SiteSiteMetadataMember = {
+  readonly engineer: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMemberEngineer>>>;
+  readonly marketing: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMemberMarketing>>>;
+  readonly designer: Maybe<ReadonlyArray<Maybe<SiteSiteMetadataMemberDesigner>>>;
+};
+
+type SiteSiteMetadataMemberEngineer = {
   readonly name: Maybe<Scalars['String']>;
   readonly role: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
   readonly twitter: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataMemberMarketing = {
+  readonly name: Maybe<Scalars['String']>;
+  readonly role: Maybe<Scalars['String']>;
+  readonly description: Maybe<Scalars['String']>;
+};
+
+type SiteSiteMetadataMemberDesigner = {
+  readonly name: Maybe<Scalars['String']>;
+  readonly role: Maybe<Scalars['String']>;
+  readonly description: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataBlog = {
@@ -2741,7 +2759,7 @@ type SiteSiteMetadataFilterInput = {
   readonly social: Maybe<SocialFilterInput>;
   readonly menu: Maybe<SiteSiteMetadataMenuFilterInput>;
   readonly footer: Maybe<SiteSiteMetadataFooterFilterInput>;
-  readonly member: Maybe<SiteSiteMetadataMemberFilterListInput>;
+  readonly member: Maybe<SiteSiteMetadataMemberFilterInput>;
   readonly blog: Maybe<SiteSiteMetadataBlogFilterInput>;
 };
 
@@ -2773,15 +2791,41 @@ type SiteSiteMetadataFooterFilterInput = {
   readonly address: Maybe<StringQueryOperatorInput>;
 };
 
-type SiteSiteMetadataMemberFilterListInput = {
-  readonly elemMatch: Maybe<SiteSiteMetadataMemberFilterInput>;
+type SiteSiteMetadataMemberFilterInput = {
+  readonly engineer: Maybe<SiteSiteMetadataMemberEngineerFilterListInput>;
+  readonly marketing: Maybe<SiteSiteMetadataMemberMarketingFilterListInput>;
+  readonly designer: Maybe<SiteSiteMetadataMemberDesignerFilterListInput>;
 };
 
-type SiteSiteMetadataMemberFilterInput = {
+type SiteSiteMetadataMemberEngineerFilterListInput = {
+  readonly elemMatch: Maybe<SiteSiteMetadataMemberEngineerFilterInput>;
+};
+
+type SiteSiteMetadataMemberEngineerFilterInput = {
   readonly name: Maybe<StringQueryOperatorInput>;
   readonly role: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly twitter: Maybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataMemberMarketingFilterListInput = {
+  readonly elemMatch: Maybe<SiteSiteMetadataMemberMarketingFilterInput>;
+};
+
+type SiteSiteMetadataMemberMarketingFilterInput = {
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly role: Maybe<StringQueryOperatorInput>;
+  readonly description: Maybe<StringQueryOperatorInput>;
+};
+
+type SiteSiteMetadataMemberDesignerFilterListInput = {
+  readonly elemMatch: Maybe<SiteSiteMetadataMemberDesignerFilterInput>;
+};
+
+type SiteSiteMetadataMemberDesignerFilterInput = {
+  readonly name: Maybe<StringQueryOperatorInput>;
+  readonly role: Maybe<StringQueryOperatorInput>;
+  readonly description: Maybe<StringQueryOperatorInput>;
 };
 
 type SiteSiteMetadataBlogFilterInput = {
@@ -2863,11 +2907,19 @@ type SiteFieldsEnum =
   | 'siteMetadata.footer.contact'
   | 'siteMetadata.footer.companyName'
   | 'siteMetadata.footer.address'
-  | 'siteMetadata.member'
-  | 'siteMetadata.member.name'
-  | 'siteMetadata.member.role'
-  | 'siteMetadata.member.description'
-  | 'siteMetadata.member.twitter'
+  | 'siteMetadata.member.engineer'
+  | 'siteMetadata.member.engineer.name'
+  | 'siteMetadata.member.engineer.role'
+  | 'siteMetadata.member.engineer.description'
+  | 'siteMetadata.member.engineer.twitter'
+  | 'siteMetadata.member.marketing'
+  | 'siteMetadata.member.marketing.name'
+  | 'siteMetadata.member.marketing.role'
+  | 'siteMetadata.member.marketing.description'
+  | 'siteMetadata.member.designer'
+  | 'siteMetadata.member.designer.name'
+  | 'siteMetadata.member.designer.role'
+  | 'siteMetadata.member.designer.description'
   | 'siteMetadata.blog.title'
   | 'siteMetadata.blog.menu.all'
   | 'siteMetadata.blog.menu.new'
@@ -6875,10 +6927,10 @@ type SeoQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
       & { readonly social: Maybe<Pick<Social, 'twitter'>> }
     )> }> };
 
-type ThreePopularContentsQueryVariables = Exact<{ [key: string]: never; }>;
+type ThreeNewContentsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ThreePopularContentsQuery = { readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+type ThreeNewContentsQuery = { readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
         & { readonly image: Maybe<(
           Pick<ContentfulAsset, 'title'>
@@ -6891,21 +6943,21 @@ type MenuQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type MenuQueryQuery = { readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'>, readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly author: Maybe<Pick<Author, 'name' | 'summary'>>, readonly social: Maybe<Pick<Social, 'twitter'>>, readonly blog: Maybe<{ readonly menu: Maybe<Pick<SiteSiteMetadataBlogMenu, 'all' | 'new' | 'popular' | 'writer' | 'category'>> }> }> }> };
 
-type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216QueryVariables = Exact<{ [key: string]: never; }>;
+type ThreePopularContentsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
-type ThreeNewContentsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ThreeNewContentsQuery = { readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+type ThreePopularContentsQuery = { readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
         & { readonly image: Maybe<(
           Pick<ContentfulAsset, 'title'>
           & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
         )> }
       ) }> } };
+
+type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type userskamatsukanaokialquimistaalquimistaHpsrcpages404Jsx3159585216Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
 type BlogAllQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6920,6 +6972,25 @@ type BlogAllQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
           & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
         )> }
       ) }> } };
+
+type BlogNewQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogNewQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title'>
+      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
+    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
+        & { readonly image: Maybe<(
+          Pick<ContentfulAsset, 'title'>
+          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
+        )> }
+      ) }> } };
+
+type BlogCategoryIndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogCategoryIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
 
 type HeaderQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6940,51 +7011,20 @@ type BlogPopularQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
         )> }
       ) }> } };
 
+type BlogWriterIndexQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type BlogWriterIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly member: Maybe<{ readonly engineer: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMemberEngineer, 'description' | 'name' | 'role' | 'twitter'>>>> }>, readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }> };
+
 type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070QueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type userskamatsukanaokialquimistaalquimistaHpsrcpagesusingTypescriptTsx2907560070Query = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
 
-type BlogCategoryIndexQueryVariables = Exact<{ [key: string]: never; }>;
+type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type BlogCategoryIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
-
-type BlogNewQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BlogNewQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title'>
-      & { readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }
-    )> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
-        Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
-        & { readonly image: Maybe<(
-          Pick<ContentfulAsset, 'title'>
-          & { readonly file: Maybe<Pick<ContentfulAssetFile, 'url'>> }
-        )> }
-      ) }> } };
-
-type BlogWriterIndexQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BlogWriterIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly blog: Maybe<Pick<SiteSiteMetadataBlog, 'title'>> }> }>, readonly allContentfulPost: Pick<ContentfulPostConnection, 'distinct'> };
-
-type ContentfulBlogPostBySlugQueryVariables = Exact<{
-  slug: Scalars['String'];
-}>;
-
-
-type ContentfulBlogPostBySlugQuery = { readonly contentfulPost: Maybe<(
-    Pick<ContentfulPost, 'title' | 'author' | 'date' | 'category'>
-    & { readonly content: Maybe<(
-      Pick<ContentfulPostContent, 'raw'>
-      & { readonly references: Maybe<ReadonlyArray<Maybe<(
-        { readonly __typename: 'ContentfulAsset' }
-        & Pick<ContentfulAsset, 'id' | 'contentful_id' | 'title' | 'gatsbyImageData'>
-        & { readonly fixed: Maybe<Pick<ContentfulFixed, 'width' | 'height' | 'src'>> }
-      )>>> }
-    )>, readonly image: Maybe<Pick<ContentfulAsset, 'gatsbyImageData'>> }
-  )> };
+type FooterQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly footer: Maybe<Pick<SiteSiteMetadataFooter, 'address' | 'companyName' | 'companyOverview' | 'contact' | 'privacyPolicy'>> }> }> };
 
 type categorizedBlogPostQueryVariables = Exact<{
   category: Scalars['String'];
@@ -7018,6 +7058,23 @@ type WriterBlogPostQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe
         )> }
       ) }> } };
 
+type ContentfulBlogPostBySlugQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+
+type ContentfulBlogPostBySlugQuery = { readonly contentfulPost: Maybe<(
+    Pick<ContentfulPost, 'title' | 'author' | 'date' | 'category'>
+    & { readonly content: Maybe<(
+      Pick<ContentfulPostContent, 'raw'>
+      & { readonly references: Maybe<ReadonlyArray<Maybe<(
+        { readonly __typename: 'ContentfulAsset' }
+        & Pick<ContentfulAsset, 'id' | 'contentful_id' | 'title' | 'gatsbyImageData'>
+        & { readonly fixed: Maybe<Pick<ContentfulFixed, 'width' | 'height' | 'src'>> }
+      )>>> }
+    )>, readonly image: Maybe<Pick<ContentfulAsset, 'gatsbyImageData'>> }
+  )> };
+
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyImageSharpFixed_tracedSVGFragment = Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -7044,6 +7101,11 @@ type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
+type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
+
 type GatsbyContentfulFixedFragment = Pick<ContentfulFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
 type GatsbyContentfulFixed_tracedSVGFragment = Pick<ContentfulFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
@@ -7064,20 +7126,10 @@ type GatsbyContentfulFluid_withWebpFragment = Pick<ContentfulFluid, 'base64' | '
 
 type GatsbyContentfulFluid_withWebp_noBase64Fragment = Pick<ContentfulFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
-type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type FooterQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly footer: Maybe<Pick<SiteSiteMetadataFooter, 'address' | 'companyName' | 'companyOverview' | 'contact' | 'privacyPolicy'>> }> }> };
-
-type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
-
 type TopIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly member: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMember, 'description' | 'name' | 'role' | 'twitter'>>>> }> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
+type TopIndexQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly member: Maybe<{ readonly designer: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMemberDesigner, 'description' | 'name' | 'role'>>>>, readonly engineer: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMemberEngineer, 'description' | 'name' | 'role' | 'twitter'>>>>, readonly marketing: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataMemberMarketing, 'description' | 'name' | 'role'>>>> }> }> }>, readonly allContentfulPost: { readonly edges: ReadonlyArray<{ readonly node: (
         Pick<ContentfulPost, 'title' | 'category' | 'author' | 'slug' | 'date'>
         & { readonly image: Maybe<(
           Pick<ContentfulAsset, 'title'>

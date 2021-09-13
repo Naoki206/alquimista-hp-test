@@ -50,7 +50,7 @@ const Menu: React.FC<{ location: WindowLocation<unknown> }> = location => {
 
   return (
     <>
-      <div tw="overflow-hidden">
+      <div tw="overflow-hidden mb-3 sm:mb-16">
         <ul
           tw="hidden sm:visible sm:flex justify-center items-start gap-8 mx-52 text-base font-bold"
           style={{ listStyle: 'none' }}
@@ -89,55 +89,17 @@ const Menu: React.FC<{ location: WindowLocation<unknown> }> = location => {
               </li>
             </Link>
           )}
-          <li>
-            <div className="group">
-              <div tw="group-hover:border rounded-lg group-hover:pl-3.5 group-hover:pr-1 border-darkBlue">
-                <div tw="flex items-center rounded-full group-hover:border-none border px-3 border-darkBlue">
-                  {blogMenu?.writer}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    // className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    tw="w-5 pl-1 pt-0.5 fill-current text-darkBlue group-hover:text-paleOrange"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <div tw="hidden group-hover:block">
-                  {writers.map(writer => (
-                    <Link to={`/blog/writer/${writer}`} key={writer}>
-                      <div className="group-bar" tw="flex items-center ml-1 mb-1">
-                        <img tw="w-5 rounded-full mr-2" src={`/${writer}.png`} alt="{writer}" />
-                        <p
-                          tw="hover:text-lightGreen mb-0 text-sm text-darkBlue transition duration-200"
-                          key={writer}
-                        >
-                          {writer}
-                        </p>
-                        {/* <svg
-                          className="writerArrowIcon"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          tw="w-6 ml-auto fill-current text-paleOrange group-hover:text-lightGreen transition duration-200"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clipRule="evenodd"
-                          />
-                        </svg> */}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </li>
+          {pathName === '/blog/writer' ? (
+            <li tw="bg-darkBlue transition duration-500 text-paleOrange rounded-full px-3.5 border border-darkBlue">
+              {blogMenu?.writer}
+            </li>
+          ) : (
+            <Link to="/blog/writer">
+              <li tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue">
+                {blogMenu?.writer}
+              </li>
+            </Link>
+          )}
           {pathName === '/blog/category' ? (
             <li tw="bg-darkBlue transition duration-500 text-paleOrange rounded-full px-3.5 border border-darkBlue">
               {blogMenu?.category}

@@ -14,14 +14,17 @@ import Layout from '../components/blog/layout';
 import Card from '../components/blog/card';
 import ThreePopularContents from '../components/blog/threePopularContents';
 import ThreeNewContents from '../components/blog/threeNewContents';
+import MemberGrid from '../components/common/memberGrid';
 
 const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, location }) => {
-  const [open, setOpen] = React.useState(-1);
   const [toggle, setToggle] = React.useState(true);
   const [blogButtonActive, setBlogButtonActive] = React.useState(false);
   const [topLetterFadeInFlg, setopLetterFadeInFlg] = React.useState(false);
-  const members = data.site?.siteMetadata?.member;
+  // @ts-ignore
+  const { designer, engineer, marketing } = data.site?.siteMetadata?.member;
+  const members = designer.concat(engineer, marketing);
   const posts = data.allContentfulPost.edges;
+  console.log(typeof members);
 
   React.useEffect(() => {
     window.addEventListener('scroll', scrollWindow);
@@ -251,73 +254,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <p tw="pb-14 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Members
           </p>
-          <ol tw="list-none mb-0 ">
-            <div tw="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-12">
-              {/* @ts-ignore */}
-              {members.map((member, index) => (
-                <div key={member?.name} tw="">
-                  <div tw="flex justify-center relative">
-                    {/*  eslint-disable-next-line no-console */}
-                    {open !== index ? (
-                      <img
-                        tw="w-48 rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
-                        src={`/${member?.name}.jpg`}
-                        alt={member?.name}
-                      />
-                    ) : (
-                      <img
-                        tw="w-48 mb-4 opacity-0"
-                        src={`/${member?.name}.jpg`}
-                        alt={member?.name}
-                      />
-                    )}
-                    <img
-                      tw="absolute w-48 rounded-full bottom-4"
-                      src={`/${member?.name}_smile.jpg`}
-                      alt={member?.name}
-                    />
-                  </div>
-                  <p tw="mb-2">{member?.role}</p>
-                  <div tw="flex justify-center items-center mb-5">
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <p tw="font-bold pr-2 mb-0">{member?.name}</p>
-                    {member?.twitter && (
-                      <img tw="w-5" src="/twitter-icon.svg" alt="/twitter-icon.svg" />
-                    )}
-                  </div>
-
-                  {open === index ? (
-                    <div>
-                      <p tw="font-bold text-sm text-left">{member?.description}</p>
-                      <div tw="flex w-full justify-center">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          tw="h-6 w-6 mt-3 mx-0 bg-darkBlue rounded-full text-paleOrange"
-                          onClick={() => setOpen(-1)}
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" />
-                        </svg>
-                      </div>
-                    </div>
-                  ) : (
-                    <div tw="flex w-full justify-center transition duration-150">
-                      <svg
-                        tw="h-6 w-6 mt-3 mx-0 bg-darkBlue rounded-full text-paleOrange"
-                        onClick={() => setOpen(index)}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </ol>
+          <MemberGrid members={members} />
         </div>
         <div>
           <div
@@ -359,10 +296,22 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         member {
-          description
-          name
-          role
-          twitter
+          designer {
+            description
+            name
+            role
+          }
+          engineer {
+            description
+            name
+            role
+            twitter
+          }
+          marketing {
+            description
+            name
+            role
+          }
         }
       }
     }
@@ -385,6 +334,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-function scale(arg0: number, arg1: number) {
-  throw new Error('Function not implemented.');
-}
