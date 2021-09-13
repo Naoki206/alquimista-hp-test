@@ -19,7 +19,7 @@ const Layout: React.FC<
       blogTopPage={blogTopPage}
     />
     <p tw="mb-0">{blogHeadingLetter}</p>
-    <main>{children}</main>
+    <main tw="font-sans">{children}</main>
     <Footer />
   </div>
 );

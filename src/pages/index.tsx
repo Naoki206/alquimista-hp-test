@@ -63,6 +63,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   const display = {
     transition: '5s',
     opacity: 1,
+    fontFamily: 'Montserrat',
   };
   const topLetterStyle = topLetterFadeInFlg ? display : hidden;
 
@@ -70,14 +71,19 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
     <Layout location={location}>
       {/* メインビジュアル */}
       <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
-        <h1 style={topLetterStyle} tw="m-0 text-left text-paleOrange text-8xl">
-          STEP <br /> BY, STEP, <br /> WITH YOU.
-        </h1>
+        <p
+          style={topLetterStyle}
+          tw="pb-24 transform scale-y-150 text-48px leading-60px  sm:text-72px sm:leading-85px m-0 text-left text-paleOrange font-black"
+        >
+          STEP <br /> BY&nbsp;&nbsp;STEP, <br /> WITH&nbsp;&nbsp;YOU.
+        </p>
       </div>
-      <div tw="pb-72 text-center text-darkBlue mx-10 sm:mx-40 xl:mx-56">
+      <div tw="pb-72 text-center text-darkBlue mx-8 sm:mx-40 xl:mx-56">
         {/* About us */}
-        <div tw="mb-28" id="aboutus_section">
-          <h1 tw="pb-7">About Us</h1>
+        <div tw="mb-36" id="aboutus_section">
+          <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            About Us
+          </p>
           <p tw="font-bold leading-10">
             AlquimistaはShopifyを軸にしたDXエキスパートです。
             <br />
@@ -88,8 +94,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           </p>
         </div>
         {/* Vision */}
-        <div tw="mb-28" id="vision_section">
-          <h1 tw="pb-5">Vision</h1>
+        <div tw="mb-36" id="vision_section">
+          <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            Vision
+          </p>
           <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
           <p tw="font-bold leading-10">
             Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、変化に強いアーキテクチャを提案し、お客様と共に成長することです。
@@ -98,7 +106,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
         {/* Service */}
         <div tw="mb-28" id="service_section">
-          <h1 tw="pb-14">Service</h1>
+          <p tw="pb-5 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            Service
+          </p>
 
           <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
             <StaticImage
@@ -169,8 +179,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           </div>
         </div>
         {/* Blog */}
-        <div tw="mb-28">
-          <h1 tw="pb-7">Blog</h1>
+        <div tw="mb-40">
+          <p tw="pb-7 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            Blog
+          </p>
           <div tw="flex justify-center">
             <div
               tw="w-36 h-8 overflow-x-hidden rounded-full bg-darkBlue px-1 py-1 mb-10"
@@ -208,8 +220,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* News */}
-        <div tw="mb-28" id="news_section">
-          <h1 tw="pb-14">News</h1>
+        <div tw="mb-40" id="news_section">
+          <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            News
+          </p>
           <div tw="grid grid-cols-1 mb-5">
             <ol tw="list-none">
               {/* @ts-ignore */}
@@ -234,7 +248,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
         {/* Members */}
         <div tw="mb-28" id="member_section">
-          <h1 tw="pb-14">Members</h1>
+          <p tw="pb-14 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            Members
+          </p>
           <ol tw="list-none mb-0 ">
             <div tw="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-12">
               {/* @ts-ignore */}
@@ -242,11 +258,19 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                 <div key={member?.name} tw="">
                   <div tw="flex justify-center relative">
                     {/*  eslint-disable-next-line no-console */}
-                    <img
-                      tw="w-48 rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
-                      src={`/${member?.name}.jpg`}
-                      alt={member?.name}
-                    />
+                    {open !== index ? (
+                      <img
+                        tw="w-48 rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
+                        src={`/${member?.name}.jpg`}
+                        alt={member?.name}
+                      />
+                    ) : (
+                      <img
+                        tw="w-48 mb-4 opacity-0"
+                        src={`/${member?.name}.jpg`}
+                        alt={member?.name}
+                      />
+                    )}
                     <img
                       tw="absolute w-48 rounded-full bottom-4"
                       src={`/${member?.name}_smile.jpg`}
@@ -361,3 +385,6 @@ export const pageQuery = graphql`
     }
   }
 `;
+function scale(arg0: number, arg1: number) {
+  throw new Error('Function not implemented.');
+}

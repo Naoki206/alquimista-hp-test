@@ -20,6 +20,14 @@ module.exports = {
       height: {
         '750px': '750px',
       },
+      lineHeight: {
+        '85px': '85px',
+        '60px': '60px',
+      },
+      fontSize: {
+        '72px': '72px',
+        '48px': '48px',
+      },
     },
   },
   variants: {

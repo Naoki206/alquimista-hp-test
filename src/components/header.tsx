@@ -59,11 +59,13 @@ const Header: React.FC<
 
   const normal = {
     transition: '0.2s',
+    fontFamily: 'Avenir Next',
   };
   const active = {
     transition: '0.2s',
     backgroundColor: 'rgba(242, 242, 242, var(--tw-text-opacity))',
     color: 'rgba(10, 41, 62, var(--tw-bg-opacity))',
+    fontFamily: 'Avenir Next',
   };
   const normalPcText = {
     color: 'rgba(242, 242, 242, var(--tw-text-opacity))',
