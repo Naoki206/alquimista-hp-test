@@ -6,19 +6,27 @@ import Header from '../header';
 import Footer from '../footer';
 
 const Layout: React.FC<
-  { title?: string } & { location: WindowLocation<unknown> } & { blogHeadingLetter?: boolean } & {
-    blogContentsPage?: boolean;
-  } & { blogTopPage?: boolean }
-> = ({ location, title, children, blogHeadingLetter, blogContentsPage, blogTopPage }) => (
+  { location: WindowLocation<unknown> } & {
+    blogOrNewsHeadingLetter?: number;
+  } & {
+    blogOrNewsContentsPage?: boolean;
+  } & { blogOrNewsTopPage?: boolean } & { topPage?: boolean }
+> = ({
+  location,
+  children,
+  blogOrNewsHeadingLetter,
+  blogOrNewsContentsPage,
+  blogOrNewsTopPage,
+  topPage,
+}) => (
   <div tw="bg-paleOrange relative h-full">
     <Header
-      title={title}
       location={location}
-      blogHeadingLetter={blogHeadingLetter}
-      blogContentsPage={blogContentsPage}
-      blogTopPage={blogTopPage}
+      blogOrNewsHeadingLetter={blogOrNewsHeadingLetter}
+      blogOrNewsContentsPage={blogOrNewsContentsPage}
+      blogOrNewsTopPage={blogOrNewsTopPage}
+      topPage={topPage}
     />
-    <p tw="mb-0">{blogHeadingLetter}</p>
     <main tw="font-sans">{children}</main>
     <Footer />
   </div>

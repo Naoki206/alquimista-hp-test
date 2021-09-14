@@ -24,7 +24,6 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   const { designer, engineer, marketing } = data.site?.siteMetadata?.member;
   const members = designer.concat(engineer, marketing);
   const posts = data.allContentfulPost.edges;
-  console.log(typeof members);
 
   React.useEffect(() => {
     window.addEventListener('scroll', scrollWindow);
@@ -71,7 +70,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   const topLetterStyle = topLetterFadeInFlg ? display : hidden;
 
   return (
-    <Layout location={location}>
+    <Layout location={location} topPage>
       {/* メインビジュアル */}
       <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
         <p
@@ -232,8 +231,8 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               {/* @ts-ignore */}
               {posts.map(post => (
                 // @ts-ignore
-                <div key={post.node.slug} tw="text-left border-b border-darkBlue mb-5">
-                  <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.date}</p>
+                <div key={post.node.contentful_id} tw="text-left border-b border-darkBlue mb-5">
+                  <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
                   <p tw="font-extrabold text-lg mb-8">{post?.node.title}</p>
                 </div>
               ))}
@@ -315,14 +314,14 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPost(sort: { order: DESC, fields: date }, limit: 3) {
+    allContentfulPost(sort: { order: DESC, fields: createdAt }, limit: 3) {
       edges {
         node {
           title
           category
           author
-          slug
-          date(formatString: "YYYY.MM.DD")
+          contentful_id
+          createdAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {

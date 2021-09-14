@@ -65,7 +65,6 @@ module.exports = {
       ],
     },
     blog: {
-      title: 'Blog',
       menu: {
         all: 'ALL',
         new: 'New',

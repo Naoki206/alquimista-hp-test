@@ -13,12 +13,11 @@ const WriterBlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.WriterBlo
   data,
   location,
 }) => {
-  const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
   const posts = data.allContentfulPost.edges;
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+      <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
         <Seo title="All posts" />
         <Menu location={location} />
         <p>
@@ -30,12 +29,12 @@ const WriterBlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.WriterBlo
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+    <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div>
         {/* @ts-ignore */}
-        <CardGrid posts={posts} />
+        <CardGrid posts={posts} newsOrBlog="blog" />
       </div>
     </Layout>
   );
@@ -45,25 +44,17 @@ export default WriterBlogPostContentfulTemplate;
 
 export const pageQuery = graphql`
   query WriterBlogPost($writer: String!) {
-    site {
-      siteMetadata {
-        title
-        blog {
-          title
-        }
-      }
-    }
     allContentfulPost(
       filter: { author: { eq: $writer }, node_locale: { eq: "ja-JP" } }
-      sort: { order: DESC, fields: date }
+      sort: { order: DESC, fields: createdAt }
     ) {
       edges {
         node {
           title
           category
           author
-          slug
-          date(formatString: "YYYY.MM.DD")
+          contentful_id
+          createdAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {

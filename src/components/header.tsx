@@ -9,10 +9,12 @@ import { WindowLocation } from '@reach/router';
 import 'twin.macro';
 
 const Header: React.FC<
-  { title?: string } & { location?: WindowLocation<unknown> } & { blogHeadingLetter?: boolean } & {
-    blogContentsPage?: boolean;
-  } & { blogTopPage?: boolean }
-> = ({ location, title, blogHeadingLetter, blogContentsPage, blogTopPage }) => {
+  { location?: WindowLocation<unknown> } & {
+    blogOrNewsHeadingLetter?: number;
+  } & {
+    blogOrNewsContentsPage?: boolean;
+  } & { blogOrNewsTopPage?: boolean } & { topPage?: boolean }
+> = ({ location, blogOrNewsHeadingLetter, blogOrNewsContentsPage, blogOrNewsTopPage, topPage }) => {
   const rootPath = `${__PATH_PREFIX__}/`;
   // const isRootPath = location.pathname === rootPath;
 
@@ -94,12 +96,12 @@ const Header: React.FC<
   let spTextColorChangebleStyle = chancgeColorActive ? activeSpText : normalSpText;
   let contactUsBtnChangebleStyle = chancgeColorActive ? activeContactUsBtn : normalContactUsBtn;
 
-  if (blogTopPage) {
+  if (blogOrNewsTopPage) {
     bgColorChangebleStyle = normal;
     pcTextColorChangebleStyle = normalPcText;
     spTextColorChangebleStyle = normalSpText;
     contactUsBtnChangebleStyle = normalContactUsBtn;
-  } else if (blogContentsPage) {
+  } else if (blogOrNewsContentsPage) {
     bgColorChangebleStyle = active;
     pcTextColorChangebleStyle = activePcText;
     spTextColorChangebleStyle = activeSpText;
@@ -114,14 +116,14 @@ const Header: React.FC<
       <header style={bgColorChangebleStyle} tw="bg-darkBlue sticky top-0 z-30 text-paleOrange">
         <ul tw="mx-4 sm:mx-8 md:mx-16 justify-end font-bold flex text-xs md:gap-4 md:text-sm lg:gap-12 lg:text-base xl:gap-16 2xl:gap-20 h-16 items-center list-none">
           <li tw="mr-auto">
-            {blogTopPage ? (
+            {blogOrNewsTopPage ? (
               <img
                 tw="w-32 sm:w-36"
                 src="/alquimista_logo_white.svg"
                 alt="alquimista_logo_white"
                 className="hogehoge"
               />
-            ) : blogContentsPage ? (
+            ) : blogOrNewsContentsPage ? (
               <img
                 tw="w-32 sm:w-36"
                 src="/alquimista_logo_black.svg"
@@ -179,7 +181,30 @@ const Header: React.FC<
           </li>
 
           {/* pc menu */}
-          {blogTopPage ? (
+          {/* TODO:!toppageに変更 */}
+          {blogOrNewsContentsPage && (
+            <>
+              <Link to="/#aboutus_section">
+                <li tw="hidden md:block text-darkBlue">{menu?.aboutUs}</li>
+              </Link>
+              <Link to="/#vision_section">
+                <li tw="hidden md:block text-darkBlue">{menu?.vision}</li>
+              </Link>
+              <Link to="/#service_section">
+                <li tw="hidden md:block text-darkBlue">{menu?.service}</li>
+              </Link>
+              <Link to="/blog/all">
+                <li tw="hidden md:block text-darkBlue">{menu?.blog}</li>
+              </Link>
+              <Link to="/#news_section">
+                <li tw="hidden md:block text-darkBlue">{menu?.news}</li>
+              </Link>
+              <Link to="/#member_section">
+                <li tw="hidden md:block text-darkBlue">{menu?.member}</li>
+              </Link>
+            </>
+          )}
+          {blogOrNewsTopPage && (
             <>
               <Link to="/#aboutus_section">
                 <li tw="hidden md:block text-paleOrange">{menu?.aboutUs}</li>
@@ -200,7 +225,8 @@ const Header: React.FC<
                 <li tw="hidden md:block text-paleOrange">{menu?.member}</li>
               </Link>
             </>
-          ) : (
+          )}
+          {topPage && (
             <>
               <ScrollLink smooth to="aboutus_section" duration={1000} offset={-150}>
                 <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
@@ -240,7 +266,7 @@ const Header: React.FC<
         </ul>
 
         {/* mobile menu */}
-        {blogTopPage
+        {blogOrNewsTopPage
           ? open && (
               <ul tw="p-5 list-none">
                 <Link to="/#aboutus_section">
@@ -345,11 +371,12 @@ const Header: React.FC<
               </ul>
             )}
       </header>
-      {blogHeadingLetter && (
+      {blogOrNewsHeadingLetter === 1 && (
         <h1 tw="text-center py-12 pb-1 mt-0">
-          <Link to="/blog/all">{title}</Link>
+          <Link to="/blog/all">Blog</Link>
         </h1>
       )}
+      {blogOrNewsHeadingLetter === 2 && <h1 tw="text-center py-12 pb-10 mt-0">News</h1>}
     </>
   );
 };

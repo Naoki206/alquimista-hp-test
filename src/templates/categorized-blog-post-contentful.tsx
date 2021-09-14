@@ -12,12 +12,11 @@ import CardGrid from '../components/blog/cardgrid';
 const CategorizedBlogPostContentfulTemplate: React.FC<
   PageProps<GatsbyTypes.categorizedBlogPostQuery>
 > = ({ data, location }) => {
-  const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
   const posts = data.allContentfulPost.edges;
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+      <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
         <Seo title="All posts" />
         <Menu location={location} />
         <p>
@@ -29,12 +28,12 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+    <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div>
         {/* @ts-ignore */}
-        <CardGrid posts={posts} />
+        <CardGrid posts={posts} newsOrBlog="blog" />
       </div>
     </Layout>
   );
@@ -44,25 +43,17 @@ export default CategorizedBlogPostContentfulTemplate;
 
 export const pageQuery = graphql`
   query categorizedBlogPost($category: String!) {
-    site {
-      siteMetadata {
-        title
-        blog {
-          title
-        }
-      }
-    }
     allContentfulPost(
       filter: { category: { eq: $category }, node_locale: { eq: "ja-JP" } }
-      sort: { order: DESC, fields: date }
+      sort: { order: DESC, fields: createdAt }
     ) {
       edges {
         node {
           title
           category
           author
-          slug
-          date(formatString: "YYYY.MM.DD")
+          contentful_id
+          createdAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {

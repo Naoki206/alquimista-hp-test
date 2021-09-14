@@ -10,10 +10,9 @@ import MemberGrid from '../../components/common/memberGrid';
 
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data, location }) => {
   const writers = data.site?.siteMetadata?.member?.engineer;
-  const blogTitle = data.site?.siteMetadata?.blog?.title;
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+    <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div tw="text-center pb-1120px sm:pb-1 h-screen mx-8 sm:mx-40 xl:mx-56">
@@ -36,9 +35,6 @@ export const pageQuery = graphql`
             role
             twitter
           }
-        }
-        blog {
-          title
         }
       }
     }

@@ -10,12 +10,11 @@ import CardGrid from '../../components/blog/cardgrid';
 
 // const BlogIndex = ({ data, location }) => {
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogNewQuery>> = ({ data, location }) => {
-  const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
   const posts = data.allContentfulPost.edges;
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+      <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
         <Seo title="All posts" />
         <Menu location={location} />
         <p>
@@ -27,12 +26,12 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogNewQuery>> = ({ data, locati
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+    <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div>
         {/* @ts-ignore */}
-        <CardGrid posts={posts} />
+        <CardGrid posts={posts} newsOrBlog="blog" />
       </div>
     </Layout>
   );
@@ -42,25 +41,17 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogNew {
-    site {
-      siteMetadata {
-        title
-        blog {
-          title
-        }
-      }
-    }
     allContentfulPost(
       filter: { node_locale: { eq: "ja-JP" } }
-      sort: { order: DESC, fields: date }
+      sort: { order: DESC, fields: createdAt }
     ) {
       edges {
         node {
           title
           category
           author
-          slug
-          date(formatString: "YYYY.MM.DD")
+          contentful_id
+          createdAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {

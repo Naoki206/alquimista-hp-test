@@ -10,11 +10,10 @@ import Seo from '../../components/blog/seo';
 // const BlogIndex = ({ data, location }) => {
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ data, location }) => {
   const categories = data.allContentfulPost.distinct;
-  const blogTitle = data.site?.siteMetadata?.blog?.title || 'Title';
 
   if (categories.length === 0) {
     return (
-      <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+      <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -24,7 +23,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogCategoryIndexQuery>> = ({ da
   }
 
   return (
-    <Layout location={location} title={blogTitle} blogHeadingLetter blogTopPage>
+    <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
       <Menu location={location} />
       <div tw="pb-14 h-screen">
@@ -51,13 +50,6 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogCategoryIndex {
-    site {
-      siteMetadata {
-        blog {
-          title
-        }
-      }
-    }
     allContentfulPost {
       distinct(field: category)
     }

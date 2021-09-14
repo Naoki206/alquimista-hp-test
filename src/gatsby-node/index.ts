@@ -11,13 +11,15 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   // Define a template
   // for blog post
   const blogPost = path.resolve('./src/templates/blog-post-contentful.tsx');
+  // for news post
+  const newsPost = path.resolve('./src/templates/news-post-contentful.tsx');
   // for categorized blog post
   const categorizedPost = path.resolve('./src/templates/categorized-blog-post-contentful.tsx');
   // for particular wiriter's blog post
   const writerPost = path.resolve('./src/templates/writer-blog-post-contentful.tsx');
 
   // Get all blog posts
-  const result = await graphql<{
+  const postResult = await graphql<{
     allContentfulPost: Pick<GatsbyTypes.Query['allContentfulPost'], 'edges' | 'distinct'>;
   }>(
     `
@@ -25,11 +27,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         allContentfulPost {
           edges {
             node {
-              slug
-              title
-              content {
-                raw
-              }
+              contentful_id
             }
           }
         }
@@ -37,26 +35,58 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     `
   );
 
-  if (result.errors) {
-    reporter.panicOnBuild('There was an error loading your blog posts', result.errors);
+  if (postResult.errors) {
+    reporter.panicOnBuild('There was an error loading your blog posts', postResult.errors);
     return;
   }
 
-  const posts = result.data!.allContentfulPost.edges;
+  const posts = postResult.data!.allContentfulPost.edges;
 
   // Create blog posts pages
   if (posts && posts.length > 0) {
-    posts.forEach((post, index) => {
-      // const previousPostId = index === 0 ? null : posts[index - 1].node.id;
-      // const nextPostId = index === posts.length - 1 ? null : posts[index + 1].node.id;
+    posts.forEach(post => {
       createPage({
-        path: `/blog/${post.node.slug}` || '/',
+        path: `/blog/${post.node.contentful_id}` || '/',
         component: blogPost,
         context: {
-          id: post.node.id,
-          slug: post.node.slug,
-          // previousPostId,
-          // nextPostId,
+          contentful_id: post.node.contentful_id,
+        },
+      });
+    });
+  }
+
+  // Get all news posts
+  const newsResult = await graphql<{
+    allContentfulNews: Pick<GatsbyTypes.Query['allContentfulPost'], 'edges' | 'distinct'>;
+  }>(
+    `
+      {
+        allContentfulNews {
+          edges {
+            node {
+              contentful_id
+            }
+          }
+        }
+      }
+    `
+  );
+
+  if (newsResult.errors) {
+    reporter.panicOnBuild('There was an error loading your blog posts', newsResult.errors);
+    return;
+  }
+
+  const newsPosts = newsResult.data!.allContentfulNews.edges;
+
+  // Create news posts pages
+  if (newsPosts && newsPosts.length > 0) {
+    newsPosts.forEach(post => {
+      createPage({
+        path: `/news/${post.node.contentful_id}` || '/',
+        component: newsPost,
+        context: {
+          contentful_id: post.node.contentful_id,
         },
       });
     });
@@ -127,24 +157,6 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   });
 };
 
-// export const onCreateNode: GatsbyNode['onCreateNode'] = ({
-//   node,
-//   actions,
-//   getNode,
-// }) => {
-//   const { createNodeField } = actions;
-
-//   if (node.internal.type === 'MarkdownRemark') {
-//     const value = createFilePath({ node, getNode });
-
-//     createNodeField({
-//       name: 'slug',
-//       node,
-//       value,
-//     });
-//   }
-// };
-
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async ({
   actions,
 }: {
@@ -186,7 +198,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     }
 
     type Fields {
-      slug: String
+      contentful_id: String
     }
   `);
 };
