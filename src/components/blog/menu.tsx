@@ -54,7 +54,6 @@ const Menu: React.FC<
   const blogMenu = data.site?.siteMetadata?.blog?.menu;
   const categories = data.allContentfulPost.distinct;
   // eslint-disable-next-line react/destructuring-assignment
-  const pathName = location.pathname;
 
   return (
     <>

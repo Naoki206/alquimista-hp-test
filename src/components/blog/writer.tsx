@@ -4,9 +4,12 @@ import React from 'react';
 import 'twin.macro';
 
 const Writer: React.FC<{
-  member: GatsbyTypes.Maybe<
-    Pick<GatsbyTypes.SiteSiteMetadataMember, 'description' | 'name' | 'role' | 'twitter'>
-  >;
+  member: {
+    name: string;
+    role: string;
+    twitter: string;
+    description: string;
+  };
   index: number;
   open: number;
   setOpen: React.Dispatch<React.SetStateAction<number>>;

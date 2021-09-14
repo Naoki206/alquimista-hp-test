@@ -33,7 +33,7 @@ const ThreePopularContents: React.FC = () => {
   return (
     <ol tw="list-none mb-0 ">
       <div tw="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-12">
-        {posts.map((post: { node: any }) => (
+        {posts.map(post => (
           // @ts-ignore
           <Card post={post} key={post?.node.contentful_id} newsOrBlog="blog" />
         ))}
