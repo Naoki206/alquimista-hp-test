@@ -11,12 +11,13 @@ import CardGrid from '../../components/blog/cardgrid';
 // const BlogIndex = ({ data, location }) => {
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogPopularQuery>> = ({ data, location }) => {
   const posts = data.allContentfulPost.edges;
+  const [isSelected, setIsSelected] = React.useState(3);
 
   if (posts.length === 0) {
     return (
       <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
         <Seo title="All posts" />
-        <Menu location={location} />
+        <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
           for the "gatsby-source-filesystem" plugin in gatsby-config.js).
@@ -28,7 +29,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogPopularQuery>> = ({ data, lo
   return (
     <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
-      <Menu location={location} />
+      <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div>
         {/* @ts-ignore */}
         <CardGrid posts={posts} newsOrBlog="blog" />

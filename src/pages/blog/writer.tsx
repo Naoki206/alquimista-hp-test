@@ -10,11 +10,12 @@ import MemberGrid from '../../components/common/memberGrid';
 
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data, location }) => {
   const writers = data.site?.siteMetadata?.member?.engineer;
+  const [isSelected, setIsSelected] = React.useState(4);
 
   return (
     <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="All posts" />
-      <Menu location={location} />
+      <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div tw="text-center pb-1120px sm:pb-1 h-screen mx-8 sm:mx-40 xl:mx-56">
         <MemberGrid members={writers} isBlogWriters />
       </div>
