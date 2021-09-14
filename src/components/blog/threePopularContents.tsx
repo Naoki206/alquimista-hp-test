@@ -14,7 +14,7 @@ const ThreePopularContents: React.FC = () => {
             title
             category
             author
-            contentful_id
+            slug
             createdAt(formatString: "YYYY.MM.DD")
             image {
               title
@@ -35,7 +35,7 @@ const ThreePopularContents: React.FC = () => {
       <div tw="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-12">
         {posts.map(post => (
           // @ts-ignore
-          <Card post={post} key={post?.node.contentful_id} newsOrBlog="blog" />
+          <Card post={post} key={post?.node.slug} newsOrBlog="blog" />
         ))}
       </div>
     </ol>

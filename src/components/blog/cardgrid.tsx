@@ -10,7 +10,7 @@ const CardGrid: React.FC<{
     readonly node: Pick<GatsbyTypes.ContentfulPost, 'title' | 'createdAt'> & {
       author?: string;
       category?: Array<string>;
-      contentful_id?: string;
+      slug?: string;
     } & {
       readonly image: GatsbyTypes.Maybe<
         Pick<GatsbyTypes.ContentfulAsset, 'title'> & {
@@ -33,7 +33,7 @@ const CardGrid: React.FC<{
           // @ts-ignore
           isNewsPost={isNewsPost}
           post={post}
-          key={post?.node.contentful_id}
+          key={post?.node.slug}
         />
       ))}
     </div>

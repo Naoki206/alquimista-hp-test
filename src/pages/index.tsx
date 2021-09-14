@@ -231,7 +231,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               {/* @ts-ignore */}
               {posts.map(post => (
                 // @ts-ignore
-                <div key={post.node.contentful_id} tw="text-left border-b border-darkBlue mb-5">
+                <div key={post.node.slug} tw="text-left border-b border-darkBlue mb-5">
                   <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
                   <p tw="font-extrabold text-lg mb-8">{post?.node.title}</p>
                 </div>
@@ -324,7 +324,7 @@ export const pageQuery = graphql`
           title
           category
           author
-          contentful_id
+          slug
           createdAt(formatString: "YYYY.MM.DD")
           image {
             title

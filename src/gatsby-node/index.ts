@@ -27,7 +27,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         allContentfulPost {
           edges {
             node {
-              contentful_id
+              slug
             }
           }
         }
@@ -46,10 +46,10 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   if (posts && posts.length > 0) {
     posts.forEach(post => {
       createPage({
-        path: `/blog/${post.node.contentful_id}` || '/',
+        path: `/blog/${post.node.slug}` || '/',
         component: blogPost,
         context: {
-          contentful_id: post.node.contentful_id,
+          slug: post.node.slug,
         },
       });
     });
@@ -64,7 +64,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         allContentfulNews {
           edges {
             node {
-              contentful_id
+              slug
             }
           }
         }
@@ -83,10 +83,10 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   if (newsPosts && newsPosts.length > 0) {
     newsPosts.forEach(post => {
       createPage({
-        path: `/news/${post.node.contentful_id}` || '/',
+        path: `/news/${post.node.slug}` || '/',
         component: newsPost,
         context: {
-          contentful_id: post.node.contentful_id,
+          slug: post.node.slug,
         },
       });
     });
@@ -198,7 +198,7 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
     }
 
     type Fields {
-      contentful_id: String
+      slug: String
     }
   `);
 };

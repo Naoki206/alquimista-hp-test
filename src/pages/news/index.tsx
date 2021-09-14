@@ -37,7 +37,7 @@ export const pageQuery = graphql`
     allContentfulNews(filter: { node_locale: { eq: "ja-JP" } }) {
       edges {
         node {
-          contentful_id
+          slug
           title
           createdAt(formatString: "YYYY.MM.DD")
           image {

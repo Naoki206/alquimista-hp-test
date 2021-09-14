@@ -51,7 +51,7 @@ export const pageQuery = graphql`
           title
           category
           author
-          contentful_id
+          slug
           updatedAt(formatString: "YYYY.MM.DD")
           image {
             title

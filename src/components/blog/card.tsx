@@ -8,12 +8,13 @@ import 'twin.macro';
 const Card: React.FC<{
   post: {
     node: {
-      contentful_id: string;
+      contentslugful_id: string;
       image: { title: string | undefined; file: { url: string | undefined } };
       updatedAt: string;
       category?: Array<string>;
       title: string;
       author?: string;
+      slug: string;
     };
   };
   isNewsPost: boolean;
@@ -22,7 +23,7 @@ const Card: React.FC<{
   <li tw="w-full">
     <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96">
       <div tw="group-hover:opacity-80 transition duration-300">
-        <Link to={`/${newsOrBlog}/${post.node.contentful_id}` || '/'} itemProp="url">
+        <Link to={`/${newsOrBlog}/${post.node.slug}` || '/'} itemProp="url">
           <div tw="relative overflow-hidden rounded-xl">
             {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img
