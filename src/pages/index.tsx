@@ -257,24 +257,28 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
         <div>
           <div
-            tw="fixed block bg-paleOrange bottom-10 right-16 z-10 rounded-full px-5 py-3 w-16 h-16"
+            tw="fixed block bg-paleOrange bottom-5 right-5 sm:bottom-10 sm:right-16 z-10 rounded-full w-14 h-14 sm:w-14 sm:h-14"
             onClick={() => animateScroll.scrollToTop()}
           >
-            <FontAwesomeIcon icon={faArrowUp} />
-            <p tw="m-0 text-sm">Top</p>
+            <div tw="pt-3 sm:pt-2">
+              <FontAwesomeIcon icon={faArrowUp} />
+            </div>
+            <p tw="m-0 text-sm hidden sm:block">Top</p>
           </div>
           <div
-            tw="hover:opacity-0 transition duration-500 fixed block bg-paleOrange bottom-10 right-16 z-10 rounded-full px-5 pt-5 w-16 h-16"
+            tw="hover:opacity-0 transition duration-500 fixed block bg-paleOrange bottom-5 right-5 sm:bottom-10 sm:right-16 z-10 rounded-full w-14 h-14 sm:w-14 sm:h-14"
             onClick={() => animateScroll.scrollToTop()}
           >
-            <FontAwesomeIcon icon={faChevronUp} />
+            <div tw="flex justify-center items-center w-full h-full">
+              <FontAwesomeIcon icon={faChevronUp} />
+            </div>
           </div>
 
           <Link to="/blog/all">
             <div
               style={blogButtonStyle}
               className="group"
-              tw=" flex items-center overflow-hidden bg-darkBlue hover:w-44 hover:bg-lightGreen transition duration-75 fixed bottom-10 left-16 z-10 rounded-full w-14 h-14"
+              tw=" flex items-center overflow-hidden bg-darkBlue sm:hover:w-44 hover:bg-lightGreen transition duration-75 fixed bottom-5 left-5 sm:bottom-10 sm:left-16 z-10 rounded-full w-14 h-14 sm:w-14 sm:h-14"
             >
               <img tw="w-14" src="/note_logo.svg" alt="/note_logo.svg" />
               <p tw="hidden group-hover:block text-base font-bold mb-0 text-paleOrange">

@@ -24,7 +24,7 @@ const CardGrid: React.FC<{
 }> = ({ posts, isNewsPost, newsOrBlog }) => (
   <ol tw="pb-80 md:pb-60 lg:pb-56 list-none mb-0">
     {/* cards from here */}
-    <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 mx-10 sm:gap-12 sm:mx-36 md:mx-28 lg:mx-32">
+    <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 sm:gap-12 lg:mx-32 mx-5 sm:mx-4 md:mx-28 xl:mx-56">
       {/* @ts-ignore */}
       {posts.map(post => (
         <Card
