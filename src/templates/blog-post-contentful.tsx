@@ -56,7 +56,17 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
             />
             <div>
               <p tw="text-sm sm:text-base text-gray-700 m-0">Written By {post?.author}</p>
-              <p tw="text-sm sm:text-base text-gray-500 mb-0">{post?.createdAt}</p>
+              {/* @ts-ignore */}
+              {post?.createdAt < post?.updatedAt ? (
+                <div tw="my-2">
+                  <p tw="line-through text-sm sm:text-base text-gray-500 mb-0">{post?.createdAt}</p>
+                  <p tw="text-sm sm:text-base text-gray-500 mb-0">{post?.updatedAt}</p>
+                </div>
+              ) : (
+                <div tw="my-2">
+                  <p tw="text-sm sm:text-base text-gray-500 mb-0">{post?.createdAt}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -92,6 +102,7 @@ export const pageQuery = graphql`
       title
       author
       createdAt(formatString: "YYYY/MM/DD HH:mm:ss")
+      updatedAt(formatString: "YYYY/MM/DD HH:mm:ss")
       category
       content {
         raw

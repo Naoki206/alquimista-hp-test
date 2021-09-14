@@ -11,6 +11,7 @@ import 'twin.macro';
 
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/blog/layout';
+import Card from '../components/blog/card';
 import ThreePopularContents from '../components/blog/threePopularContents';
 import ThreeNewContents from '../components/blog/threeNewContents';
 import MemberGrid from '../components/common/memberGrid';

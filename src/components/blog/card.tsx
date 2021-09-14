@@ -10,7 +10,7 @@ const Card: React.FC<{
     node: {
       contentful_id: string;
       image: { title: string | undefined; file: { url: string | undefined } };
-      createdAt: string;
+      updatedAt: string;
       category?: Array<string>;
       title: string;
       author?: string;
@@ -35,7 +35,7 @@ const Card: React.FC<{
             </p>
           </div>
           <div tw="my-2">
-            <p tw="mb-0 text-gray-500">{post.node.createdAt}</p>
+            <p tw="mb-0 text-gray-500">{post.node.updatedAt}</p>
           </div>
           <div tw="px-2">
             <div tw="flex flex-wrap mb-1.5">

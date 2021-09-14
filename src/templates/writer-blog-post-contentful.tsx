@@ -47,7 +47,7 @@ export const pageQuery = graphql`
   query WriterBlogPost($writer: String!) {
     allContentfulPost(
       filter: { author: { eq: $writer }, node_locale: { eq: "ja-JP" } }
-      sort: { order: DESC, fields: createdAt }
+      sort: { order: DESC, fields: updatedAt }
     ) {
       edges {
         node {
@@ -55,7 +55,7 @@ export const pageQuery = graphql`
           category
           author
           contentful_id
-          createdAt(formatString: "YYYY.MM.DD")
+          updatedAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {

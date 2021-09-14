@@ -42,17 +42,14 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogPopular {
-    allContentfulPost(
-      filter: { node_locale: { eq: "ja-JP" } }
-      sort: { order: DESC, fields: createdAt }
-    ) {
+    allContentfulPost(filter: { node_locale: { eq: "ja-JP" } }) {
       edges {
         node {
           title
           category
           author
           contentful_id
-          createdAt(formatString: "YYYY.MM.DD")
+          updatedAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {

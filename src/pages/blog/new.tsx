@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import * as React from 'react';
-import { Link, graphql, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
 import Menu from '../../components/blog/menu';
@@ -44,7 +44,7 @@ export const pageQuery = graphql`
   query BlogNew {
     allContentfulPost(
       filter: { node_locale: { eq: "ja-JP" } }
-      sort: { order: DESC, fields: createdAt }
+      sort: { order: DESC, fields: updatedAt }
     ) {
       edges {
         node {
@@ -52,7 +52,7 @@ export const pageQuery = graphql`
           category
           author
           contentful_id
-          createdAt(formatString: "YYYY.MM.DD")
+          updatedAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {
