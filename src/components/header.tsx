@@ -116,35 +116,37 @@ const Header: React.FC<
       <header style={bgColorChangebleStyle} tw="bg-darkBlue sticky top-0 z-30 text-paleOrange">
         <ul tw="mx-4 sm:mx-8 md:mx-16 justify-end font-bold flex text-xs md:gap-4 md:text-sm lg:gap-12 lg:text-base xl:gap-16 2xl:gap-20 h-16 items-center list-none">
           <li tw="mr-auto">
-            {blogOrNewsTopPage ? (
-              <img
-                tw="w-32 sm:w-36"
-                src="/alquimista_logo_white.svg"
-                alt="alquimista_logo_white"
-                className="hogehoge"
-              />
-            ) : blogOrNewsContentsPage ? (
-              <img
-                tw="w-32 sm:w-36"
-                src="/alquimista_logo_black.svg"
-                alt="alquimista_logo_black"
-                className="hogehoge"
-              />
-            ) : chancgeColorActive ? (
-              <img
-                tw="w-32 sm:w-36"
-                src="/alquimista_logo_black.svg"
-                alt="alquimista_logo_black"
-                className="hogehoge"
-              />
-            ) : (
-              <img
-                tw="w-32 sm:w-36"
-                src="/alquimista_logo_white.svg"
-                alt="alquimista_logo_white"
-                className="hogehoge"
-              />
-            )}
+            <Link to="/">
+              {blogOrNewsTopPage ? (
+                <img
+                  tw="w-32 sm:w-36"
+                  src="/alquimista_logo_white.svg"
+                  alt="alquimista_logo_white"
+                  className="hogehoge"
+                />
+              ) : blogOrNewsContentsPage ? (
+                <img
+                  tw="w-32 sm:w-36"
+                  src="/alquimista_logo_black.svg"
+                  alt="alquimista_logo_black"
+                  className="hogehoge"
+                />
+              ) : chancgeColorActive ? (
+                <img
+                  tw="w-32 sm:w-36"
+                  src="/alquimista_logo_black.svg"
+                  alt="alquimista_logo_black"
+                  className="hogehoge"
+                />
+              ) : (
+                <img
+                  tw="w-32 sm:w-36"
+                  src="/alquimista_logo_white.svg"
+                  alt="alquimista_logo_white"
+                  className="hogehoge"
+                />
+              )}
+            </Link>
           </li>
 
           {/* sp hamburger menu icon */}
