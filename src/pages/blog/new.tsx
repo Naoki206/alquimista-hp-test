@@ -16,7 +16,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogNewQuery>> = ({ data, locati
   if (posts.length === 0) {
     return (
       <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
-        <Seo title="All posts" />
+        <Seo title="New posts" />
         <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the directory you specified
@@ -28,7 +28,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogNewQuery>> = ({ data, locati
 
   return (
     <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
-      <Seo title="All posts" />
+      <Seo title="New posts" />
       <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div>
         {/* @ts-ignore */}

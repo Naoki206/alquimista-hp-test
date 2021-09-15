@@ -1,12 +1,17 @@
 const dotenv = require('dotenv');
 
+dotenv.config(); // TODO::デプロイ時消す。
+
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Blog',
+    title: 'Alquimista Inc. hp',
+    description: "tech blog and company's news included hp ",
+    siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:: デプロイ後、要変更
+    author: 'Naoki Kamatsuka',
     menu: {
       iconPath: '/alquimista.svg',
       aboutUs: 'About Us',
@@ -73,14 +78,27 @@ module.exports = {
         category: 'Category',
       },
     },
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',
     social: {
-      twitter: 'kylemathews',
+      twitter: '',
     },
   },
   plugins: [
     'gatsby-plugin-image',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:デプロイ後要変更
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:デプロイ後要変更
+        sitemap: 'https://gatsbystarterblogsource.gatsbyjs.io/.sitemap.xml', // TODO:デプロイ後要変更
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
     'gatsby-remark-autolink-headers',
     {
       resolve: 'gatsby-source-filesystem',
@@ -121,56 +139,53 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    {
-      resolve: 'gatsby-plugin-feed',
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.nodes.map(node => ({
-                ...node.frontmatter,
-                description: node.excerpt,
-                date: node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + node.fields.slug,
-                guid: site.siteMetadata.siteUrl + node.fields.slug,
-                custom_elements: [{ 'content:encoded': node.html }],
-              })),
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-            output: '/rss.xml',
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-feed',
+    //   options: {
+    //     query: `
+    //       {
+    //         site {
+    //           siteMetadata {
+    //             title
+    //             description
+    //             siteUrl
+    //             site_url: siteUrl
+    //           }
+    //         }
+    //       }
+    //     `,
+    //     feeds: [
+    //       {
+    //         serialize: ({ query: { site, allMarkdownRemark } }) =>
+    //           allMarkdownRemark.nodes.map(node => ({
+    //             ...node.frontmatter,
+    //             description: node.excerpt,
+    //             date: node.frontmatter.date,
+    //             url: site.siteMetadata.siteUrl,
+    //             guid: site.siteMetadata.siteUrl,
+    //             custom_elements: [{ 'content:encoded': node.html }],
+    //           })),
+    //         query: `
+    //           {
+    //             allMarkdownRemark(
+    //               sort: { order: DESC, fields: [frontmatter___date] },
+    //             ) {
+    //               nodes {
+    //                 excerpt
+    //                 html
+    //                 frontmatter {
+    //                   title
+    //                   date
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         `,
+    //         output: '/rss.xml',
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -191,7 +206,6 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: {
         spaceId: 'jozpq3l4wnc8',
-        // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },

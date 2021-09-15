@@ -13,7 +13,7 @@ const NewsIndex: React.FC<PageProps<GatsbyTypes.NewsIndexQuery>> = ({ data, loca
   if (posts.length === 0) {
     return (
       <Layout location={location} blogOrNewsHeadingLetter={2} blogOrNewsTopPage>
-        <Seo title="All posts" />
+        <Seo title="News posts" />
         <p>まだ記事がありません。</p>
       </Layout>
     );
@@ -21,7 +21,7 @@ const NewsIndex: React.FC<PageProps<GatsbyTypes.NewsIndexQuery>> = ({ data, loca
 
   return (
     <Layout location={location} blogOrNewsHeadingLetter={2} blogOrNewsTopPage>
-      <Seo title="All posts" />
+      <Seo title="News posts" />
       <div>
         {/* @ts-ignore */}
         <CardGrid posts={posts} isNewsPost newsOrBlog="news" />

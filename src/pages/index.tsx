@@ -11,10 +11,10 @@ import 'twin.macro';
 
 import { StaticImage } from 'gatsby-plugin-image';
 import Layout from '../components/blog/layout';
-import Card from '../components/blog/card';
 import ThreePopularContents from '../components/blog/threePopularContents';
 import ThreeNewContents from '../components/blog/threeNewContents';
 import MemberGrid from '../components/common/memberGrid';
+import SEO from '../components/blog/seo';
 
 const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, location }) => {
   const [toggle, setToggle] = React.useState(true);
@@ -71,6 +71,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
   return (
     <Layout location={location} topPage>
+      <SEO title="Top Page" />
       {/* メインビジュアル */}
       <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
         <p

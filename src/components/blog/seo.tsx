@@ -25,9 +25,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
           siteMetadata {
             title
             description
-            social {
-              twitter
-            }
+            siteUrl
           }
         }
       }
@@ -51,7 +49,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
         },
         {
           property: 'og:title',
-          content: title,
+          content: defaultTitle,
         },
         {
           property: 'og:description',
@@ -60,10 +58,6 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
         {
           property: 'og:type',
           content: 'website',
-        },
-        {
-          name: 'twitter:card',
-          content: 'summary',
         },
         {
           name: 'twitter:creator',
@@ -83,7 +77,7 @@ const SEO: React.FC<Props> = ({ description, lang, meta, title }) => {
 };
 
 SEO.defaultProps = {
-  lang: 'en',
+  lang: 'ja',
   meta: [],
   description: '',
 };
