@@ -8,13 +8,13 @@ require('ts-node').register({
   },
 });
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 require('./src/__generated__/gatsby-types');
 
-const {
-  createPages,
-  onCreateNode,
-  createSchemaCustomization,
-} = require('./src/gatsby-node/index');
+const { createPages, onCreateNode, createSchemaCustomization } = require('./src/gatsby-node/index');
 
 exports.createPages = createPages;
 exports.onCreateNode = onCreateNode;

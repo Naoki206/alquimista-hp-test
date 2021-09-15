@@ -1,18 +1,105 @@
+const dotenv = require('dotenv');
+
+dotenv.config(); // TODO::デプロイ時消す。
+
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
+
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Starter Blog',
-    author: {
-      name: 'Kyle Mathews',
-      summary: 'who lives and works in San Francisco building useful things.',
+    title: 'Alquimista Inc. hp',
+    description: "tech blog and company's news included hp ",
+    siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:: デプロイ後、要変更
+    author: 'Naoki Kamatsuka',
+    menu: {
+      iconPath: '/alquimista.svg',
+      aboutUs: 'About Us',
+      vision: 'Vision',
+      service: 'Service',
+      blog: 'Blog',
+      news: 'News',
+      member: 'Member',
+      contactUs: 'Contact Us',
     },
-    description: 'A starter blog demonstrating what Gatsby can do.',
-    siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/',
+    footer: {
+      companyOverview: '会社概要',
+      privacyPolicy: 'プライバシーポリシー',
+      contact: 'お問い合わせ',
+      companyName: '株式会社アルケミスタ',
+      address: '〒604-8152 京都市中京区烏丸蛸薬師南入る手洗水町647 トキワビル4F-C',
+    },
+    member: {
+      engineer: [
+        {
+          name: 'Ken',
+          role: 'CEO',
+          description:
+            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+          twitter: '@twitter',
+        },
+        {
+          name: 'Naoki',
+          role: 'Engineer',
+          description:
+            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+        },
+        {
+          name: 'Sakina',
+          role: 'Technical director',
+          description:
+            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+          twitter: '@twitter',
+        },
+      ],
+      marketing: [
+        {
+          name: 'PinPin',
+          role: 'CEO',
+          description:
+            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+        },
+      ],
+      designer: [
+        {
+          name: 'Mario',
+          role: 'Engineer',
+          description:
+            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+        },
+      ],
+    },
+    blog: {
+      menu: {
+        all: 'ALL',
+        new: 'New',
+        popular: 'Popular',
+        writer: 'Writer',
+        category: 'Category',
+      },
+    },
     social: {
-      twitter: 'kylemathews',
+      twitter: '',
     },
   },
   plugins: [
     'gatsby-plugin-image',
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:デプロイ後要変更
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:デプロイ後要変更
+        sitemap: 'https://gatsbystarterblogsource.gatsbyjs.io/.sitemap.xml', // TODO:デプロイ後要変更
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    'gatsby-remark-autolink-headers',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -43,6 +130,7 @@ module.exports = {
               wrapperStyle: 'margin-bottom: 1.0725rem',
             },
           },
+          'gatsby-remark-autolink-headers',
           'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
@@ -52,61 +140,52 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     // {
-    //   resolve: `gatsby-plugin-google-analytics`,
+    //   resolve: 'gatsby-plugin-feed',
     //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
+    //     query: `
+    //       {
+    //         site {
+    //           siteMetadata {
+    //             title
+    //             description
+    //             siteUrl
+    //             site_url: siteUrl
+    //           }
+    //         }
+    //       }
+    //     `,
+    //     feeds: [
+    //       {
+    //         serialize: ({ query: { site, allMarkdownRemark } }) =>
+    //           allMarkdownRemark.nodes.map(node => ({
+    //             ...node.frontmatter,
+    //             description: node.excerpt,
+    //             date: node.frontmatter.date,
+    //             url: site.siteMetadata.siteUrl,
+    //             guid: site.siteMetadata.siteUrl,
+    //             custom_elements: [{ 'content:encoded': node.html }],
+    //           })),
+    //         query: `
+    //           {
+    //             allMarkdownRemark(
+    //               sort: { order: DESC, fields: [frontmatter___date] },
+    //             ) {
+    //               nodes {
+    //                 excerpt
+    //                 html
+    //                 frontmatter {
+    //                   title
+    //                   date
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         `,
+    //         output: '/rss.xml',
+    //       },
+    //     ],
     //   },
     // },
-    {
-      resolve: 'gatsby-plugin-feed',
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.nodes.map(node => ({
-                ...node.frontmatter,
-                description: node.excerpt,
-                date: node.frontmatter.date,
-                url: site.siteMetadata.siteUrl + node.fields.slug,
-                guid: site.siteMetadata.siteUrl + node.fields.slug,
-                custom_elements: [{ 'content:encoded': node.html }],
-              })),
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-            output: '/rss.xml',
-          },
-        ],
-      },
-    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -121,22 +200,14 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-gatsby-cloud',
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
-    // {
-    //   resolve: 'gatsby-plugin-eslint',
-    //   options: {
-    //     test: /\.js$|\.jsx$|\.ts$|\.tsx$/,
-    //     exclude: /(node_modules|.cache|public)/,
-    //     stages: ['develop'],
-    //     options: {
-    //       emitWarning: true,
-    //       failOnError: false,
-    //     },
-    //   },
-    // },
     'gatsby-plugin-typegen',
     'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: 'jozpq3l4wnc8',
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
   ],
 };

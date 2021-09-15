@@ -2,32 +2,31 @@
 
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import path from 'path';
-import { createFilePath } from 'gatsby-source-filesystem';
+// import { createFilePath } from 'gatsby-source-filesystem';
 import { GatsbyNode, Actions } from 'gatsby';
 
-export const createPages: GatsbyNode['createPages'] = async ({
-  graphql,
-  actions,
-  reporter,
-}) => {
+export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  // Define a template for blog post
-  const blogPost = path.resolve('./src/templates/blog-post.jsx');
+  // Define a template
+  // for blog post
+  const blogPost = path.resolve('./src/templates/blog-post-contentful.tsx');
+  // for news post
+  const newsPost = path.resolve('./src/templates/news-post-contentful.tsx');
+  // for categorized blog post
+  const categorizedPost = path.resolve('./src/templates/categorized-blog-post-contentful.tsx');
+  // for particular wiriter's blog post
+  const writerPost = path.resolve('./src/templates/writer-blog-post-contentful.tsx');
 
-  // Get all markdown blog posts sorted by date
-  const result = await graphql<{
-    allMarkdownRemark: Pick<GatsbyTypes.Query['allMarkdownRemark'], 'nodes'>;
+  // Get all blog posts
+  const postResult = await graphql<{
+    allContentfulPost: Pick<GatsbyTypes.Query['allContentfulPost'], 'edges' | 'distinct'>;
   }>(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: ASC }
-          limit: 1000
-        ) {
-          nodes {
-            id
-            fields {
+        allContentfulPost {
+          edges {
+            node {
               slug
             }
           }
@@ -36,68 +35,142 @@ export const createPages: GatsbyNode['createPages'] = async ({
     `
   );
 
-  if (result.errors) {
-    reporter.panicOnBuild(
-      'There was an error loading your blog posts',
-      result.errors
-    );
+  if (postResult.errors) {
+    reporter.panicOnBuild('There was an error loading your blog posts', postResult.errors);
     return;
   }
 
-  const posts = result.data!.allMarkdownRemark.nodes;
+  const posts = postResult.data!.allContentfulPost.edges;
 
   // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
   if (posts && posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id;
-      const nextPostId =
-        index === posts.length - 1 ? null : posts[index + 1].id;
-
+    posts.forEach(post => {
       createPage({
-        path: post.fields!.slug || '/',
+        path: `/blog/${post.node.slug}` || '/',
         component: blogPost,
         context: {
-          id: post.id,
-          previousPostId,
-          nextPostId,
+          slug: post.node.slug,
         },
       });
     });
   }
-};
 
-export const onCreateNode: GatsbyNode['onCreateNode'] = ({
-  node,
-  actions,
-  getNode,
-}) => {
-  const { createNodeField } = actions;
+  // Get all news posts
+  const newsResult = await graphql<{
+    allContentfulNews: Pick<GatsbyTypes.Query['allContentfulPost'], 'edges' | 'distinct'>;
+  }>(
+    `
+      {
+        allContentfulNews {
+          edges {
+            node {
+              slug
+            }
+          }
+        }
+      }
+    `
+  );
 
-  if (node.internal.type === 'MarkdownRemark') {
-    const value = createFilePath({ node, getNode });
+  if (newsResult.errors) {
+    reporter.panicOnBuild('There was an error loading your blog posts', newsResult.errors);
+    return;
+  }
 
-    createNodeField({
-      name: 'slug',
-      node,
-      value,
+  const newsPosts = newsResult.data!.allContentfulNews.edges;
+
+  // Create news posts pages
+  if (newsPosts && newsPosts.length > 0) {
+    newsPosts.forEach(post => {
+      createPage({
+        path: `/news/${post.node.slug}` || '/',
+        component: newsPost,
+        context: {
+          slug: post.node.slug,
+        },
+      });
     });
   }
+
+  // Get each category name
+  const fetchCategoriesResult = await graphql<{
+    allContentfulPost: Pick<GatsbyTypes.Query['allContentfulPost'], 'distinct'>;
+  }>(
+    `
+      {
+        allContentfulPost {
+          distinct(field: category)
+        }
+      }
+    `
+  );
+  if (fetchCategoriesResult.errors) {
+    reporter.panicOnBuild(
+      'There was an error loading categorized blog posts',
+      fetchCategoriesResult.errors
+    );
+    return;
+  }
+  const categories = fetchCategoriesResult.data!.allContentfulPost.distinct;
+
+  // Create categorized blog posts pages
+  categories.forEach(category => {
+    createPage({
+      path: `blog/category/${category}/`,
+      component: categorizedPost,
+      context: {
+        category,
+      },
+    });
+  });
+
+  // Get writer's name
+  const fetchWritersResult = await graphql<{
+    allContentfulPost: Pick<GatsbyTypes.Query['allContentfulPost'], 'distinct'>;
+  }>(
+    `
+      {
+        allContentfulPost {
+          distinct(field: author)
+        }
+      }
+    `
+  );
+  if (fetchWritersResult.errors) {
+    reporter.panicOnBuild(
+      "There was an error loading writer's blog posts",
+      fetchWritersResult.errors
+    );
+    return;
+  }
+  const writers = fetchWritersResult.data!.allContentfulPost.distinct;
+
+  // Create each writer's blog posts pages
+  writers.forEach(writer => {
+    createPage({
+      path: `blog/writer/${writer}/`,
+      component: writerPost,
+      context: {
+        writer,
+      },
+    });
+  });
 };
 
-export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
-  async ({ actions }: { actions: Actions }) => {
-    const { createTypes } = actions;
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] = async ({
+  actions,
+}: {
+  actions: Actions;
+}) => {
+  const { createTypes } = actions;
 
-    // Explicitly define the siteMetadata {} object
-    // This way those will always be defined even if removed from gatsby-config.js
+  // Explicitly define the siteMetadata {} object
+  // This way those will always be defined even if removed from gatsby-config.js
 
-    // Also explicitly define the Markdown frontmatter
-    // This way the "MarkdownRemark" queries will return `null` even when no
-    // blog posts are stored inside "content/blog" instead of returning an error
-    createTypes(`
+  // Also explicitly define the Markdown frontmatter
+  // This way the "MarkdownRemark" queries will return `null` even when no
+  // blog posts are stored inside "content/blog" instead of returning an error
+  createTypes(`
     type SiteSiteMetadata {
       author: Author
       siteUrl: String
@@ -128,4 +201,4 @@ export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] 
       slug: String
     }
   `);
-  };
+};

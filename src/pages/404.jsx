@@ -1,17 +1,19 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import 'twin.macro';
 
 import Layout from '../components/layout';
-import Seo from '../components/seo';
+import Seo from '../components/blog/seo';
 
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} blogOrNewsTopPage>
       <Seo title="404: Not Found" />
-      <h1>404: Not Found</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+      <div tw="h-screen flex pl-8 pt-3">
+        <h1>指定されたページは存在しません</h1>
+      </div>
     </Layout>
   );
 };
