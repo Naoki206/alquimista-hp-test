@@ -2,8 +2,8 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { WindowLocation } from '@reach/router';
 import 'twin.macro';
-import Header from '../header';
-import Footer from '../footer';
+import Header from './header';
+import Footer from './footer';
 
 const Layout: React.FC<
   { location: WindowLocation<unknown> } & {

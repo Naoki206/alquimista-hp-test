@@ -3,7 +3,7 @@ import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
-import Layout from '../../components/blog/layout';
+import Layout from '../../components/layout';
 import Seo from '../../components/blog/seo';
 import CardGrid from '../../components/blog/cardgrid';
 

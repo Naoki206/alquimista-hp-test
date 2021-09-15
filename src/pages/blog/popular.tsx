@@ -4,7 +4,7 @@ import { Link, graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
 import Menu from '../../components/blog/menu';
-import Layout from '../../components/blog/layout';
+import Layout from '../../components/layout';
 import Seo from '../../components/blog/seo';
 import CardGrid from '../../components/blog/cardgrid';
 

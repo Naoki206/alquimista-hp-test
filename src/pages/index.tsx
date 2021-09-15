@@ -10,7 +10,7 @@ import { faArrowUp, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import 'twin.macro';
 
 import { StaticImage } from 'gatsby-plugin-image';
-import Layout from '../components/blog/layout';
+import Layout from '../components/layout';
 import ThreePopularContents from '../components/blog/threePopularContents';
 import ThreeNewContents from '../components/blog/threeNewContents';
 import MemberGrid from '../components/common/memberGrid';

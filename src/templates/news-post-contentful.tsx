@@ -8,7 +8,7 @@ import { BLOCKS } from '@contentful/rich-text-types';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
-import Layout from '../components/blog/layout';
+import Layout from '../components/layout';
 
 const options = {
   renderNode: {
