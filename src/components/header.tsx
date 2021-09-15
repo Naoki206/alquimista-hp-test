@@ -264,12 +264,14 @@ const Header: React.FC<
               </ScrollLink>
             </>
           )}
-          <li
-            tw="hidden md:block py-0.5 px-5 rounded-full cursor-pointer"
-            style={contactUsBtnChangebleStyle}
-          >
-            {menu?.contactUs}
-          </li>
+          <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+            <li
+              tw="hidden md:block py-0.5 px-5 rounded-full cursor-pointer"
+              style={contactUsBtnChangebleStyle}
+            >
+              {menu?.contactUs}
+            </li>
+          </Link>
         </ul>
 
         {/* mobile menu */}
@@ -307,9 +309,11 @@ const Header: React.FC<
                     {menu?.member}
                   </li>
                 </Link>
-                <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
-                  {menu?.contactUs}
-                </li>
+                <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+                  <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
+                    {menu?.contactUs}
+                  </li>
+                </Link>
               </ul>
             )
           : open && (
@@ -369,12 +373,14 @@ const Header: React.FC<
                     {menu?.member}
                   </li>
                 </ScrollLink>
-                <li
-                  tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full"
-                  style={contactUsBtnChangebleStyle}
-                >
-                  {menu?.contactUs}
-                </li>
+                <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+                  <li
+                    tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full"
+                    style={contactUsBtnChangebleStyle}
+                  >
+                    {menu?.contactUs}
+                  </li>
+                </Link>
               </ul>
             )}
       </header>

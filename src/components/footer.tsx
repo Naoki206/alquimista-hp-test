@@ -36,9 +36,13 @@ const Footer: React.FC = () => {
         />
         <div tw="text-center sm:text-left text-paleOrange h-full mb-0">
           <div tw="sm:flex mb-5">
-            <p tw="sm:pr-7 mb-0">{footerData?.companyOverview}</p>
-            <p tw="sm:pr-7 mb-0">{footerData?.privacyPolicy}</p>
-            <p tw="sm:pr-7 mb-0">{footerData?.contact}</p>
+            {/* <p tw="sm:pr-7 mb-0">{footerData?.companyOverview}</p> */}
+            {/* <p tw="sm:pr-7 mb-0">{footerData?.privacyPolicy}</p> */}
+            <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+              <p tw="text-paleOrange hover:text-opacity-80 transition duration-150 sm:pr-7 mb-0">
+                {footerData?.contact}
+              </p>
+            </Link>
           </div>
           <p tw="mb-0">{footerData?.companyName}</p>
           <p tw="mb-0">{footerData?.address}</p>
