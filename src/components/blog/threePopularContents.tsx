@@ -15,7 +15,7 @@ const ThreePopularContents: React.FC = () => {
             category
             author
             slug
-            createdAt(formatString: "YYYY.MM.DD")
+            updatedAt(formatString: "YYYY.MM.DD")
             image {
               title
               file {

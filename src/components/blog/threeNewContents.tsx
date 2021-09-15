@@ -10,7 +10,7 @@ const ThreeNewContents: React.FC = () => {
     query ThreeNewContents {
       allContentfulPost(
         filter: { node_locale: { eq: "ja-JP" } }
-        sort: { order: DESC, fields: createdAt }
+        sort: { order: DESC, fields: updatedAt }
         limit: 3
       ) {
         edges {
@@ -19,7 +19,7 @@ const ThreeNewContents: React.FC = () => {
             category
             author
             slug
-            createdAt(formatString: "YYYY.MM.DD")
+            updatedAt(formatString: "YYYY.MM.DD")
             image {
               title
               file {

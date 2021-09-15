@@ -319,14 +319,14 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPost(sort: { order: DESC, fields: createdAt }, limit: 3) {
+    allContentfulPost(sort: { order: DESC, fields: updatedAt }, limit: 3) {
       edges {
         node {
           title
           category
           author
           slug
-          createdAt(formatString: "YYYY.MM.DD")
+          updatedAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {
