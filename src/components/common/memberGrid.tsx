@@ -17,13 +17,14 @@ const MemberGrid: React.FC<{
   if (isBlogWriters) {
     return (
       <ol tw="list-none mb-0 ">
-        <div tw="grid sm:grid-cols-2 md:grid-cols-3 justify-center gap-12">
+        <div tw="grid sm:grid-cols-2 md:grid-cols-3 justify-center gap-12 ">
           {/* @ts-ignore */}
           {members.map((member, index) => (
             <Writer
               key={member?.name}
               open={open}
               setOpen={setOpen}
+              // @ts-ignore
               member={member}
               index={index}
             />
