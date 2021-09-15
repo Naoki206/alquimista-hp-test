@@ -88,8 +88,8 @@
     "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   },
   "scripts": {
-    "format:prettier": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "format:eslint": "eslint --fix \"**/*.{js,jsx,ts,tsx}\"",
+    "format:prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:eslint": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "yarn format:prettier && yarn format:eslint"
   },
   "babelMacros": {
