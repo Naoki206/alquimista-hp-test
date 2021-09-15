@@ -23,7 +23,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   // @ts-ignore
   const { designer, engineer, marketing } = data.site?.siteMetadata?.member;
   const members = designer.concat(engineer, marketing);
-  const posts = data.allContentfulPost.edges;
+  const newsPosts = data.allContentfulNews.edges;
 
   React.useEffect(() => {
     window.addEventListener('scroll', scrollWindow);
@@ -230,12 +230,14 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <div tw="grid grid-cols-1 mb-5">
             <ol tw="list-none">
               {/* @ts-ignore */}
-              {posts.map(post => (
-                // @ts-ignore
-                <div key={post.node.slug} tw="text-left border-b border-darkBlue mb-5">
-                  <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
-                  <p tw="font-extrabold text-lg mb-8">{post?.node.title}</p>
-                </div>
+              {newsPosts.map(post => (
+                <Link to={`news/${post?.node.slug}`} key={post.node.slug}>
+                  {/* @ts-ignore */}
+                  <div tw="text-left border-b border-darkBlue mb-5 text-black">
+                    <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
+                    <p tw="font-extrabold text-lg mb-8">{post?.node.title}</p>
+                  </div>
+                </Link>
               ))}
             </ol>
           </div>
@@ -319,14 +321,12 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPost(sort: { order: DESC, fields: updatedAt }, limit: 3) {
+    allContentfulNews(sort: { order: DESC, fields: createdAt }, limit: 3) {
       edges {
         node {
           title
-          category
-          author
           slug
-          updatedAt(formatString: "YYYY.MM.DD")
+          createdAt(formatString: "YYYY.MM.DD")
           image {
             title
             file {
