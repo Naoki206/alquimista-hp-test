@@ -183,7 +183,6 @@ const Header: React.FC<
           </li>
 
           {/* pc menu */}
-          {/* TODO:!toppageに変更 */}
           {blogOrNewsContentsPage && (
             <>
               <Link to="/#aboutus_section">
@@ -198,7 +197,7 @@ const Header: React.FC<
               <Link to="/blog/all">
                 <li tw="hidden md:block text-darkBlue">{menu?.blog}</li>
               </Link>
-              <Link to="/#news_section">
+              <Link to="/news">
                 <li tw="hidden md:block text-darkBlue">{menu?.news}</li>
               </Link>
               <Link to="/#member_section">
@@ -220,7 +219,7 @@ const Header: React.FC<
               <Link to="/blog/all">
                 <li tw="hidden md:block text-paleOrange">{menu?.blog}</li>
               </Link>
-              <Link to="/#news_section">
+              <Link to="/news">
                 <li tw="hidden md:block text-paleOrange">{menu?.news}</li>
               </Link>
               <Link to="/#member_section">
@@ -231,17 +230,20 @@ const Header: React.FC<
           {topPage && (
             <>
               <ScrollLink smooth to="aboutus_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                <li
+                  tw="hidden md:block pointer-events-auto cursor-pointer"
+                  style={pcTextColorChangebleStyle}
+                >
                   {menu?.aboutUs}
                 </li>
               </ScrollLink>
               <ScrollLink smooth to="vision_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                <li tw="hidden md:block cursor-pointer" style={pcTextColorChangebleStyle}>
                   {menu?.vision}
                 </li>
               </ScrollLink>
               <ScrollLink smooth to="service_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                <li tw="hidden md:block cursor-pointer" style={pcTextColorChangebleStyle}>
                   {menu?.service}
                 </li>
               </ScrollLink>
@@ -250,19 +252,22 @@ const Header: React.FC<
                   {menu?.blog}
                 </li>
               </Link>
-              <ScrollLink smooth to="news_section" duration={1000} offset={-150}>
+              <Link to="/news">
                 <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
                   {menu?.news}
                 </li>
-              </ScrollLink>
+              </Link>
               <ScrollLink smooth to="member_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                <li tw="hidden md:block cursor-pointer" style={pcTextColorChangebleStyle}>
                   {menu?.member}
                 </li>
               </ScrollLink>
             </>
           )}
-          <li tw="hidden md:block py-0.5 px-5 rounded-full" style={contactUsBtnChangebleStyle}>
+          <li
+            tw="hidden md:block py-0.5 px-5 rounded-full cursor-pointer"
+            style={contactUsBtnChangebleStyle}
+          >
             {menu?.contactUs}
           </li>
         </ul>
@@ -292,7 +297,7 @@ const Header: React.FC<
                     {menu?.blog}
                   </li>
                 </Link>
-                <Link to="/#news_section">
+                <Link to="/news">
                   <li tw="py-5 border-b text-paleOrange" onClick={() => setOpen(!open)}>
                     {menu?.news}
                   </li>
@@ -346,7 +351,7 @@ const Header: React.FC<
                     {menu?.blog}
                   </li>
                 </Link>
-                <ScrollLink smooth to="news_section" duration={1000} offset={-630}>
+                <Link to="/news">
                   <li
                     tw="py-5 border-b"
                     style={spTextColorChangebleStyle}
@@ -354,7 +359,7 @@ const Header: React.FC<
                   >
                     {menu?.news}
                   </li>
-                </ScrollLink>
+                </Link>
                 <ScrollLink smooth to="member_section" duration={1000} offset={-630}>
                   <li
                     tw="py-5 border-b"
