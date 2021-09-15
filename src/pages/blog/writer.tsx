@@ -16,7 +16,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data
     <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
       <Seo title="Writers" />
       <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
-      <div tw="text-center pb-750px sm:pb-350px  h-screen  mx-8 sm:mx-40 xl:mx-56 box-content">
+      <div tw="text-center pb-900px sm:pb-350px  h-screen  mx-8 sm:mx-40 xl:mx-56 box-content">
         <MemberGrid members={writers} isBlogWriters />
       </div>
     </Layout>

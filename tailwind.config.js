@@ -13,7 +13,7 @@ module.exports = {
       },
       padding: {
         '1120px': '1120px',
-        '750px': '750px',
+        '900px': '900px',
         '350px': '350px',
       },
       maxHeight: {
