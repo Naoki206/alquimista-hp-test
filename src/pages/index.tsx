@@ -129,10 +129,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               />
             </div>
             <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-12 xl:pt-20 max-w-557px max-h-500px">
-              <p tw="text-base md:text-xl lg:text-2xl xl:text-3xl xl:pb-3 font-bold text-paleOrange leading-6">
+              <p tw="text-lg md:text-xl lg:text-2xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
               </p>
-              <p tw="text-xs lg:text-sm">
+              <p tw="text-sm sm:leading-6">
                 お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
               </p>
               <div tw="text-center mt-auto">
@@ -158,10 +158,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </div>
 
             <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-14 xl:pt-24 max-w-557px max-h-500px ml-auto mr-auto md:mr-0">
-              <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
+              <p tw="text-lg md:text-xl lg:text-2xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
               </p>
-              <p tw="text-xs lg:text-sm">
+              <p tw="text-sm sm:leading-6">
                 ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
                 <br />
                 また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
@@ -182,10 +182,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </div>
 
             <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-14 xl:pt-24 max-w-557px max-h-500px">
-              <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
+              <p tw="text-lg md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング。
               </p>
-              <p tw="text-xs lg:text-sm">
+              <p tw="text-sm sm:leading-6">
                 プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
               </p>
             </div>
@@ -193,7 +193,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* Blog */}
-        <div tw="mb-40">
+        <div tw="mb-40 md:mx-5 xl:mx-20">
           <p tw="pb-7 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Blog
           </p>
@@ -232,7 +232,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* News */}
-        <div tw="mb-40" id="news_section">
+        <div tw="mb-40 md:mx-5 xl:mx-20" id="news_section">
           <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             News
           </p>
@@ -244,7 +244,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                   {/* @ts-ignore */}
                   <div tw="text-left border-b border-darkBlue mb-5 text-black">
                     <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
-                    <p tw="font-bold text-lg mb-8">{post?.node.title}</p>
+                    <p tw="font-semibold text-lg mb-8 hover:text-lightGreen transition duration-150">
+                      {post?.node.title}
+                    </p>
                   </div>
                 </Link>
               ))}
@@ -260,8 +262,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </button>
           </Link>
         </div>
+
         {/* Members */}
-        <div tw="mb-28" id="member_section">
+        <div tw="mb-28 md:mx-5 xl:mx-20" id="member_section">
           <p tw="pb-14 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Members
           </p>
