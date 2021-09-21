@@ -219,7 +219,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <Link to="/blog/all">
             <button
               style={{ outline: 'none' }}
-              tw="mx-auto font-bold text-sm px-6 py-2 text-center border-2 border-darkBlue rounded-full text-black hover:text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300"
+              tw="mx-auto font-bold text-sm px-6 py-2 md:mt-8 lg:mt-5 text-center border-2 border-darkBlue rounded-full text-black hover:text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300"
               type="button"
             >
               Read more →

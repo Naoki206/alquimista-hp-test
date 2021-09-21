@@ -36,7 +36,7 @@ const ThreeNewContents: React.FC = () => {
   // @ts-ignore
   return (
     <ol tw="list-none mb-0 ">
-      <div tw="text-left grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-12">
+      <div tw="text-left grid sm:grid-cols-2 md:grid-cols-3 gap-1.5 sm:gap-12">
         {posts.map(post => (
           // @ts-ignore
           <Card post={post} key={post?.node.slug} newsOrBlog="blog" />

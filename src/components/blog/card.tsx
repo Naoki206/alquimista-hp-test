@@ -21,7 +21,7 @@ const Card: React.FC<{
   newsOrBlog: string;
 }> = ({ post, isNewsPost, newsOrBlog }) => (
   <li tw="w-full">
-    <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96">
+    <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96 box-content">
       <div tw="group-hover:opacity-80 transition duration-300">
         <Link to={`/${newsOrBlog}/${post.node.slug}` || '/'} itemProp="url">
           <div tw="relative overflow-hidden rounded-xl">
@@ -31,7 +31,7 @@ const Card: React.FC<{
               alt={post.node.image?.title}
               src={post.node.image?.file?.url}
             />
-            <p tw="hidden group-hover:block bg-lightGreen bg-opacity-75 hover:bg-opacity-100 rounded-full px-5 py-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-blue-50">
+            <p tw="hidden sm:group-hover:block bg-lightGreen bg-opacity-75 hover:bg-opacity-100 rounded-full px-5 py-2 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-blue-50">
               Noteで読む
             </p>
           </div>
