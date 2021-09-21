@@ -1,2 +1,4 @@
 User-agent: *
-Disallow:
+Allow: /
+Sitemap: https://gatsbystarterblogsource.gatsbyjs.io/.sitemap.xml
+Host: https://gatsbystarterblogsource.gatsbyjs.io
