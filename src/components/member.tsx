@@ -15,7 +15,7 @@ const Member: React.FC<{
       {/*  eslint-disable-next-line no-console */}
       {open !== index ? (
         <img
-          tw="w-48 rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
+          tw="w-48  rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
           src={`/${member?.name}.jpg`}
           alt={member?.name}
         />

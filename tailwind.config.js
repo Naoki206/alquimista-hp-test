@@ -18,6 +18,11 @@ module.exports = {
       },
       maxHeight: {
         '500px': '500px',
+        '426px': '426px',
+      },
+      maxWidth: {
+        '557px': '557px',
+        '487px': '487px',
       },
       height: {
         '750px': '750px',
@@ -29,6 +34,7 @@ module.exports = {
       fontSize: {
         '72px': '72px',
         '48px': '48px',
+        '1.5xl': '1.4rem',
       },
     },
   },

@@ -81,30 +81,34 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           STEP <br /> BY&nbsp;&nbsp;STEP, <br /> WITH&nbsp;&nbsp;YOU.
         </p>
       </div>
-      <div tw="pb-72 text-center text-darkBlue mx-8 sm:mx-40 xl:mx-56">
-        {/* About us */}
-        <div tw="mb-36" id="aboutus_section">
-          <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
-            About Us
-          </p>
-          <p tw="font-bold leading-10">
-            AlquimistaはShopifyを軸にしたDXエキスパートです。
-            <br />
-            レガシーなカートシステムからShopifyへの移行の積極的サポートに特化してます。
-            <br />
-            Shopifyを用いて最適なアーキテクチャを提案することでバックオフィス業務の最適化、データドリブンなシステム構成への変容
-            開発スピードの向上を実現します。
-          </p>
-        </div>
-        {/* Vision */}
-        <div tw="mb-36" id="vision_section">
-          <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
-            Vision
-          </p>
-          <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
-          <p tw="font-bold leading-10">
-            Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、変化に強いアーキテクチャを提案し、お客様と共に成長することです。
-          </p>
+      <div tw="pb-72 text-center text-darkBlue mx-8 md:mx-16 lg:mx-28 xl:mx-40">
+        <div tw="md:mx-5 xl:mx-28">
+          {/* About us */}
+          <div tw="mb-36" id="aboutus_section">
+            <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+              About Us
+            </p>
+            <p tw="font-bold leading-10">
+              AlquimistaはShopifyを軸にしたDXエキスパートです。
+              <br />
+              レガシーなカートシステムからShopifyへの移行の積極的サポートに特化してます。
+              <br />
+              Shopifyを用いて最適なアーキテクチャを提案することでバックオフィス業務の最適化、データドリブンなシステム構成への変容
+              開発スピードの向上を実現します。
+            </p>
+          </div>
+          {/* Vision */}
+          <div tw="mb-36" id="vision_section">
+            <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+              Vision
+            </p>
+            <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
+            <p tw="font-bold leading-10">
+              Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、
+              <br />
+              変化に強いアーキテクチャを提案し、お客様と共に成長することです。
+            </p>
+          </div>
         </div>
 
         {/* Service */}
@@ -113,24 +117,26 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             Service
           </p>
 
-          <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
-            <StaticImage
-              tw="max-h-500px max-w-3xl"
-              src="../../static/service_logo_1.jpg"
-              alt="/service_logo_1"
-            />
-            <div tw="max-h-500px max-w-3xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
-              <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
+          <div tw="pb-24 grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 text-justify">
+            <div tw="bg-white flex items-center ml-auto max-w-557px max-h-500px mr-auto md:mr-0">
+              <StaticImage
+                tw="object-contain w-full"
+                src="../../static/service_logo_1.jpg"
+                alt="/service_logo_1"
+              />
+            </div>
+            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-14 xl:pt-24 max-w-557px max-h-500px">
+              <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
               </p>
-              <p tw="md:text-sm lg:text-base">
+              <p tw="text-sm lg:text-base">
                 お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
               </p>
-              <div tw="text-center">
+              <div tw="text-center mt-auto">
                 <Link to="/blog/all">
                   <button
                     style={{ outline: 'none' }}
-                    tw="mx-auto font-bold text-sm px-6 py-2 text-center border-2 border-paleOrange rounded-full text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300 outline-none"
+                    tw="mx-auto mt-auto font-bold text-sm px-6 py-2 text-center border-2 border-paleOrange rounded-full text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300 outline-none"
                     type="button"
                   >
                     Read more →
@@ -140,42 +146,41 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </div>
           </div>
 
-          <div tw="pb-24 grid grid-cols-1 md:grid-cols-2 text-justify">
-            <div tw="md:hidden max-h-500px max-w-3xl">
-              <StaticImage
-                tw="max-h-500px max-w-3xl"
-                src="../../static/service_logo_2.jpg"
-                alt="/service_logo_2"
-              />
+          <div tw="pb-24 grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 text-justify">
+            <div tw="block md:hidden max-w-557px max-h-500px">
+              <div tw="bg-white flex items-center">
+                <StaticImage src="../../static/service_logo_2.jpg" alt="/service_logo_2" />
+              </div>
             </div>
-            <div tw="max-h-500px max-w-3xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
-              <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
+
+            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-14 xl:pt-24 max-w-557px max-h-500px ml-auto mr-auto md:mr-0">
+              <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
               </p>
-              <p tw="md:text-sm lg:text-base">
+              <p tw="text-sm lg:text-base">
                 ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
                 <br />
                 また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
               </p>
             </div>
+
             <StaticImage
-              tw="hidden md:block max-h-500px max-w-3xl"
+              tw="hidden md:block max-w-557px max-h-500px"
               src="../../static/service_logo_2.jpg"
               alt="/service_logo_2"
             />
           </div>
 
-          <div tw="grid grid-cols-1 md:grid-cols-2 text-justify">
-            <StaticImage
-              tw="object-cover max-h-500px max-w-3xl"
-              src="../../static/service_logo_3.jpg"
-              alt="/service_logo_3"
-            />
-            <div tw="max-h-500px max-w-2xl bg-darkBlue text-paleOrange px-6 py-6 lg:px-16 lg:py-16">
-              <p tw="md:text-base lg:text-2xl font-bold text-paleOrange">
-                既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング
+          <div tw="grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 text-justify">
+            <div tw="bg-white flex items-center ml-auto max-w-557px max-h-500px mr-auto md:mr-0">
+              <StaticImage tw="" src="../../static/service_logo_3.jpg" alt="/service_logo_3" />
+            </div>
+
+            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-14 xl:pt-24 max-w-557px max-h-500px">
+              <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
+                既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング。
               </p>
-              <p tw="md:text-sm lg:text-base">
+              <p tw="text-sm lg:text-base">
                 プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
               </p>
             </div>
