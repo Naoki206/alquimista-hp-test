@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 
 import 'twin.macro';
 
-const Card: React.FC<{
+const NewsCard: React.FC<{
   post: {
     node: {
       contentslugful_id: string;
@@ -19,9 +19,9 @@ const Card: React.FC<{
   };
 }> = ({ post }) => (
   <li tw="w-full">
-    <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96 box-content">
+    <div className="group" tw="border-black h-80 sm:h-72 md:h-80 lg:h-96 box-content">
       <div tw="group-hover:opacity-80 transition duration-300">
-        <Link to={`/blog/${post.node.slug}` || '/'} itemProp="url">
+        <Link to={`/news/${post.node.slug}` || '/'} itemProp="url">
           <div tw="relative overflow-hidden rounded-xl">
             {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
             <img
@@ -37,16 +37,6 @@ const Card: React.FC<{
             <p tw="mb-0 text-gray-500">{post.node.updatedAt}</p>
           </div>
           <div tw="px-2">
-            <div tw="flex flex-wrap mb-1.5 gap-2">
-              {post.node.category?.map(category => (
-                <p
-                  tw="mb-0 px-2 text-sm rounded-full border-gray-400 border text-gray-500 font-bold"
-                  key={category}
-                >
-                  {category}
-                </p>
-              ))}
-            </div>
             <h6 tw="m-0">
               <span
                 tw="group-hover:text-lightGreen transition duration-300 text-lg font-extrabold"
@@ -55,14 +45,6 @@ const Card: React.FC<{
                 {post?.node.title}
               </span>
             </h6>
-            <div tw="flex items-center">
-              <img
-                tw="w-9 rounded-full mr-4"
-                src={`/${post.node.author}.png`}
-                alt="{post.node.author}"
-              />
-              <p tw="text-gray-700 m-0 text-xs">Written By {post.node.author}</p>
-            </div>
           </div>
         </Link>
       </div>
@@ -70,4 +52,4 @@ const Card: React.FC<{
   </li>
 );
 
-export default Card;
+export default NewsCard;

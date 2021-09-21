@@ -21,7 +21,7 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
       <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div>
         {/* @ts-ignore */}
-        <CardGrid posts={posts} newsOrBlog="blog" />
+        <CardGrid posts={posts} />
       </div>
     </Layout>
   );

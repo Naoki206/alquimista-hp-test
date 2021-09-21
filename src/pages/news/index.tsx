@@ -24,7 +24,7 @@ const NewsIndex: React.FC<PageProps<GatsbyTypes.NewsIndexQuery>> = ({ data, loca
       <Seo title="News posts" />
       <div>
         {/* @ts-ignore */}
-        <CardGrid posts={posts} isNewsPost newsOrBlog="news" />
+        <CardGrid posts={posts} isNewsPost />
       </div>
     </Layout>
   );

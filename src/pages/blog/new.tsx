@@ -32,7 +32,7 @@ const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogNewQuery>> = ({ data, locati
       <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div>
         {/* @ts-ignore */}
-        <CardGrid posts={posts} newsOrBlog="blog" />
+        <CardGrid posts={posts} />
       </div>
     </Layout>
   );

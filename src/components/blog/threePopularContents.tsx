@@ -35,7 +35,7 @@ const ThreePopularContents: React.FC = () => {
       <div tw="text-left grid sm:grid-cols-2 md:grid-cols-3 gap-1.5 sm:gap-12 h-auto">
         {posts.map(post => (
           // @ts-ignore
-          <Card post={post} key={post?.node.slug} newsOrBlog="blog" />
+          <Card post={post} key={post?.node.slug} />
         ))}
       </div>
     </ol>

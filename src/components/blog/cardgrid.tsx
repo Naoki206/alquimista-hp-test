@@ -3,6 +3,7 @@
 
 import React from 'react';
 import 'twin.macro';
+import NewsCard from '../news/newsCard';
 import Card from './card';
 
 const CardGrid: React.FC<{
@@ -20,23 +21,24 @@ const CardGrid: React.FC<{
     };
   };
   isNewsPost?: boolean;
-  newsOrBlog?: string;
-}> = ({ posts, isNewsPost, newsOrBlog }) => (
+}> = ({ posts, isNewsPost }) => (
   <ol tw="pb-80 md:pb-60 lg:pb-56 list-none mb-0">
     {/* cards from here */}
-    <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 sm:gap-12 lg:mx-32 mx-5 sm:mx-4 md:mx-28 xl:mx-56">
-      {/* @ts-ignore */}
-      {posts.map(post => (
-        <Card
-          // @ts-ignore
-          newsOrBlog={newsOrBlog}
-          // @ts-ignore
-          isNewsPost={isNewsPost}
-          post={post}
-          key={post?.node.slug}
-        />
-      ))}
-    </div>
+    {isNewsPost ? (
+      <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 sm:gap-12 lg:mx-32 mx-5 sm:mx-4 md:mx-28 xl:mx-56">
+        {/* @ts-ignore */}
+        {posts.map(post => (
+          <NewsCard post={post} key={post?.node.slug} />
+        ))}
+      </div>
+    ) : (
+      <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 sm:gap-12 lg:mx-32 mx-5 sm:mx-4 md:mx-28 xl:mx-56">
+        {/* @ts-ignore */}
+        {posts.map(post => (
+          <Card post={post} key={post?.node.slug} />
+        ))}
+      </div>
+    )}
   </ol>
 );
 
