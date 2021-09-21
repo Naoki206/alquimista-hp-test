@@ -193,7 +193,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* Blog */}
-        <div tw="mb-40 md:mx-5 xl:mx-20">
+        <div tw="mb-40 xl:mx-16">
           <p tw="pb-7 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Blog
           </p>
@@ -232,7 +232,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* News */}
-        <div tw="mb-40 md:mx-5 xl:mx-20" id="news_section">
+        <div tw="mb-40 md:mx-5 xl:mx-16" id="news_section">
           <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             News
           </p>
@@ -264,7 +264,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* Members */}
-        <div tw="mb-28 md:mx-5 xl:mx-20" id="member_section">
+        <div tw="mb-28 md:mx-5 xl:mx-16" id="member_section">
           <p tw="pb-14 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Members
           </p>

@@ -32,7 +32,7 @@ const CardGrid: React.FC<{
         ))}
       </div>
     ) : (
-      <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 sm:gap-12 lg:mx-32 mx-5 sm:mx-4 md:mx-28 xl:mx-56">
+      <div tw="grid md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-5 sm:gap-12 lg:mx-32 mx-5 sm:mx-4 md:mx-28 xl:mx-44">
         {/* @ts-ignore */}
         {posts.map(post => (
           <Card post={post} key={post?.node.slug} />

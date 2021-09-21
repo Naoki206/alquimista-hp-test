@@ -26,6 +26,7 @@ module.exports = {
       },
       height: {
         '750px': '750px',
+        '110vh': '110vh',
       },
       lineHeight: {
         '85px': '85px',
