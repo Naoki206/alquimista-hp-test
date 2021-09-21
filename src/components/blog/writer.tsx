@@ -43,7 +43,7 @@ const Writer: React.FC<{
 
     {open === index ? (
       <div>
-        <p tw="font-bold text-sm text-left">{member?.description}</p>
+        <p tw="text-sm text-left">{member?.description}</p>
         <div tw="flex w-full justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"

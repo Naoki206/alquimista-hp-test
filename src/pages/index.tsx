@@ -85,7 +85,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         <div tw="md:mx-5 xl:mx-28">
           {/* About us */}
           <div tw="mb-36" id="aboutus_section">
-            <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            <p tw="pb-3 text-5xl font-bold break-normal" style={{ fontFamily: 'Avenir Next' }}>
               About Us
             </p>
             <p tw="font-bold leading-10">
@@ -119,6 +119,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             Service
           </p>
 
+          {/* Service1 */}
           <div tw="pb-24 grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 text-justify">
             <div tw="bg-white flex items-center ml-auto max-w-557px max-h-500px mr-auto md:mr-0">
               <StaticImage
@@ -127,11 +128,11 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                 alt="/service_logo_1"
               />
             </div>
-            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-12 xl:pt-24 max-w-557px max-h-500px">
-              <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
+            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-12 xl:pt-20 max-w-557px max-h-500px">
+              <p tw="text-base md:text-xl lg:text-2xl xl:text-3xl xl:pb-3 font-bold text-paleOrange leading-6">
                 Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
               </p>
-              <p tw="text-sm lg:text-base">
+              <p tw="text-xs lg:text-sm">
                 お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
               </p>
               <div tw="text-center mt-auto">
@@ -148,6 +149,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             </div>
           </div>
 
+          {/* Service2 */}
           <div tw="pb-24 grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 text-justify">
             <div tw="block md:hidden max-w-557px max-h-500px">
               <div tw="bg-white flex items-center">
@@ -159,7 +161,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
               </p>
-              <p tw="text-sm lg:text-base">
+              <p tw="text-xs lg:text-sm">
                 ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
                 <br />
                 また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
@@ -173,6 +175,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             />
           </div>
 
+          {/* Service3 */}
           <div tw="grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 text-justify">
             <div tw="bg-white flex items-center ml-auto max-w-557px max-h-500px mr-auto md:mr-0">
               <StaticImage tw="" src="../../static/service_logo_3.jpg" alt="/service_logo_3" />
@@ -182,12 +185,13 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング。
               </p>
-              <p tw="text-sm lg:text-base">
+              <p tw="text-xs lg:text-sm">
                 プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
               </p>
             </div>
           </div>
         </div>
+
         {/* Blog */}
         <div tw="mb-40">
           <p tw="pb-7 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
@@ -215,9 +219,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               )}
             </div>
           </div>
-
           {toggle ? <ThreeNewContents /> : <ThreePopularContents />}
-
           <Link to="/blog/all">
             <button
               style={{ outline: 'none' }}
@@ -242,7 +244,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                   {/* @ts-ignore */}
                   <div tw="text-left border-b border-darkBlue mb-5 text-black">
                     <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
-                    <p tw="font-extrabold text-lg mb-8">{post?.node.title}</p>
+                    <p tw="font-bold text-lg mb-8">{post?.node.title}</p>
                   </div>
                 </Link>
               ))}
