@@ -27,7 +27,9 @@ const Layout: React.FC<
       blogOrNewsTopPage={blogOrNewsTopPage}
       topPage={topPage}
     />
-    <main tw="font-sans">{children}</main>
+    <main tw="font-sans" style={{ fontFamily: 'Noto Sans JP' }}>
+      {children}
+    </main>
     <Footer />
   </div>
 );

@@ -322,3 +322,5 @@ a:focus {
 .smUl {
   @apply visible flex justify-center gap-8 mx-60 text-base font-bold;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;500&display=swap');

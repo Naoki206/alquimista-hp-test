@@ -102,7 +102,9 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
               Vision
             </p>
-            <h3 tw="pb-6 text-darkBlue">“お客様が本来集中すべき時間を取り戻す”</h3>
+            <h3 tw="pb-6 text-darkBlue" style={{ fontFamily: 'Noto Sans JP' }}>
+              “お客様が本来集中すべき時間を取り戻す”
+            </h3>
             <p tw="font-bold leading-10">
               Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、
               <br />
@@ -125,7 +127,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                 alt="/service_logo_1"
               />
             </div>
-            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-14 xl:pt-24 max-w-557px max-h-500px">
+            <div tw="bg-darkBlue text-paleOrange px-6 lg:px-9 xl:px-14 py-6 lg:pt-12 xl:pt-24 max-w-557px max-h-500px">
               <p tw="text-base md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
               </p>

@@ -15,15 +15,15 @@ const Member: React.FC<{
       {/*  eslint-disable-next-line no-console */}
       {open !== index ? (
         <img
-          tw="w-48  rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
+          tw="w-48 2xl:w-60 rounded-full mb-4 mx-0 hover:opacity-0 duration-150 z-10"
           src={`/${member?.name}.jpg`}
           alt={member?.name}
         />
       ) : (
-        <img tw="w-48 mb-4 opacity-0" src={`/${member?.name}.jpg`} alt={member?.name} />
+        <img tw="w-48 2xl:w-60 mb-4 opacity-0" src={`/${member?.name}.jpg`} alt={member?.name} />
       )}
       <img
-        tw="absolute w-48 rounded-full bottom-4"
+        tw="absolute w-48 2xl:w-60  rounded-full bottom-4"
         src={`/${member?.name}_smile.jpg`}
         alt={member?.name}
       />

@@ -7,7 +7,7 @@ module.exports = {
     groupVariants: ['hover', 'focus'],
     extend: {
       colors: {
-        darkBlue: '#0A293E',
+        darkBlue: '#0B293F',
         paleOrange: '#F2F2F2',
         lightGreen: '#41C9B4',
       },

@@ -385,12 +385,22 @@ const Header: React.FC<
             )}
       </header>
       {blogOrNewsHeadingLetter === 1 && (
-        <h1 tw="text-center text-darkBlue py-12 pb-1 mt-0">
-          <Link to="/blog/all">Blog</Link>
-        </h1>
+        <Link to="/blog/all">
+          <p
+            tw="text-5xl font-bold text-darkBlue text-center py-12 pb-1 mt-0"
+            style={{ fontFamily: 'Avenir Next' }}
+          >
+            Blog
+          </p>
+        </Link>
       )}
       {blogOrNewsHeadingLetter === 2 && (
-        <h1 tw="text-center text-darkBlue py-12 pb-10 mt-0">News</h1>
+        <p
+          tw="text-5xl font-bold text-darkBlue text-center py-12 pb-10 mt-0"
+          style={{ fontFamily: 'Avenir Next' }}
+        >
+          News
+        </p>
       )}
     </>
   );
