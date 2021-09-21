@@ -385,11 +385,13 @@ const Header: React.FC<
             )}
       </header>
       {blogOrNewsHeadingLetter === 1 && (
-        <h1 tw="text-center py-12 pb-1 mt-0">
+        <h1 tw="text-center text-darkBlue py-12 pb-1 mt-0">
           <Link to="/blog/all">Blog</Link>
         </h1>
       )}
-      {blogOrNewsHeadingLetter === 2 && <h1 tw="text-center py-12 pb-10 mt-0">News</h1>}
+      {blogOrNewsHeadingLetter === 2 && (
+        <h1 tw="text-center text-darkBlue py-12 pb-10 mt-0">News</h1>
+      )}
     </>
   );
 };

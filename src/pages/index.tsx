@@ -102,7 +102,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
             <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
               Vision
             </p>
-            <h3 tw="pb-6">“お客様が本来集中すべき時間を取り戻す”</h3>
+            <h3 tw="pb-6 text-darkBlue">“お客様が本来集中すべき時間を取り戻す”</h3>
             <p tw="font-bold leading-10">
               Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、
               <br />

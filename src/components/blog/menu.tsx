@@ -70,7 +70,7 @@ const Menu: React.FC<
           ) : (
             <Link to="/blog/all">
               <li
-                tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
+                tw="hover:bg-darkBlue transition duration-500 text-darkBlue hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
                 onClick={() => setIsSelected(1)}
               >
                 {blogMenu?.all}
@@ -84,7 +84,7 @@ const Menu: React.FC<
           ) : (
             <Link to="/blog/new">
               <li
-                tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
+                tw="hover:bg-darkBlue transition duration-500 text-darkBlue hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
                 onClick={() => setIsSelected(2)}
               >
                 {blogMenu?.new}
@@ -98,7 +98,7 @@ const Menu: React.FC<
           ) : (
             <Link to="/blog/popular">
               <li
-                tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
+                tw="hover:bg-darkBlue transition duration-500 text-darkBlue hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
                 onClick={() => setIsSelected(3)}
               >
                 {blogMenu?.popular}
@@ -112,7 +112,7 @@ const Menu: React.FC<
           ) : (
             <Link to="/blog/writer">
               <li
-                tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
+                tw="hover:bg-darkBlue transition duration-500 text-darkBlue hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
                 onClick={() => setIsSelected(4)}
               >
                 {blogMenu?.writer}
@@ -128,7 +128,7 @@ const Menu: React.FC<
             </li>
           ) : (
             <li
-              tw="hover:bg-darkBlue transition duration-500 text-black hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
+              tw="hover:bg-darkBlue transition duration-500 text-darkBlue hover:text-paleOrange rounded-full px-3.5 border border-darkBlue"
               onClick={() => {
                 setIsCategoryOpen(true);
                 setIsSelected(0);
@@ -149,34 +149,34 @@ const Menu: React.FC<
               <li tw="border-b-2　border-darkBlue">{blogMenu?.all}</li>
             ) : (
               <Link to="/blog/all">
-                <li tw="text-black">{blogMenu?.all}</li>
+                <li tw="text-darkBlue">{blogMenu?.all}</li>
               </Link>
             )}
             {isSelected === 2 ? (
               <li tw="border-b-2　border-darkBlue">{blogMenu?.new}</li>
             ) : (
               <Link to="/blog/new">
-                <li tw="text-black">{blogMenu?.new}</li>
+                <li tw="text-darkBlue">{blogMenu?.new}</li>
               </Link>
             )}
             {isSelected === 3 ? (
               <li tw="border-b-2　border-darkBlue">{blogMenu?.popular}</li>
             ) : (
               <Link to="/blog/popular">
-                <li tw="text-black">{blogMenu?.popular}</li>
+                <li tw="text-darkBlue">{blogMenu?.popular}</li>
               </Link>
             )}
             {isSelected === 4 ? (
               <li tw="border-b-2　border-darkBlue">{blogMenu?.writer}</li>
             ) : (
               <Link to="/blog/writer">
-                <li tw="text-black">{blogMenu?.writer}</li>
+                <li tw="text-darkBlue">{blogMenu?.writer}</li>
               </Link>
             )}
             {isSelected === 5 ? (
               <li tw="border-b-2　border-darkBlue">{blogMenu?.category}</li>
             ) : (
-              <li tw="text-black" onClick={() => setIsCategoryOpen(true)}>
+              <li tw="text-darkBlue" onClick={() => setIsCategoryOpen(true)}>
                 {blogMenu?.category}
               </li>
             )}
