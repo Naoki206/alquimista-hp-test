@@ -10,6 +10,7 @@ module.exports = {
         darkBlue: '#0B293F',
         paleOrange: '#F2F2F2',
         lightGreen: '#41C9B4',
+        mildDarkBlue: '#203C4F',
       },
       padding: {
         '1120px': '1120px',
