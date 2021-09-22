@@ -49,15 +49,15 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="fullname">
+                  <label htmlFor="name">
                     氏名<span tw="text-red-600">*</span>
                   </label>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
                     required
-                    id="fullname"
-                    name="fullname"
+                    id="name"
+                    name="name"
                     type="text"
                     tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
                     placeholder="例）山田太郎"
