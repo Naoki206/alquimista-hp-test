@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql, Link } from 'gatsby';
 import 'twin.macro';
+import { StaticImage } from 'gatsby-plugin-image';
 
 import Layout from '../components/layout';
 import Seo from '../components/blog/seo';
@@ -15,19 +16,14 @@ const NotFoundPage = ({ data, location }) => {
         <p tw="text-4xl md:text-5xl font-bold mt-16" style={{ fontFamily: 'Avenir Next' }}>
           404 Not Found
         </p>
-        <p tw="my-8 font-bold text-lg">お問い合わせフォーム</p>
-        <p tw="text-sm md:text-base">
+        <div tw="mr-auto ml-auto w-full mb-4">
+          <StaticImage src="../../static/404.jpg" alt="/404" />
+        </div>
+        <p tw=" sm:text-lg font-semibold">
           申し訳ございません。ページが見つかりませんでした。
           <br />
-          お探しのページはいずれかの理由により見つかりませんでした。
+          お探しのページは、現在公開されていないようです。
         </p>
-        <div tw="text-center text-sm md:text-base">
-          <ul tw="text-left mr-auto ml-auto">
-            <li>ページのURLが変更された可能性があります。</li>
-            <li>ページが削除された可能性があります。</li>
-            <li>アドレス(URL)をタイプミスしている可能性があります。</li>
-          </ul>
-        </div>
         <div tw="ml-auto mr-auto" style={{ fontFamily: 'Avenir Next' }}>
           <Link to="/">
             <button
