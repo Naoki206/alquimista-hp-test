@@ -23,7 +23,13 @@ const Contact = ({ data, location }) => {
         <p tw="text-center text-xs sm:text-sm mb-8">
           下記フォームにお問い合わせ内容をご記入後、送信ボタンを押してください。
         </p>
-        <form tw="text-sm sm:pb-0">
+        <form
+          name="contact"
+          action="/thankyou"
+          method="POST"
+          data-netlify="true"
+          tw="text-sm sm:pb-0"
+        >
           <table tw="table-fixed">
             <tbody tw="font-bold">
               <tr>
