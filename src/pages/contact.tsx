@@ -49,23 +49,6 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="name">
-                    氏名<span tw="text-red-600">*</span>
-                  </label>
-                </td>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <input
-                    required
-                    id="name"
-                    name="name"
-                    type="text"
-                    tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
-                    placeholder="例）山田太郎"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td tw="border-b border-darkBlue px-4 py-5">
                   <label htmlFor="tel">
                     電話番号<span tw="text-red-600">*</span>
                   </label>
@@ -77,6 +60,23 @@ const Contact = ({ data, location }) => {
                     type="tel"
                     tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
                     placeholder="例）00000000000"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td tw="border-b border-darkBlue px-4 py-5">
+                  <label htmlFor="name">
+                    お名前<span tw="text-red-600">*</span>
+                  </label>
+                </td>
+                <td tw="border-b border-darkBlue px-4 py-5">
+                  <input
+                    required
+                    id="name"
+                    name="name"
+                    type="text"
+                    tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
+                    placeholder="例）山田太郎"
                   />
                 </td>
               </tr>
