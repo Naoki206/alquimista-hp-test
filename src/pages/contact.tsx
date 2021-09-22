@@ -101,7 +101,7 @@ const Contact = ({ data, location }) => {
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <select
-                    name="content"
+                    name="category"
                     tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
                   >
                     <option value="">お問い合わせ内容をご選択ください</option>
@@ -114,6 +114,7 @@ const Contact = ({ data, location }) => {
                   <textarea
                     required
                     id="content"
+                    name="content"
                     tw="py-3 mb-auto placeholder-gray-500 placeholder-opacity-60 border border-darkBlue rounded-xl w-full h-24 outline-none px-2"
                   />
                 </td>
