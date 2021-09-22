@@ -98,10 +98,13 @@ const Contact = ({ data, location }) => {
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <label htmlFor="content">お問い合わせ内容</label>
                   <span tw="text-red-600">*</span>
+                  <label tw="hidden" htmlFor="category">
+                    お問い合わせ内容
+                  </label>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <select
-                    name="category[]"
+                    name="category"
                     tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
                   >
                     <option value="">お問い合わせ内容をご選択ください</option>
