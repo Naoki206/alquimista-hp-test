@@ -47,7 +47,7 @@ const Contact = ({ data, location }) => {
                   />
                 </td>
               </tr>
-              <tr>
+              {/* <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <label htmlFor="tel">
                     電話番号<span tw="text-red-600">*</span>
@@ -62,7 +62,7 @@ const Contact = ({ data, location }) => {
                     placeholder="例）00000000000"
                   />
                 </td>
-              </tr>
+              </tr> */}
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <label htmlFor="name">
