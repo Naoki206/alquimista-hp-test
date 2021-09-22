@@ -85,10 +85,10 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         <div tw="md:mx-5 xl:mx-28">
           {/* About us */}
           <div tw="mb-36" id="aboutus_section">
-            <p tw="pb-3 text-5xl font-bold break-normal" style={{ fontFamily: 'Avenir Next' }}>
+            <p tw="pb-3 text-5.5xl font-bold break-normal" style={{ fontFamily: 'Avenir Next' }}>
               About Us
             </p>
-            <p tw="font-bold leading-10">
+            <p tw="font-semibold text-lg leading-10">
               AlquimistaはShopifyを軸にしたDXエキスパートです。
               <br />
               レガシーなカートシステムからShopifyへの移行の積極的サポートに特化してます。
@@ -99,13 +99,16 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           </div>
           {/* Vision */}
           <div tw="mb-36" id="vision_section">
-            <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+            <p tw="pb-3 text-5.5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
               Vision
             </p>
-            <h3 tw="pb-6 text-darkBlue" style={{ fontFamily: 'Noto Sans JP' }}>
+            <p
+              tw="text-3xl font-semibold pb-6 text-darkBlue"
+              style={{ fontFamily: 'Noto Sans JP' }}
+            >
               “お客様が本来集中すべき時間を取り戻す”
-            </h3>
-            <p tw="font-bold leading-10">
+            </p>
+            <p tw="font-semibold text-lg leading-10">
               Alquimistaが目指すことは、新しいテクノロジーに寛容であり、マイクロサービスの考え方を軸に、
               <br />
               変化に強いアーキテクチャを提案し、お客様と共に成長することです。
@@ -115,7 +118,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
         {/* Service */}
         <div tw="mb-28" id="service_section">
-          <p tw="pb-5 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+          <p tw="pb-5 text-5.5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Service
           </p>
 
@@ -132,7 +135,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               <p tw="text-lg md:text-xl lg:text-2xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 Shopifyを用いた新規ショップの立ち上げ。他社カートシステムからShopifyへの移行をサポート。
               </p>
-              <p tw="text-sm sm:leading-6">
+              <p tw="text-sm sm:text-base font-light sm:leading-6">
                 お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
               </p>
               <div tw="text-center mt-auto">
@@ -162,7 +165,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               <p tw="text-lg md:text-xl lg:text-2xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 GatbyjsやNext.jsなどのJSフレームワークを用いて、ヘッドレスコマースを実現。
               </p>
-              <p tw="text-sm sm:leading-6">
+              <p tw="text-sm sm:text-base font-light sm:leading-6">
                 ヘッドレスコマースでは、ユーザーが触れるインターフェースをバックエンドのロジックと切り離しているため、開発体験が良く、サイトを柔軟に作り変えていくことが可能です。
                 <br />
                 また、高速でページ表示が可能なため、ページの表示遅延いよる売上の低下を防止できます。
@@ -186,7 +189,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
               <p tw="text-lg md:text-xl lg:text-1.5xl xl:text-3xl xl:pb-3 font-bold text-paleOrange">
                 既存のカートシステムからShopifyへの移行や、新規での立ち上げを設計の段階から、併走型でコンサルティング。
               </p>
-              <p tw="text-sm sm:leading-6">
+              <p tw="text-sm sm:text-base font-light sm:leading-6">
                 プロジェクトの成功の鍵は設計です。今までAlquimistaで蓄積してきた全てのナレッジを活かし、貴社にベストなアーキテクチャを提案します。もちろん、設計から構築、メンテナンスまで一気通貫でお任せいただけます。
               </p>
             </div>
@@ -195,7 +198,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
         {/* Blog */}
         <div tw="mb-40 xl:mx-16">
-          <p tw="pb-7 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+          <p tw="pb-7 text-5.5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Blog
           </p>
           <div tw="flex justify-center">
@@ -234,7 +237,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
         {/* News */}
         <div tw="mb-40 md:mx-5 xl:mx-16" id="news_section">
-          <p tw="pb-3 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+          <p tw="pb-3 text-5.5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             News
           </p>
           <div tw="grid grid-cols-1 mb-5">
@@ -245,7 +248,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                   {/* @ts-ignore */}
                   <div tw="text-left border-b border-darkBlue mb-5 text-black">
                     <p tw="opacity-60 font-bold text-lg mb-5">{post?.node.createdAt}</p>
-                    <p tw="font-semibold text-lg mb-8 hover:text-lightGreen transition duration-150">
+                    <p tw="font-medium text-lg mb-8 hover:text-lightGreen transition duration-150">
                       {post?.node.title}
                     </p>
                   </div>
@@ -266,7 +269,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
         {/* Members */}
         <div tw="mb-28 md:mx-5 xl:mx-16" id="member_section">
-          <p tw="pb-14 text-5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
+          <p tw="pb-14 text-5.5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Members
           </p>
           <MemberGrid members={members} />
