@@ -31,100 +31,98 @@ const Contact = ({ data, location }) => {
           data-netlify-honeypot="bot-field"
           tw="text-sm sm:pb-0"
         >
-          <table tw="table-fixed">
-            <tbody tw="font-bold">
-              <tr>
-                <td tw="w-1/3 border-b border-t border-darkBlue px-4 py-5">
-                  <label htmlFor="company_name">会社名</label>
-                </td>
-                <td tw="w-8/12 border-b border-t border-darkBlue px-4 py-5">
-                  <input
-                    id="company_name"
-                    name="company_name"
-                    type="text"
-                    tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
-                    placeholder="例）株式会社令和"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="name">
-                    氏名<span tw="text-red-600">*</span>
-                  </label>
-                </td>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <input
-                    required
-                    id="name"
-                    name="name"
-                    type="text"
-                    tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
-                    placeholder="例）山田太郎"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="tel">
-                    電話番号<span tw="text-red-600">*</span>
-                  </label>
-                </td>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <input
-                    id="tel"
-                    name="tel"
-                    type="tel"
-                    tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
-                    placeholder="例）00000000000"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="mail">
-                    メールアドレス<span tw="text-red-600">*</span>
-                  </label>
-                </td>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <input
-                    required
-                    id="mail"
-                    name="mail"
-                    type="email"
-                    tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
-                    placeholder="例）email@email.com"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="content">
-                    お問い合わせ内容<span tw="text-red-600">*</span>
-                  </label>
-                </td>
-                <td tw="border-b border-darkBlue px-4 py-5">
-                  <select
-                    name="category[]"
-                    tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
-                  >
-                    <option value="">お問い合わせ内容をご選択ください</option>
-                    <option value="Shopifyストア構築">Shopifyストア構築</option>
-                    <option value="JAMSTACKなwebサイト制作">JAMSTACKなwebサイト制作</option>
-                    <option value="BABO">BABO</option>
-                    <option value="その他">その他</option>
-                  </select>
+          <div>
+            <tr>
+              <td tw="w-1/3 border-b border-t border-darkBlue px-4 py-5">
+                <label htmlFor="company_name">会社名</label>
+              </td>
+              <td tw="w-8/12 border-b border-t border-darkBlue px-4 py-5">
+                <input
+                  id="company_name"
+                  name="company_name"
+                  type="text"
+                  tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
+                  placeholder="例）株式会社令和"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <label htmlFor="name">
+                  氏名<span tw="text-red-600">*</span>
+                </label>
+              </td>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <input
+                  required
+                  id="name"
+                  name="name"
+                  type="text"
+                  tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
+                  placeholder="例）山田太郎"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <label htmlFor="tel">
+                  電話番号<span tw="text-red-600">*</span>
+                </label>
+              </td>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <input
+                  id="tel"
+                  name="tel"
+                  type="tel"
+                  tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
+                  placeholder="例）00000000000"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <label htmlFor="mail">
+                  メールアドレス<span tw="text-red-600">*</span>
+                </label>
+              </td>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <input
+                  required
+                  id="mail"
+                  name="mail"
+                  type="email"
+                  tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
+                  placeholder="例）email@email.com"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <label htmlFor="content">
+                  お問い合わせ内容<span tw="text-red-600">*</span>
+                </label>
+              </td>
+              <td tw="border-b border-darkBlue px-4 py-5">
+                <select
+                  name="category[]"
+                  tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
+                >
+                  <option value="">お問い合わせ内容をご選択ください</option>
+                  <option value="Shopifyストア構築">Shopifyストア構築</option>
+                  <option value="JAMSTACKなwebサイト制作">JAMSTACKなwebサイト制作</option>
+                  <option value="BABO">BABO</option>
+                  <option value="その他">その他</option>
+                </select>
 
-                  <textarea
-                    required
-                    id="content"
-                    name="content"
-                    tw="py-3 mb-auto placeholder-gray-500 placeholder-opacity-60 border border-darkBlue rounded-xl w-full h-24 outline-none px-2"
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                <textarea
+                  required
+                  id="content"
+                  name="content"
+                  tw="py-3 mb-auto placeholder-gray-500 placeholder-opacity-60 border border-darkBlue rounded-xl w-full h-24 outline-none px-2"
+                />
+              </td>
+            </tr>
+          </div>
           <input type="hidden" name="form-name" value="contact" />
           <div tw="ml-auto mr-auto">
             <input
