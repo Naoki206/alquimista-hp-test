@@ -136,7 +136,8 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
                 お客様が、マーケティングやデータドリブンな意思決定、カスタマーサクセスなど、最も大切なことに集中できるよう、最適なアーキテクチャを提案し、開発・メンテナンスまで一気通貫でサポートします。
               </p>
               <div tw="text-center mt-auto">
-                <Link to="/blog/all">
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <Link to="#">
                   <button
                     style={{ outline: 'none' }}
                     tw="mx-auto mt-auto font-bold text-sm px-6 py-2 text-center border-2 border-paleOrange rounded-full text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300 outline-none"
