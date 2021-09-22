@@ -94,7 +94,7 @@ const Contact = ({ data, location }) => {
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <select
-                    name="category"
+                    name="category[]"
                     tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
                   >
                     <option value="">お問い合わせ内容をご選択ください</option>
@@ -114,6 +114,7 @@ const Contact = ({ data, location }) => {
               </tr>
             </tbody>
           </table>
+          <input type="hidden" name="form-name" value="contact" />
           <div tw="ml-auto mr-auto">
             <input
               tw="block bg-darkBlue text-paleOrange mx-auto mt-auto font-bold text-sm px-6 py-2 text-center border-2 border-paleOrange rounded-full hover:border-lightGreen hover:bg-lightGreen transition duration-300 outline-none"
