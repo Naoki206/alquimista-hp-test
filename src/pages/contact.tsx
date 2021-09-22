@@ -92,9 +92,9 @@ const Contact = ({ data, location }) => {
                     tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
                   >
                     <option value="">お問い合わせ内容をご選択ください</option>
-                    <option value="jan">1月</option>
-                    <option value="feb">2月</option>
-                    <option value="mar">3月</option>
+                    <option value="1">お問い合わせ1</option>
+                    <option value="2">お問い合わせ2</option>
+                    <option value="3">お問い合わせ3</option>
                   </select>
 
                   <textarea
