@@ -11,7 +11,7 @@ const CompanyProfile = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle} blogOrNewsTopPage>
       <Seo title="Company Profile" />
-      <div tw="pb-64 sm:h-screen xl:h-110vh">
+      <div tw="pb-80 h-auto xl:h-110vh">
         <p
           tw="text-3xl sm:text-5xl font-bold text-darkBlue text-center pt-12 pb-8 mb-0"
           style={{ fontFamily: 'Avenir Next' }}
