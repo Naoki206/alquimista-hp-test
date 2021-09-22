@@ -50,6 +50,7 @@ const Contact = ({ data, location }) => {
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <label htmlFor="name">氏名</label>
+                  <span tw="text-red-600">*</span>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
@@ -64,9 +65,8 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="tel">
-                    電話番号<span tw="text-red-600">*</span>
-                  </label>
+                  <label htmlFor="tel">電話番号</label>
+                  <span tw="text-red-600">*</span>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
@@ -80,9 +80,8 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="mail">
-                    メールアドレス<span tw="text-red-600">*</span>
-                  </label>
+                  <label htmlFor="mail">メールアドレス</label>
+                  <span tw="text-red-600">*</span>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
@@ -97,9 +96,8 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="content">
-                    お問い合わせ内容<span tw="text-red-600">*</span>
-                  </label>
+                  <label htmlFor="content">お問い合わせ内容</label>
+                  <span tw="text-red-600">*</span>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <select
