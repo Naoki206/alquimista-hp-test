@@ -26,8 +26,9 @@ const Contact = ({ data, location }) => {
         <form
           name="contact"
           action="/thankyou"
-          method="POST"
+          method="post"
           data-netlify="true"
+          data-netlify-honeypot="bot-field"
           tw="text-sm sm:pb-0"
         >
           <table tw="table-fixed">
@@ -48,10 +49,13 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="name">氏名</label>
+                  <label htmlFor="name">
+                    氏名<span tw="text-red-600">*</span>
+                  </label>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
+                    required
                     id="name"
                     name="name"
                     type="text"
@@ -62,7 +66,9 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="tel">電話番号</label>
+                  <label htmlFor="tel">
+                    電話番号<span tw="text-red-600">*</span>
+                  </label>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
@@ -70,16 +76,19 @@ const Contact = ({ data, location }) => {
                     name="tel"
                     type="tel"
                     tw="placeholder-gray-500 placeholder-opacity-60 h-10 border border-darkBlue rounded-xl w-full outline-none px-2"
-                    placeholder="例）000-0000-0000"
+                    placeholder="例）00000000000"
                   />
                 </td>
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="mail">メールアドレス</label>
+                  <label htmlFor="mail">
+                    メールアドレス<span tw="text-red-600">*</span>
+                  </label>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <input
+                    required
                     id="mail"
                     name="mail"
                     type="email"
@@ -90,7 +99,9 @@ const Contact = ({ data, location }) => {
               </tr>
               <tr>
                 <td tw="border-b border-darkBlue px-4 py-5">
-                  <label htmlFor="content">お問い合わせ内容</label>
+                  <label htmlFor="content">
+                    お問い合わせ内容<span tw="text-red-600">*</span>
+                  </label>
                 </td>
                 <td tw="border-b border-darkBlue px-4 py-5">
                   <select
@@ -98,18 +109,18 @@ const Contact = ({ data, location }) => {
                     tw="outline-none border border-darkBlue rounded-lg mb-3 px-2 w-full"
                   >
                     <option value="">お問い合わせ内容をご選択ください</option>
-                    <option value="1">お問い合わせ1</option>
-                    <option value="2">お問い合わせ2</option>
-                    <option value="3">お問い合わせ3</option>
+                    <option value="Shopifyストア構築">Shopifyストア構築</option>
+                    <option value="JAMSTACKなwebサイト制作">JAMSTACKなwebサイト制作</option>
+                    <option value="BABO">BABO</option>
+                    <option value="その他">その他</option>
                   </select>
 
                   <textarea
+                    required
                     id="content"
                     name="content"
                     tw="py-3 mb-auto placeholder-gray-500 placeholder-opacity-60 border border-darkBlue rounded-xl w-full h-24 outline-none px-2"
-                  >
-                    {' '}
-                  </textarea>
+                  />
                 </td>
               </tr>
             </tbody>

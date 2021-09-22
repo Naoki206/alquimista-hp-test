@@ -264,7 +264,7 @@ const Header: React.FC<
               </ScrollLink>
             </>
           )}
-          <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+          <Link to="/contact">
             <li
               tw="hidden md:block py-0.5 px-5 rounded-full cursor-pointer"
               style={contactUsBtnChangebleStyle}
@@ -309,7 +309,7 @@ const Header: React.FC<
                     {menu?.member}
                   </li>
                 </Link>
-                <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+                <Link to="contact">
                   <li tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full bg-paleOrange text-darkBlue">
                     {menu?.contactUs}
                   </li>
@@ -373,7 +373,7 @@ const Header: React.FC<
                     {menu?.member}
                   </li>
                 </ScrollLink>
-                <Link to="https://docs.google.com/forms/d/e/1FAIpQLSccYRLULmUDnj4ZX2844KmRGeDS7itG40MsKadc_KQEttWuCQ/viewform">
+                <Link to="contact">
                   <li
                     tw="inline-block mt-6 mb-4 py-1 px-5 rounded-full"
                     style={contactUsBtnChangebleStyle}
