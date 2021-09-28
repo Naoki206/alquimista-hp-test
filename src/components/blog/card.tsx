@@ -19,7 +19,7 @@ const Card: React.FC<{
   };
 }> = ({ post }) => (
   <li tw="w-full">
-    <div className="group" tw="border-black mb-16 h-80 sm:h-72 md:h-80 lg:h-96 box-content">
+    <div className="group" tw="border-black mb-28 h-80 sm:h-72 md:h-80 lg:h-96 box-content">
       <div tw="group-hover:opacity-80 transition duration-300">
         <Link to={`/blog/${post.node.slug}` || '/'} itemProp="url">
           <div tw="relative overflow-hidden rounded-xl">
