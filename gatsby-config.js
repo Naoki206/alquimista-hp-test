@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 module.exports = {
   siteMetadata: {
-    title: 'Alquimista Inc. hp',
+    title: '株式会社Alquimista',
     description: "tech blog and company's news included hp ",
     siteUrl: 'https://peaceful-kare-d7c0d1.netlify.app/', // TODO:: デプロイ後、要変更
     author: 'Naoki Kamatsuka',
