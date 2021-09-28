@@ -3,73 +3,16 @@
 /* eslint-disable react/destructuring-assignment */
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { BLOCKS, MARKS } from '@contentful/rich-text-types';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
 import Layout from '../components/layout';
 import ThreeNewContents from '../components/blog/threeNewContents';
 
-const options = {
-  renderNode: {
-    // eslint-disable-next-line react/display-name
-    [BLOCKS.EMBEDDED_ASSET]: (node: {
-      data: {
-        target: {
-          title: string;
-        };
-      };
-    }) => (
-      <GatsbyImage
-        // @ts-ignore
-        image={getImage(node.data.target)}
-        alt={node.data.target.title}
-      />
-    ),
-    [BLOCKS.PARAGRAPH]: (node: any, children: any) => {
-      if (node.content.length === 1 && node.content[0].marks.find(x => x.type === 'code')) {
-        return <div>{children}</div>;
-      }
-      return <p>{children}</p>;
-    },
-  },
-  renderMark: {
-    [MARKS.CODE]: text => (
-      <SyntaxHighlighter language="javascript" style={okaidia} showLineNumbers>
-        {text}
-      </SyntaxHighlighter>
-    ),
-  },
-};
-
-// function code(text) {
-//   console.log(typeof text);
-//   console.log(text);
-//   text.shift();
-//   const language = text.shift();
-//   text.shift();
-
-//   const value = text.reduce((acc, cur) => {
-//     if (typeof cur !== 'string' && cur.type === 'br') {
-//       return `${acc}\n`;
-//     }
-//     return acc + cur;
-//   }, '');
-
-//   return (
-//     <SyntaxHighlighter language={language} style={okaidia}>
-//       {value}
-//     </SyntaxHighlighter>
-//   );
-// }
-
 const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogPostBySlugQuery>> =
   ({ data, location }) => {
     const post = data.contentfulPost;
-    const mdPost = data?.contentfulPost?.content2?.childMarkdownRemark?.html;
+    const mdPost = data?.contentfulPost?.content?.childMarkdownRemark?.html;
 
     return (
       <Layout location={location} blogOrNewsContentsPage>
@@ -109,12 +52,11 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
             </div>
           </div>
 
-          {/* @ts-ignore */}
-          <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
           <div className="post-body">
             {/* @ts-ignore */}
             <div dangerouslySetInnerHTML={{ __html: mdPost }} />
           </div>
+
           <div tw="flex flex-wrap mb-1.5">
             {/* @ts-ignore */}
             {post?.category?.map(category => (
@@ -149,24 +91,6 @@ export const pageQuery = graphql`
       category
       slug
       content {
-        raw
-        references {
-          ... on ContentfulAsset {
-            id
-            contentful_id
-            __typename
-            title
-            fixed(width: 1600) {
-              width
-              height
-              src
-            }
-            title
-            gatsbyImageData(formats: AUTO)
-          }
-        }
-      }
-      content2 {
         childMarkdownRemark {
           html
         }

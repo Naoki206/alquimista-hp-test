@@ -3,35 +3,16 @@
 /* eslint-disable react/destructuring-assignment */
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
-import { renderRichText } from 'gatsby-source-contentful/rich-text';
-import { BLOCKS } from '@contentful/rich-text-types';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
 import Layout from '../components/layout';
 
-const options = {
-  renderNode: {
-    // eslint-disable-next-line react/display-name
-    [BLOCKS.EMBEDDED_ASSET]: (node: {
-      data: {
-        target: {
-          title: string;
-        };
-      };
-    }) => (
-      <GatsbyImage
-        // @ts-ignore
-        image={getImage(node.data.target)}
-        alt={node.data.target.title}
-      />
-    ),
-  },
-};
-
 const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulNewsPostBySlugQuery>> =
   ({ data, location }) => {
     const post = data.contentfulNews;
+    const mdPost = data?.contentfulNews?.content?.childMarkdownRemark?.html;
+
     return (
       <Layout location={location} blogOrNewsContentsPage>
         {/* <Seo title={post?.title || 'undefined'} /> */}
@@ -50,8 +31,10 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulNewsP
               </div>
             </div>
           </div>
-          {/* @ts-ignore */}
-          <div>{post?.content?.raw && renderRichText(post.content, options)}</div>
+          <div className="post-body">
+            {/* @ts-ignore */}
+            <div dangerouslySetInnerHTML={{ __html: mdPost }} />
+          </div>
         </div>
       </Layout>
     );
@@ -66,21 +49,8 @@ export const pageQuery = graphql`
       createdAt(formatString: "YYYY/MM/DD HH:mm:ss")
       slug
       content {
-        raw
-        references {
-          ... on ContentfulAsset {
-            id
-            contentful_id
-            __typename
-            title
-            fixed(width: 1600) {
-              width
-              height
-              src
-            }
-            title
-            gatsbyImageData(formats: AUTO)
-          }
+        childMarkdownRemark {
+          html
         }
       }
       image {

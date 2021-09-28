@@ -247,6 +247,7 @@ const Header: React.FC<
                   {menu?.service}
                 </li>
               </ScrollLink>
+              {/* :TODO */}
               <Link to="/blog/all">
                 <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
                   {menu?.blog}
@@ -345,6 +346,7 @@ const Header: React.FC<
                     {menu?.service}
                   </li>
                 </ScrollLink>
+                {/* :TODO */}
                 <Link to="/blog/all">
                   {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                   <li
