@@ -150,83 +150,50 @@ const Header: React.FC<
           </li>
 
           {/* sp hamburger menu icon */}
-          <li tw="md:hidden transition duration-300">
-            {open ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                tw="w-8"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                onClick={() => setOpen(!open)}
+          {topPage ? (
+            <li tw="md:hidden transition duration-300">
+              {open ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  tw="w-8"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  onClick={() => setOpen(!open)}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  tw="w-8"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  onClick={() => setOpen(!open)}
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              )}
+            </li>
+          ) : (
+            <Link to="/contact">
+              <li
+                tw="md:hidden py-2 px-5 rounded-full cursor-pointer"
+                style={contactUsBtnChangebleStyle}
               >
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                tw="w-8"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                onClick={() => setOpen(!open)}
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            )}
-          </li>
+                {menu?.contactUs}
+              </li>
+            </Link>
+          )}
 
           {/* pc menu */}
-          {blogOrNewsContentsPage && (
-            <>
-              <Link to="/#aboutus_section">
-                <li tw="hidden md:block text-darkBlue">{menu?.aboutUs}</li>
-              </Link>
-              <Link to="/#vision_section">
-                <li tw="hidden md:block text-darkBlue">{menu?.vision}</li>
-              </Link>
-              <Link to="/#service_section">
-                <li tw="hidden md:block text-darkBlue">{menu?.service}</li>
-              </Link>
-              <Link to="/blog/all">
-                <li tw="hidden md:block text-darkBlue">{menu?.blog}</li>
-              </Link>
-              <Link to="/news">
-                <li tw="hidden md:block text-darkBlue">{menu?.news}</li>
-              </Link>
-              <Link to="/#member_section">
-                <li tw="hidden md:block text-darkBlue">{menu?.member}</li>
-              </Link>
-            </>
-          )}
-          {blogOrNewsTopPage && (
-            <>
-              <Link to="/#aboutus_section">
-                <li tw="hidden md:block text-paleOrange">{menu?.aboutUs}</li>
-              </Link>
-              <Link to="/#vision_section">
-                <li tw="hidden md:block text-paleOrange">{menu?.vision}</li>
-              </Link>
-              <Link to="/#service_section">
-                <li tw="hidden md:block text-paleOrange">{menu?.service}</li>
-              </Link>
-              <Link to="/blog/all">
-                <li tw="hidden md:block text-paleOrange">{menu?.blog}</li>
-              </Link>
-              <Link to="/news">
-                <li tw="hidden md:block text-paleOrange">{menu?.news}</li>
-              </Link>
-              <Link to="/#member_section">
-                <li tw="hidden md:block text-paleOrange">{menu?.member}</li>
-              </Link>
-            </>
-          )}
           {topPage && (
             <>
               <ScrollLink smooth to="aboutus_section" duration={1000} offset={-150}>
