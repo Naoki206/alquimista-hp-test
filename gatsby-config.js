@@ -54,6 +54,7 @@ module.exports = {
           role: 'Engineer',
           description:
             '同志社大学神学部神学科在学中。在学中、留学先でのふとしたきっかけでプログラミングに興味を持ちはじめ、帰国後複数のインターンシップに参加。WEB開発、主にバックエンドの開発が得意。',
+          twitter: '@twitter',
         },
         {
           name: 'Sakina',
