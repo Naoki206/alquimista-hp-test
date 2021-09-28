@@ -18,12 +18,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   // for particular wiriter's blog post
   const writerPost = path.resolve('./src/templates/writer-blog-post-contentful.tsx');
 
-  // createRedirect({
-  //   fromPath: 'https://peaceful-kare-d7c0d1.netlify.app/*',
-  //   toPath: 'https://o-alquimista.com/:splat',
-  //   isPermanent: true,
-  //   force: true,
-  // });
+  createRedirect({
+    fromPath: 'https://peaceful-kare-d7c0d1.netlify.app/*',
+    toPath: 'https://o-alquimista.com/:splat',
+    isPermanent: true,
+    force: true,
+   });
 
   // Get all blog posts
   const postResult = await graphql<{
