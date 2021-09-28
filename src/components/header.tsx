@@ -216,12 +216,12 @@ const Header: React.FC<
               </ScrollLink>
               {/* :TODO */}
               <ScrollLink smooth to="blog_section" duration={1000} offset={-50}>
-                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                <li tw="hidden md:block cursor-pointer" style={pcTextColorChangebleStyle}>
                   {menu?.blog}
                 </li>
               </ScrollLink>
               <ScrollLink smooth to="news_section" duration={1000} offset={-150}>
-                <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
+                <li tw="hidden md:block cursor-pointer" style={pcTextColorChangebleStyle}>
                   {menu?.news}
                 </li>
               </ScrollLink>
