@@ -71,7 +71,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
 
   return (
     <Layout location={location} topPage>
-      <SEO title="Top Page" />
+      <SEO title="Home Page" />
       {/* メインビジュアル */}
       <div tw="mb-24 z-20 h-750px bg-darkBlue relative flex items-center justify-center">
         <p
