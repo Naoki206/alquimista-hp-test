@@ -4,7 +4,7 @@ import { graphql, PageProps } from 'gatsby';
 import 'twin.macro';
 
 import Layout from '../../components/layout';
-import Seo from '../../components/blog/seo';
+import SEO from '../../components/blog/seo';
 import CardGrid from '../../components/blog/cardgrid';
 
 const NewsIndex: React.FC<PageProps<GatsbyTypes.NewsIndexQuery>> = ({ data, location }) => {
@@ -13,7 +13,7 @@ const NewsIndex: React.FC<PageProps<GatsbyTypes.NewsIndexQuery>> = ({ data, loca
   if (posts.length === 0) {
     return (
       <Layout location={location} blogOrNewsHeadingLetter={2} blogOrNewsTopPage>
-        <Seo title="News posts" />
+        <SEO title="News posts" />
         <p>まだ記事がありません。</p>
       </Layout>
     );
@@ -21,7 +21,7 @@ const NewsIndex: React.FC<PageProps<GatsbyTypes.NewsIndexQuery>> = ({ data, loca
 
   return (
     <Layout location={location} blogOrNewsHeadingLetter={2} blogOrNewsTopPage>
-      <Seo title="News posts" />
+      <SEO title="News posts" />
       <div>
         {/* @ts-ignore */}
         <CardGrid posts={posts} isNewsPost />

@@ -5,7 +5,7 @@ import 'twin.macro';
 
 import Menu from '../components/blog/menu';
 import Layout from '../components/layout';
-import Seo from '../components/blog/seo';
+import SEO from '../components/blog/seo';
 import CardGrid from '../components/blog/cardgrid';
 
 // const BlogIndex = ({ data, location }) => {
@@ -17,7 +17,7 @@ const CategorizedBlogPostContentfulTemplate: React.FC<
 
   return (
     <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
-      <Seo title="All posts" />
+      <SEO title="categorizes posts" />
       <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div>
         {/* @ts-ignore */}

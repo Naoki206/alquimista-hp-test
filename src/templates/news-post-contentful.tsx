@@ -7,15 +7,21 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import 'twin.macro';
 
 import Layout from '../components/layout';
+import SEO from '../components/blog/seo';
 
 const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulNewsPostBySlugQuery>> =
   ({ data, location }) => {
     const post = data.contentfulNews;
     const mdPost = data?.contentfulNews?.content?.childMarkdownRemark?.html;
+    let thumbnail = data?.contentfulNews?.image?.file?.url;
+    if (!thumbnail) {
+      const siteUrl = data?.site?.siteMetadata?.siteUrl;
+      thumbnail = `${siteUrl}/blog_alquimista_logo.jpg`;
+    }
 
     return (
       <Layout location={location} blogOrNewsContentsPage>
-        {/* <Seo title={post?.title || 'undefined'} /> */}
+        <SEO title={post?.title || 'undefined'} image="thumbnail" />
         <div tw="pb-96 sm:pb-64 mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
           <div tw="my-16">
             <GatsbyImage
@@ -55,6 +61,14 @@ export const pageQuery = graphql`
       }
       image {
         gatsbyImageData
+        file {
+          url
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

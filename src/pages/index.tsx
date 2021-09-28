@@ -21,8 +21,8 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
   const [blogButtonActive, setBlogButtonActive] = React.useState(false);
   const [topLetterFadeInFlg, setopLetterFadeInFlg] = React.useState(false);
   // @ts-ignore
-  const { designer, engineer, marketing } = data.site?.siteMetadata?.member;
-  const members = designer.concat(engineer, marketing);
+  const { ceo, marketing, engineer, designer } = data.site?.siteMetadata?.member;
+  const members = ceo.concat(marketing, engineer, designer);
   const newsPosts = data.allContentfulNews.edges;
 
   React.useEffect(() => {
@@ -318,7 +318,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         member {
-          designer {
+          ceo {
+            description
+            name
+            role
+          }
+          marketing {
             description
             name
             role
@@ -329,7 +334,7 @@ export const pageQuery = graphql`
             role
             twitter
           }
-          marketing {
+          designer {
             description
             name
             role

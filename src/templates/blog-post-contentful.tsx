@@ -8,15 +8,21 @@ import 'twin.macro';
 
 import Layout from '../components/layout';
 import ThreeNewContents from '../components/blog/threeNewContents';
+import SEO from '../components/blog/seo';
 
 const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogPostBySlugQuery>> =
   ({ data, location }) => {
     const post = data.contentfulPost;
     const mdPost = data?.contentfulPost?.content?.childMarkdownRemark?.html;
+    let thumbnail = data?.contentfulPost?.image?.file?.url;
+    if (!thumbnail) {
+      const siteUrl = data?.site?.siteMetadata?.siteUrl;
+      thumbnail = `${siteUrl}/blog_alquimista_logo.jpg`;
+    }
 
     return (
       <Layout location={location} blogOrNewsContentsPage>
-        {/* <Seo title={post?.title || 'undefined'} /> */}
+        <SEO title={post?.title || 'undefined'} image={thumbnail} />
         <div tw=" mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
           <div tw="my-16">
             <GatsbyImage
@@ -97,6 +103,14 @@ export const pageQuery = graphql`
       }
       image {
         gatsbyImageData
+        file {
+          url
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

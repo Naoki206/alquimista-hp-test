@@ -3,14 +3,14 @@ import { graphql, Link } from 'gatsby';
 import 'twin.macro';
 
 import Layout from '../components/layout';
-import Seo from '../components/blog/seo';
+import SEO from '../components/blog/seo';
 
 const PrivacyPolicyPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
     <Layout location={location} title={siteTitle} blogOrNewsTopPage>
-      <Seo title="404: Not Found" />
+      <SEO title="404: Not Found" />
       <div tw="pb-80 h-auto w-4/5 sm:w-8/12 md:w-9/12 mr-auto ml-auto text-center">
         <p tw="text-4xl md:text-5xl font-bold mt-16" style={{ fontFamily: 'Avenir Next' }}>
           Privacy Policy

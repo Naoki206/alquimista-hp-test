@@ -5,16 +5,18 @@ import 'twin.macro';
 
 import Menu from '../../components/blog/menu';
 import Layout from '../../components/layout';
-import Seo from '../../components/blog/seo';
+import SEO from '../../components/blog/seo';
 import MemberGrid from '../../components/common/memberGrid';
 
 const BlogIndex: React.FC<PageProps<GatsbyTypes.BlogWriterIndexQuery>> = ({ data, location }) => {
-  const writers = data.site?.siteMetadata?.member?.engineer;
+  // @ts-ignore
+  const { ceo, engineer } = data.site?.siteMetadata?.member;
+  const writers = ceo.concat(engineer);
   const [isSelected, setIsSelected] = React.useState(4);
 
   return (
     <Layout location={location} blogOrNewsHeadingLetter={1} blogOrNewsTopPage>
-      <Seo title="Writers" />
+      <SEO title="Writers" />
       <Menu location={location} isSelected={isSelected} setIsSelected={setIsSelected} />
       <div tw="text-center pb-900px sm:pb-350px  h-screen  mx-8 sm:mx-40 xl:mx-56 box-content">
         <MemberGrid members={writers} isBlogWriters />
@@ -30,6 +32,12 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         member {
+          ceo {
+            description
+            name
+            role
+            twitter
+          }
           engineer {
             description
             name
