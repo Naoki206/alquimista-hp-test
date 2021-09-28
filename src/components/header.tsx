@@ -248,16 +248,16 @@ const Header: React.FC<
                 </li>
               </ScrollLink>
               {/* :TODO */}
-              <Link to="/blog/all">
+              <ScrollLink smooth to="blog_section" duration={1000} offset={-50}>
                 <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
                   {menu?.blog}
                 </li>
-              </Link>
-              <Link to="/news">
+              </ScrollLink>
+              <ScrollLink smooth to="news_section" duration={1000} offset={-150}>
                 <li tw="hidden md:block" style={pcTextColorChangebleStyle}>
                   {menu?.news}
                 </li>
-              </Link>
+              </ScrollLink>
               <ScrollLink smooth to="member_section" duration={1000} offset={-150}>
                 <li tw="hidden md:block cursor-pointer" style={pcTextColorChangebleStyle}>
                   {menu?.member}
@@ -346,8 +346,7 @@ const Header: React.FC<
                     {menu?.service}
                   </li>
                 </ScrollLink>
-                {/* :TODO */}
-                <Link to="/blog/all">
+                <ScrollLink smooth to="blog_section" duration={1000} offset={-630}>
                   {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
                   <li
                     tw="py-5 border-b"
@@ -356,8 +355,8 @@ const Header: React.FC<
                   >
                     {menu?.blog}
                   </li>
-                </Link>
-                <Link to="/news">
+                </ScrollLink>
+                <ScrollLink smooth to="news_section" duration={1000} offset={-630}>
                   <li
                     tw="py-5 border-b"
                     style={spTextColorChangebleStyle}
@@ -365,7 +364,7 @@ const Header: React.FC<
                   >
                     {menu?.news}
                   </li>
-                </Link>
+                </ScrollLink>
                 <ScrollLink smooth to="member_section" duration={1000} offset={-630}>
                   <li
                     tw="py-5 border-b"

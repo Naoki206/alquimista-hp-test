@@ -197,7 +197,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
         </div>
 
         {/* Blog */}
-        <div tw="mb-40 xl:mx-16">
+        <div tw="mb-40 xl:mx-16" id="blog_section">
           <p tw="pb-7 text-5.5xl font-bold" style={{ fontFamily: 'Avenir Next' }}>
             Blog
           </p>
@@ -227,7 +227,7 @@ const TopIndex: React.FC<PageProps<GatsbyTypes.TopIndexQuery>> = ({ data, locati
           <Link to="/blog/all">
             <button
               style={{ outline: 'none' }}
-              tw="mx-auto font-bold text-sm px-6 py-2 md:mt-8 lg:mt-5 text-center border-2 border-darkBlue rounded-full text-black hover:text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300"
+              tw="mx-auto font-bold text-sm px-6 py-2 mt-10 md:mt-8 lg:mt-5 text-center border-2 border-darkBlue rounded-full text-black hover:text-paleOrange hover:border-lightGreen hover:bg-lightGreen transition duration-300"
               type="button"
             >
               Read more →
@@ -337,7 +337,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulNews(sort: { order: DESC, fields: createdAt }, limit: 3) {
+    allContentfulNews(
+      sort: { order: DESC, fields: createdAt }
+      limit: 3
+      filter: { node_locale: { eq: "ja-JP" } }
+    ) {
       edges {
         node {
           title
