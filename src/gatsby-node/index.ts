@@ -6,7 +6,7 @@ import path from 'path';
 import { GatsbyNode, Actions } from 'gatsby';
 
 export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions, reporter }) => {
-  const { createPage } = actions;
+  const { createPage, createRedirect } = actions;
 
   // Define a template
   // for blog post
@@ -17,6 +17,13 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   const categorizedPost = path.resolve('./src/templates/categorized-blog-post-contentful.tsx');
   // for particular wiriter's blog post
   const writerPost = path.resolve('./src/templates/writer-blog-post-contentful.tsx');
+
+  createRedirect({
+    fromPath: 'https://peaceful-kare-d7c0d1.netlify.app/*',
+    toPath: 'https://o-alquimista.com/:splat',
+    isPermanent: true,
+    force: true,
+  });
 
   // Get all blog posts
   const postResult = await graphql<{
