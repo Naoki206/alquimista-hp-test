@@ -322,11 +322,13 @@ export const pageQuery = graphql`
             description
             name
             role
+            twitter
           }
           marketing {
             description
             name
             role
+            twitter
           }
           engineer {
             description
@@ -338,6 +340,7 @@ export const pageQuery = graphql`
             description
             name
             role
+            twitter
           }
         }
       }
