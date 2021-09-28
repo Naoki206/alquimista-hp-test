@@ -8,7 +8,11 @@ import Card from './card';
 const ThreePopularContents: React.FC = () => {
   const data = useStaticQuery<GatsbyTypes.ThreePopularContentsQuery>(graphql`
     query ThreePopularContents {
-      allContentfulPost(filter: { node_locale: { eq: "ja-JP" } }, limit: 3) {
+      allContentfulPost(
+        filter: { node_locale: { eq: "ja-JP" } }
+        limit: 3
+        sort: { order: DESC, fields: popularity }
+      ) {
         edges {
           node {
             title

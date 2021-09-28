@@ -42,7 +42,10 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogPopular {
-    allContentfulPost(filter: { node_locale: { eq: "ja-JP" } }) {
+    allContentfulPost(
+      filter: { node_locale: { eq: "ja-JP" } }
+      sort: { order: DESC, fields: popularity }
+    ) {
       edges {
         node {
           title
