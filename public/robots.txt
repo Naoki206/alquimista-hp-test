@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://gatsbystarterblogsource.gatsbyjs.io/.sitemap.xml
-Host: https://gatsbystarterblogsource.gatsbyjs.io
+Sitemap: https://peaceful-kare-d7c0d1.netlify.app/.sitemap.xml
+Host: https://peaceful-kare-d7c0d1.netlify.app

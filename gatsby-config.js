@@ -10,7 +10,7 @@ module.exports = {
   siteMetadata: {
     title: 'Alquimista Inc. hp',
     description: "tech blog and company's news included hp ",
-    siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:: デプロイ後、要変更
+    siteUrl: 'https://peaceful-kare-d7c0d1.netlify.app/', // TODO:: デプロイ後、要変更
     author: 'Naoki Kamatsuka',
     menu: {
       iconPath: '/alquimista.svg',
@@ -30,7 +30,7 @@ module.exports = {
       address: '〒604-8152 京都市中京区烏丸蛸薬師南入る手洗水町647 トキワビル4F-C',
     },
     member: {
-      engineer: [
+      ceo: [
         {
           name: 'Ken',
           role: 'CEO',
@@ -38,6 +38,17 @@ module.exports = {
             '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
           twitter: '@twitter',
         },
+      ],
+      marketing: [
+        {
+          name: 'PinPin',
+          role: 'Marketing',
+          description:
+            '台湾長栄大学応用日本語学科卒業。得意分野はSNS・コンテンツマーケティング。いつも笑顔で周りを和ませる稀有な存在。台湾から日本へのワーキングホリデーをまとめた「日日夢路」の編集長。雪が大好き。',
+          twitter: '@twitter',
+        },
+      ],
+      engineer: [
         {
           name: 'Naoki',
           role: 'Engineer',
@@ -52,20 +63,13 @@ module.exports = {
           twitter: '@twitter',
         },
       ],
-      marketing: [
-        {
-          name: 'PinPin',
-          role: 'CEO',
-          description:
-            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
-        },
-      ],
       designer: [
         {
           name: 'Mario',
-          role: 'Engineer',
+          role: 'Designer',
           description:
-            '京都工芸繊維大学大学院卒業。卒業後は栗田工業株式会社にて法人営業に5年従事する。その後2017年に株式会社Alquimistaを設立。Webアプリケーションの開発からセールスまで幅広いフィールドに精通。フランスが好きで年に2回は訪れる。',
+            '京都工芸繊維大学卒業後、GRAPH 北川一成に師事し、変なホテルのCI開発など、デザイン起点での企業ブランディングに携わる。2017年よりフリーとして活動開始。2018年には広告代理店のアートディレクターとしてデジタルとオフラインの領域をクロスさせた企業広告の統合コミュニケーションプラン立案に従事。',
+          twitter: '@twitter',
         },
       ],
     },
@@ -88,14 +92,14 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {
-        siteUrl: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:デプロイ後要変更
+        siteUrl: 'https://peaceful-kare-d7c0d1.netlify.app/', // TODO:デプロイ後要変更
       },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://gatsbystarterblogsource.gatsbyjs.io/', // TODO:デプロイ後要変更
-        sitemap: 'https://gatsbystarterblogsource.gatsbyjs.io/.sitemap.xml', // TODO:デプロイ後要変更
+        host: 'https://peaceful-kare-d7c0d1.netlify.app/', // TODO:デプロイ後要変更
+        sitemap: 'https://peaceful-kare-d7c0d1.netlify.app/.sitemap.xml', // TODO:デプロイ後要変更
         policy: [{ userAgent: '*', allow: '/' }],
       },
     },
