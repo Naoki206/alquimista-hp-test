@@ -23,11 +23,12 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulNewsP
         <SEO title={post?.title || 'undefined'} image="thumbnail" />
         <div tw="pb-96 sm:pb-64 mx-5 sm:mx-14 md:mx-28 lg:mx-52 xl:mx-96">
           <div tw="my-16">
-            <GatsbyImage
-              tw="w-full md:h-72 lg:h-96"
+            <img
+              tw="w-full md:h-72 lg:h-96 object-cover"
               // @ts-ignore
-              image={post?.image?.gatsbyImageData}
-              alt="aiueo"
+              src={thumbnail}
+              alt={thumbnail}
+              placeholder="blurred"
             />
             <div tw="text-xl sm:text-3xl font-bold pt-8 pb-8">{post?.title}</div>
             <div tw="flex gap-3 items-center">
