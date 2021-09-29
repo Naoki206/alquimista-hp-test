@@ -53,7 +53,7 @@ const Card: React.FC<{
 
             {zennUrl && (
               <a href={zennUrl}>
-                <div tw="hidden sm:group-hover:block bg-zennColor bg-opacity-75 hover:bg-opacity-100 rounded-full px-2.5 py-2.5 text-blue-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div tw="hidden sm:group-hover:block bg-zennColor bg-opacity-75 hover:bg-opacity-100 rounded-full px-2.5 py-2.5 text-blue-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition duration-300">
                   <div tw="flex justify-center items-center">
                     <img tw="w-4 mr-1" src="/zenn_logo.svg" alt="/note_logo.svg" />
                     <p tw="text-sm mb-0.5">zennで読む</p>
@@ -63,7 +63,7 @@ const Card: React.FC<{
             )}
             {noteUrl && (
               <a href={noteUrl}>
-                <div tw="hidden sm:group-hover:block bg-lightGreen bg-opacity-75 hover:bg-opacity-100 rounded-full px-2.5 py-2.5 text-blue-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div tw="hidden sm:group-hover:block bg-lightGreen bg-opacity-75 hover:bg-opacity-100 rounded-full px-2.5 py-2.5 text-blue-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition duration-300">
                   <div tw="flex justify-center items-center">
                     <img tw="w-6" src="/note_logo.svg" alt="/note_logo.svg" />
                     <p tw="text-sm mb-0.5">noteで読む</p>
