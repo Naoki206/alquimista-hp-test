@@ -19,7 +19,7 @@ const Layout: React.FC<
   blogOrNewsTopPage,
   topPage,
 }) => (
-  <div tw="bg-paleOrange relative h-full">
+  <div tw="bg-paleOrange relative min-h-screen">
     <Header
       location={location}
       blogOrNewsHeadingLetter={blogOrNewsHeadingLetter}
