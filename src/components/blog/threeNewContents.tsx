@@ -16,6 +16,8 @@ const ThreeNewContents: React.FC = () => {
         edges {
           node {
             title
+            zennUrl
+            noteUrl
             category
             author
             slug
