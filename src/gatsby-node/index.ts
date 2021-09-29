@@ -22,8 +22,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     fromPath: 'https://peaceful-kare-d7c0d1.netlify.app/*',
     toPath: 'https://o-alquimista.com/:splat',
     isPermanent: true,
+    redirectInBrowser: true,
     force: true,
-   });
+  });
 
   // Get all blog posts
   const postResult = await graphql<{
