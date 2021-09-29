@@ -34,10 +34,12 @@ export default NewsIndex;
 
 export const pageQuery = graphql`
   query NewsIndex {
-    allContentfulNews(filter: { node_locale: { eq: "ja-JP" } }) {
+    allContentfulNews(filter: { node_locale: { eq: "ja-JP" }, title: { ne: "dummy" } }) {
       edges {
         node {
           slug
+          zennUrl
+          noteUrl
           title
           createdAt(formatString: "YYYY.MM.DD")
           image {

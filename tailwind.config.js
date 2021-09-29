@@ -11,6 +11,10 @@ module.exports = {
         paleOrange: '#F2F2F2',
         lightGreen: '#41C9B4',
         mildDarkBlue: '#203C4F',
+        zennColor: '#3EA8FF',
+      },
+      margin: {
+        0.5: '2px',
       },
       padding: {
         '1120px': '1120px',

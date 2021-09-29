@@ -41,13 +41,15 @@ export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogAll {
-    allContentfulPost(filter: { node_locale: { eq: "ja-JP" } }) {
+    allContentfulPost(filter: { node_locale: { eq: "ja-JP" }, title: { ne: "dummy" } }) {
       edges {
         node {
           title
           category
           author
           slug
+          zennUrl
+          noteUrl
           updatedAt(formatString: "YYYY.MM.DD")
           image {
             title

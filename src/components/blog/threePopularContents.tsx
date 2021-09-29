@@ -9,7 +9,7 @@ const ThreePopularContents: React.FC = () => {
   const data = useStaticQuery<GatsbyTypes.ThreePopularContentsQuery>(graphql`
     query ThreePopularContents {
       allContentfulPost(
-        filter: { node_locale: { eq: "ja-JP" } }
+        filter: { node_locale: { eq: "ja-JP" }, title: { ne: "dummy" } }
         limit: 3
         sort: { order: DESC, fields: popularity }
       ) {

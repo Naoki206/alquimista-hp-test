@@ -348,7 +348,7 @@ export const pageQuery = graphql`
     allContentfulNews(
       sort: { order: DESC, fields: createdAt }
       limit: 3
-      filter: { node_locale: { eq: "ja-JP" } }
+      filter: { node_locale: { eq: "ja-JP" }, title: { ne: "dummy" } }
     ) {
       edges {
         node {

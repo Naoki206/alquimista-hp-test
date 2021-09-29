@@ -43,7 +43,7 @@ export default BlogIndex;
 export const pageQuery = graphql`
   query BlogNew {
     allContentfulPost(
-      filter: { node_locale: { eq: "ja-JP" } }
+      filter: { node_locale: { eq: "ja-JP" }, title: { ne: "dummy" } }
       sort: { order: DESC, fields: updatedAt }
     ) {
       edges {
@@ -52,6 +52,8 @@ export const pageQuery = graphql`
           category
           author
           slug
+          zennUrl
+          noteUrl
           updatedAt(formatString: "YYYY.MM.DD")
           image {
             title

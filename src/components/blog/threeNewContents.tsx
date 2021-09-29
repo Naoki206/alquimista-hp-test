@@ -9,7 +9,7 @@ const ThreeNewContents: React.FC = () => {
   const data = useStaticQuery<GatsbyTypes.ThreeNewContentsQuery>(graphql`
     query ThreeNewContents {
       allContentfulPost(
-        filter: { node_locale: { eq: "ja-JP" } }
+        filter: { node_locale: { eq: "ja-JP" }, title: { ne: "dummy" } }
         sort: { order: DESC, fields: updatedAt }
         limit: 3
       ) {

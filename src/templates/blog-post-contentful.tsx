@@ -16,8 +16,7 @@ const BlogPostContentfulTemplate: React.FC<PageProps<GatsbyTypes.ContentfulBlogP
     const mdPost = data?.contentfulPost?.content?.childMarkdownRemark?.html;
     let thumbnail = data?.contentfulPost?.image?.file?.url;
     if (!thumbnail) {
-      const siteUrl = data?.site?.siteMetadata?.siteUrl;
-      thumbnail = `${siteUrl}/blog_alquimista_logo.jpg`;
+      thumbnail = '/blog_alquimista_logo.jpg';
     }
 
     return (
@@ -95,6 +94,8 @@ export const pageQuery = graphql`
       createdAt(formatString: "YYYY/MM/DD HH:mm:ss")
       updatedAt(formatString: "YYYY/MM/DD HH:mm:ss")
       category
+      zennUrl
+      noteUrl
       slug
       content {
         childMarkdownRemark {
